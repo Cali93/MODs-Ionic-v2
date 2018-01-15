@@ -1,0 +1,68 @@
+page-shop {
+
+}
+
+ul, li {
+  list-style:none !important;
+}
+.orderbtn {
+  float:left;
+  margin-right:10px;
+}
+.editbtn {
+  float:left;
+}
+
+.productname {
+  font-size:2.3em;
+  font-weight: bold;
+  color: #78b937;
+  text-shadow: 1px 1px 1px black; 
+}
+
+.projectimg{
+  border-radius:5px;
+  width:280px;
+  height:150px;
+  background-image:url("http://mcb-atelier.be/wp-content/uploads/2017/05/Frisko_04.jpg");
+}
+
+.trash {
+  font-size: 2.5em;
+}
+
+.trasher { 
+  float:left;
+  margin-left:45%;
+  transform:translateX(-50%);
+  margin-top: 1em;
+}
+
+.qt {
+  float:left;
+}
+.quantities {
+  color:white;
+  position: relative;
+  height:45px;
+  width:4em;
+  background:#013340;
+  margin-top: 4px;
+  padding:5px;
+  border-radius:5px;
+  float:left;
+}
+
+.comments {
+  margin-top:4px;
+  float:right;
+  background: #93B8C2;
+}
+
+.pcoms {
+  float:right;
+  background:white;
+  width:20em;
+  margin-right: 0.5em;
+  border-radius: 5px;
+}

@@ -1,0 +1,95 @@
+<!--
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Home</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-grid>
+  <ion-row>
+    <ion-col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12>
+      <h1>MODs App</h1>
+      <h2>Welcome to our furniture 3D product configurator.</h2>
+      <p>MODs is a Belgian Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in repr duis aute irure dolor in repr</p>
+    </ion-col>
+  </ion-row>
+  </ion-grid>
+
+  <ion-grid>
+  <ion-row>
+    <ion-col col-12 col-sm-9 col-md-6 col-lg-4 col-xl-3>
+      <h3>STEP 1</h3>
+      <p>A rock solid Node.js/Express server using Mongoose to organize models and query the database</p>
+    </ion-col>
+
+    <ion-col col-12 col-sm-9 col-md-6 col-lg-4 col-xl-3>
+      <h3>STEP 2</h3>
+      <p>Angular-CLI to generate components, services and more. Local dev server and easy compilation</p>
+    </ion-col>
+
+    <ion-col col-12 col-sm-9 col-md-6 col-lg-4 col-xl-3>
+      <h3>STEP 3</h3>
+      <p>Full featured authentication using JSON web tokens. Login and store user data</p>
+    </ion-col>
+
+    <ion-col col-12 col-sm-9 col-md-6 col-lg-4 col-xl-3>
+      <h3>STEP 4</h3>
+      <p>Full featured authentication using JSON web tokens. Login and store user data</p>
+    </ion-col>
+  </ion-row>
+</ion-grid>
+
+    <div>
+      <button ion-button block color="primary">GET STARTED</button>
+    </div>
+</ion-content>
+-->
+<ion-content>
+  <ion-slides pager (ionSlideDidChange)="slideChanged()" (ionSlideDrage)="slideMoved()">
+    
+    <ion-slide>
+      <div class="diag" style="background: url('assets/imgs/whitebg.svg') no-repeat center">
+        <ion-icon name="bulb" color="primary" [@bounce]='state' (@bounce.done)="animationDone()"></ion-icon>
+      </div>
+      <div [@bounce]='state'>
+          <h3>STEP 1</h3>
+          <p>A rock solid Node.js/Express server using Mongoose to organize models and query the database</p>
+      </div>
+    </ion-slide>
+
+    <ion-slide>
+        <div class="diag" style="background: url('assets/imgs/whitebg.svg') no-repeat center">
+          <ion-icon name="bulb" color="primary" [@bounce]='state'></ion-icon>
+        </div>
+        <div [@bounce]='state'>
+            <h3>STEP 2</h3>
+            <p>A rock solid Node.js/Express server using Mongoose to organize models and query the database</p>
+        </div>
+    </ion-slide>
+
+    <ion-slide>
+        <div class="diag" style="background: url('assets/imgs/whitebg.svg') no-repeat center">
+          <ion-icon name="bulb" color="primary" [@bounce]='state'></ion-icon>
+        </div>
+        <div [@bounce]='state'>
+            <h3>STEP 3</h3>
+            <p>A rock solid Node.js/Express server using Mongoose to organize models and query the database</p>
+        </div>
+    </ion-slide>
+
+    <ion-slide>
+        <div class="diag" style="background: url('assets/imgs/whitebg.svg') no-repeat center">
+          <ion-icon name="bulb" color="primary" [@bounce]='state'></ion-icon>
+        </div>
+        <div [@bounce]='state'>
+            <h3>STEP 4</h3>
+            <p>A rock solid Node.js/Express server using Mongoose to organize models and query the database</p>
+        </div>
+    </ion-slide>
+  </ion-slides>
+  <button class="getbtn" (click)="skip()" id="skip">{{ skipMsg }}</button>
+</ion-content>
