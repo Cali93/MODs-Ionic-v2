@@ -1,4 +1,81 @@
 <!-- Generated template for the ModEditorComponent component -->
-<div>
-  {{text}}
+<div id="myFrame">		
+	<div class="left-menu">
+	<div class="menu-tab">
+		<div class="tab-title">MODs</div>
+		<div class="tab-icon"><button class="hideMenu" data-toggle=".left-menu">+</button></div>
+	</div>
+	<div class="menu-content">
+		<div class="submenu">
+			<p class="menu-title">Surface</p>
+			<a href="#" class="menu-item">Empty</a>
+			<a href="#" class="menu-item">Floor</a>
+			<a href="#" class="menu-item">Walls</a>
+		</div>
+		<div class="submenu">
+			<p class="menu-title">add</p>
+			<a href="#" class="menu-item" id="addMod">MOD</a>
+			<a href="#" class="menu-item">Preset</a>
+			<a href="#" class="menu-item">My Presets</a>
+		</div>
+		<div class="submenu">
+			<p class="menu-title">Assets</p>
+			<a href="#" class="menu-item">Covering</a>
+			<a href="#" class="menu-item">Props</a>
+			<a href="#" class="menu-item">Images</a>
+			<a href="#" class="menu-item">Lights</a>
+		</div>
+		<a href="#" class="badass-button">Save</a>
+	</div>
 </div>
+
+<div class="right-menu">
+	<div class="menu-tab">
+		<div class="tab-icon"><button class="hideMenu" data-toggle=".right-menu">+</button></div>
+		<div class="tab-title">Tools</div>
+	</div>
+	<div class="menu-content">
+		<div class="submenu">
+			<p class="menu-title">Objects</p>
+			<div class="overflower">
+				<ul id="objects">
+					
+				</ul>
+			</div>
+		</div>
+		<div class="submenu">
+			<p class="menu-title">History</p>
+			<div class="overflower">
+				<ul id="history">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="toolbar">
+	<div class="toolbar-item">
+		<label>
+			<input type="checkbox">
+			Select Many
+		</label>
+	</div>
+	<div class="toolbar-separator"></div>
+	<div class="toolbar-item">
+		<a href="#" id="move" class="hide">Translate</a>
+		<a href="#" id="rotate">Rotate</a>
+	</div>
+	<div class="toolbar-item">
+		<a href="#" id="delete">Delete</a>
+	</div>
+	<div class="toolbar-item">
+		<a href="#" id="clone">Clone</a>
+	</div>
+	<div class="toolbar-item">
+		<a href="#">Group</a>
+	</div>
+	<div class="toolbar-separator"></div>
+	<div class="toolbar-item">
+		<a href="#">Color</a>
+	</div>
+</div></div>

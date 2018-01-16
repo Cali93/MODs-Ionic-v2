@@ -6,7 +6,7 @@ var Config = function ( name ) {
 
 	var storage = {
 		'autosave': true,
-		'theme': '../../assets/editor/css/dark.css',
+		'theme': 'css/dark.css',
 
 		'project/title': '',
 		'project/editable': false,

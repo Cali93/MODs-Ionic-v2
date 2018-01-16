@@ -45,21 +45,21 @@ Sidebar.Scene = function ( editor ) {
 
 	function buildHTML( object ) {
 
-		var html = '<span class="type ' + object.type + '"></span> ' + object.name;
+		// var html = '<span class="type ' + object.type + '"></span> ' + object.name;
 
-		if ( object instanceof THREE.Mesh ) {
+		// if ( object instanceof THREE.Mesh ) {
 
-			var geometry = object.geometry;
-			var material = object.material;
+		// 	var geometry = object.geometry;
+		// 	var material = object.material;
 
-			html += ' <span class="type ' + geometry.type + '"></span> ' + geometry.name;
-			html += ' <span class="type ' + material.type + '"></span> ' + getMaterialName( material );
+		// 	html += ' <span class="type ' + geometry.type + '"></span> ' + geometry.name;
+		// 	html += ' <span class="type ' + material.type + '"></span> ' + getMaterialName( material );
 
-		}
+		// }
 
-		html += getScript( object.uuid );
+		// html += getScript( object.uuid );
 
-		return html;
+		// return html;
 
 	}
 
@@ -191,6 +191,11 @@ Sidebar.Scene = function ( editor ) {
 
 				var object = objects[ i ];
 
+				if ( object.name === "the_floor" ||
+				 object.name === "the_point_light" ||
+				 object.name === "the_ambient_light"
+				 ) continue;
+					
 				var option = buildOption( object, true );
 				option.style.paddingLeft = ( pad * 10 ) + 'px';
 				options.push( option );

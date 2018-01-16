@@ -3,10 +3,18 @@ import { Component, AfterViewInit, OnInit } from '@angular/core';
 
 @Component({
   selector: 'mod-editor',
-  template: '<div id="myFrame"></div>'
+	templateUrl: 'mod-editor.html',
+	styles:[`
+	body {
+		font-family: 'Montserrat', sans-serif;
+	}
+	#viewport, canvas {
+		position: absolute;
+		left: 0; right: 0;
+		top: 0; bottom: 0;
+	}`]
 })
 export class ModEditorComponent  implements  AfterViewInit, OnInit  {
-
 
   public loadLink(linkUrl: string) {
     return new Promise((resolve, reject) => {
@@ -20,19 +28,6 @@ export class ModEditorComponent  implements  AfterViewInit, OnInit  {
     )
   }
 
-  private loadLinkWithId(linkIdUrl: string) {
-  return new Promise((resolve, reject) => {
-			const linkIdElement = document.createElement('link');
-			linkIdElement.id = "theme";
-      linkIdElement.href = linkIdUrl;
-      linkIdElement.rel = "stylesheet";
-			linkIdElement.type = "text/css";
-      linkIdElement.onload = resolve;
-      document.body.appendChild(linkIdElement);
-    }
-  )
-}
-
 	private loadScript(scriptUrl: string) {
 		return new Promise((resolve, reject) => {
 				const scriptElement = document.createElement('script');
@@ -44,19 +39,24 @@ export class ModEditorComponent  implements  AfterViewInit, OnInit  {
 	}
 
   ngOnInit(){
-    this.loadLinkWithId('../../assets/editor/css/light.css');
     this.loadLink('../../assets/editor/js/libs/codemirror/codemirror.css');
     this.loadLink('../../assets/editor/js/libs/codemirror/addon/dialog.css');
     this.loadLink('../../assets/editor/js/libs/codemirror/addon/show-hint.css');
     this.loadLink('../../assets/editor/js/libs/codemirror/addon/tern.css');
     this.loadLink('../../assets/editor/js/libs/codemirror/theme/monokai.css');
     this.loadLink('../../assets/editor/css/main.css');
-    this.loadLink('../../assets/editor/css/dark.css');
+		this.loadLink('../../assets/editor/css/dark.css');
+		this.loadLink('../../assets/editor/css/menus.css');
+		this.loadLink('../../assets/editor/css/reset.css');
+		this.loadLink('https://fonts.googleapis.com/css?family=Montserrat:300');
   }
 
 	async ngAfterViewInit() {
 
 		await this.loadScript('../../assets/build/three.js');
+		await this.loadScript('../../assets/editor/deba.js');
+		await this.loadScript('../../assets/editor/js/anarhistory.js');
+		await this.loadScript('../../assets/editor/js/anarscene.js');
 		await this.loadScript('../../assets/examples/js/libs/system.min.js');
 
 		await this.loadScript('../../assets/examples/js/controls/EditorControls.js');
@@ -140,7 +140,6 @@ export class ModEditorComponent  implements  AfterViewInit, OnInit  {
 		await this.loadScript('../../assets/editor/js/Menubar.Edit.js');
 		await this.loadScript('../../assets/editor/js/Menubar.Add.js');
 		await this.loadScript('../../assets/editor/js/Menubar.Play.js');
-		await this.loadScript('../../assets/editor/js/Menubar.View.js');
 		await this.loadScript('../../assets/editor/js/Menubar.Examples.js');
 		await this.loadScript('../../assets/editor/js/Menubar.Help.js');
 		await this.loadScript('../../assets/editor/js/Menubar.Status.js');
