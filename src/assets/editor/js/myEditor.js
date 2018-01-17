@@ -6,11 +6,13 @@ Number.prototype.format = function (){
 };
 
 var bigMommy = document.getElementById('myFrame');
+
 var editor = new Editor();
 var viewport = new Viewport( editor );
+
 bigMommy.appendChild( viewport.dom );
 
-var sidebar = new Sidebar( editor );
+new ProjectRenderer( editor );
 
 new AnarHistory( editor );
 new AnarScene( editor );
