@@ -12,11 +12,11 @@ import { Component } from '@angular/core';
 })
 export class RightMenuComponent {
 
-  text: string;
+  isActive = true;
 
-  constructor() {
-    console.log('Hello RightMenuComponent Component');
-    this.text = 'Hello World';
+  constructor() {}
+
+  activeButton() {
+    this.isActive = !this.isActive;
   }
-
 }

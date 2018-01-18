@@ -19,7 +19,8 @@ import { ValidateProvider } from '../providers/validate/validate';
 import { RightMenuComponent } from '../components/right-menu/right-menu';
 import { LeftMenuComponent } from '../components/left-menu/left-menu';
 import { ToolbarComponent } from '../components/toolbar/toolbar';
-
+import { MaterialIconsModule } from 'ionic2-material-icons';
+ 
 @NgModule({
   declarations: [
     MyApp,
@@ -37,6 +38,7 @@ import { ToolbarComponent } from '../components/toolbar/toolbar';
     ComponentsModule,
     BrowserAnimationsModule,
     FormsModule,
+    MaterialIconsModule,
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],

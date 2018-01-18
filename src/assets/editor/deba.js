@@ -14,13 +14,6 @@ document.getElementById('addMod').addEventListener('click',function(){
 	);
 })
 
-var menuHiders = document.getElementsByClassName('hideMenu');
-for (var i = 0; i < menuHiders.length; i++) {
-	menuHiders[i].addEventListener('click',function(e){
-		e.preventDefault;
-		document.querySelector(this.dataset.toggle).classList.toggle('hidden');
-	});
-}
 document.querySelector('#rotate').addEventListener('click',function(e){
 	editor.signals.transformModeChanged.dispatch( 'rotate' );
 	document.querySelector('#move').classList.toggle('hide');
