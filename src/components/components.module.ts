@@ -8,25 +8,30 @@ import { ProductsComponent } from './products/products';
 import { OrdersComponent } from './orders/orders';
 import { LoginComponent } from './login/login';
 import { RegisterComponent } from './register/register';
+
 @NgModule({
-	declarations: [NavbarComponent,
-    SidebarEditComponent,
-    SidebarCreateComponent,
-    ViewToolsComponent,
-    ModEditorComponent,
-    ProductsComponent,
-    OrdersComponent,
-    LoginComponent,
-    RegisterComponent],
+	declarations: [
+        NavbarComponent,
+        SidebarEditComponent,
+        SidebarCreateComponent,
+        ViewToolsComponent,
+        ModEditorComponent,
+        ProductsComponent,
+        OrdersComponent,
+        LoginComponent,
+        RegisterComponent,
+    ],
 	imports: [],
-	exports: [NavbarComponent,
-    SidebarEditComponent,
-    SidebarCreateComponent,
-    ViewToolsComponent,
-    ModEditorComponent,
-    ProductsComponent,
-    OrdersComponent,
-    LoginComponent,
-    RegisterComponent]
+	exports: [
+        NavbarComponent,
+        SidebarEditComponent,
+        SidebarCreateComponent,
+        ViewToolsComponent,
+        ModEditorComponent,
+        ProductsComponent,
+        OrdersComponent,
+        LoginComponent,
+        RegisterComponent,
+    ]
 })
 export class ComponentsModule {}

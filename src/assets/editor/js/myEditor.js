@@ -5,15 +5,16 @@ Number.prototype.format = function (){
   return this.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
 };
 
-var bigMommy = document.getElementById('myFrame');
-
+/**********************************/
+/* CLASSE PRINCIPALE DE l'EDITEUR */
+/****** Début des emmerdes! *******/
 var editor = new Editor();
+
+//Initialization de la partie visuelle de l'éditeur
 var viewport = new Viewport( editor );
+document.getElementById('bigMommy').appendChild( viewport.dom );
 
-bigMommy.appendChild( viewport.dom );
-
-new ProjectRenderer( editor );
-
+new ProjectRenderer( editor ); // Moteur de rendu
 new AnarHistory( editor );
 new AnarScene( editor );
 

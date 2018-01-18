@@ -1,23 +1,11 @@
-import { Component, AfterViewInit, OnInit } from '@angular/core';
+import { Component, AfterViewInit } from '@angular/core';
 
 @Component({
   selector: 'mod-editor',
 	templateUrl: 'mod-editor.html'
 })
 
-export class ModEditorComponent  implements  AfterViewInit, OnInit  {
-
-	// public loadLink(linkUrl: string) {
-	// 	return new Promise((resolve, reject) => {
-	// 		const linkElement = document.createElement('link');
-	// 		linkElement.href = linkUrl;
-	// 		linkElement.rel = "stylesheet";
-	// 		linkElement.type = "text/css";
-	// 		linkElement.onload = resolve;
-	// 		document.body.appendChild(linkElement);
-	// 		}
-	// 	)
-	// }
+export class ModEditorComponent  implements  AfterViewInit  {
 
 	private loadScript(scriptUrl: string) {
 		return new Promise((resolve, reject) => {
