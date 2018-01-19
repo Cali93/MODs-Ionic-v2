@@ -18,6 +18,7 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { ComponentsModule } from '../components/components.module';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
 
 
 const config = {
@@ -48,7 +49,8 @@ const config = {
     FormsModule,
     IonicModule.forRoot(MyApp),
     AngularFireModule.initializeApp(config),
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    AngularFireDatabaseModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [

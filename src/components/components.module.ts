@@ -6,8 +6,8 @@ import { ViewToolsComponent } from './view-tools/view-tools';
 import { ModEditorComponent } from './mod-editor/mod-editor';
 import { ProductsComponent } from './products/products';
 import { OrdersComponent } from './orders/orders';
-import { LoginComponent } from './login/login';
-import { RegisterComponent } from './register/register';
+import { ContactFormComponent } from './contact-form/contact-form';
+
 @NgModule({
 	declarations: [NavbarComponent,
     SidebarEditComponent,
@@ -16,8 +16,7 @@ import { RegisterComponent } from './register/register';
     ModEditorComponent,
     ProductsComponent,
     OrdersComponent,
-    LoginComponent,
-    RegisterComponent],
+    ContactFormComponent],
 	imports: [],
 	exports: [NavbarComponent,
     SidebarEditComponent,
@@ -26,7 +25,7 @@ import { RegisterComponent } from './register/register';
     ModEditorComponent,
     ProductsComponent,
     OrdersComponent,
-    LoginComponent,
-    RegisterComponent]
+    ContactFormComponent]
 })
+
 export class ComponentsModule {}

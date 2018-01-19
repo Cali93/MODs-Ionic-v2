@@ -15,16 +15,15 @@ export class ModEditorComponent  implements  AfterViewInit  {
 	}
 
 	logOrSignIn() {
-		
 		/*if (somekind of token) {
 
 			let profileModal = this.modalCtrl.create(LoginPage);
 			profileModal.present();	
 		}
-		else {
+		else {*/
 			let profileModal = this.modalCtrl.create(SigninPage);
 			profileModal.present();	
-		}*/
+		/*}*/
 	}
 
 	private loadScript(scriptUrl: string) {

@@ -51,8 +51,11 @@ p {
 }
 
 .swiper-pagination {
-  bottom: 18% !important;
-  background: white;
+  bottom: 50% !important; 
+}
+
+.swiper-pagination-bullet {
+  color: #fff;
 }
 
 #skip {

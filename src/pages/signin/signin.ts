@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { AngularFireAuth } from 'angularfire2/auth';
+import { AngularFireDatabase } from 'angularfire2/database';
+import { ShopPage } from '../shop/shop';
 
 /**
  * Generated class for the SigninPage page.
@@ -15,7 +18,45 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class SigninPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  firstname: string;
+  lastname: string;
+  email: string;
+  company: string;
+  phone: string;
+  password1: string;
+  password2: string;
+
+  userId: string;
+
+
+  constructor(private db: AngularFireDatabase, private firebase: AngularFireAuth, public navCtrl: NavController, public navParams: NavParams) {
+  }
+
+  signUserUp() {
+  	this.firebase.auth.createUserWithEmailAndPassword(this.email, this.password1)
+  	.then(user => {
+	  		console.log(user);
+	  		this.userId = user.uid;
+
+	  		this.db.list('/users').push(
+	  			{	
+	  				userId: this.userId,
+	  				firstname: this.firstname,
+	  				lastname: this.lastname,
+	  				email: this.email,
+	  				company: this.company,
+	  				phone: this.phone,
+	  			}
+	  		);
+
+	  		this.navCtrl.setRoot(ShopPage);
+	  	}
+	)
+	.catch(error => {
+			console.log(error.message);
+		}
+	);	
+
   }
 
   ionViewDidLoad() {
