@@ -3,27 +3,25 @@
   <h1>Contact us :</h1>
 
   <ion-item>
-    <ion-label>Username:</ion-label>
-    <ion-input [(ngModel)]="message.username" placeholder="Add your username"></ion-input>
+    <ion-label floating>Username:</ion-label>
+    <ion-input [(ngModel)]="message.username" required ></ion-input>
   </ion-item>
 
   <ion-item>
-    <ion-label>Email :</ion-label>
-    <ion-input [(ngModel)]="message.email" placeholder="Add your email"></ion-input>
+    <ion-label floating>Email :</ion-label>
+    <ion-input [(ngModel)]="message.email" required></ion-input>
   </ion-item>
 
   <ion-item>
-    <ion-label>Subject :</ion-label>
-    <ion-input [(ngModel)]="message.title" placeholder="Add the subject of your message"></ion-input>
+    <ion-label floating>Subject :</ion-label>
+    <ion-input [(ngModel)]="message.title" required></ion-input>
   </ion-item>
 
   <ion-item>
-    <ion-label>Message :</ion-label>
-    <ion-textarea [(ngModel)]="message.message" placeholder="Add your message"></ion-textarea>
+    <ion-label floating>Message :</ion-label>
+    <ion-textarea [(ngModel)]="message.message" required></ion-textarea>
   </ion-item>
 
-
-<!-- {{item | json}} -->
 <button ion-button block (click)="addMessage(message)" color="primary">Post message</button>
 
 </ion-content>
