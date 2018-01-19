@@ -1,23 +1,31 @@
-import { Component, AfterViewInit, OnInit } from '@angular/core';
+import { Component, AfterViewInit } from '@angular/core';
+import { NavController, NavParams, ModalController } from 'ionic-angular';
+import { LoginPage } from '../../pages/login/login';
+import { SigninPage } from '../../pages/signin/signin';
 
 @Component({
   selector: 'mod-editor',
 	templateUrl: 'mod-editor.html'
 })
 
-export class ModEditorComponent  implements  AfterViewInit, OnInit  {
+export class ModEditorComponent  implements  AfterViewInit  {
 
-	// public loadLink(linkUrl: string) {
-	// 	return new Promise((resolve, reject) => {
-	// 		const linkElement = document.createElement('link');
-	// 		linkElement.href = linkUrl;
-	// 		linkElement.rel = "stylesheet";
-	// 		linkElement.type = "text/css";
-	// 		linkElement.onload = resolve;
-	// 		document.body.appendChild(linkElement);
-	// 		}
-	// 	)
-	// }
+
+	constructor(public navCtrl: NavController, public navPrms: NavParams, public modalCtrl: ModalController) {
+	}
+
+	logOrSignIn() {
+		
+		/*if (somekind of token) {
+
+			let profileModal = this.modalCtrl.create(LoginPage);
+			profileModal.present();	
+		}
+		else {
+			let profileModal = this.modalCtrl.create(SigninPage);
+			profileModal.present();	
+		}*/
+	}
 
 	private loadScript(scriptUrl: string) {
 		return new Promise((resolve, reject) => {

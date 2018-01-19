@@ -41,7 +41,7 @@ export class HomePage {
   }
 
   skip(){
-    this.navCtrl.push(ModsPage)
+    this.navCtrl.push(ModsPage);
   }
 
   slideChanged() {
