@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+// import { Scene } from '../scene';
 
 /**
  * Generated class for the LeftMenuComponent component.
@@ -19,4 +20,20 @@ export class LeftMenuComponent {
   activeButton() {
     this.isActive = !this.isActive;
   }
+  // addMod(){
+    // var loader = new THREE.ObjectLoader();
+    // loader.load( // load a resource
+    //   '../assets/MODs.json', // resource URL
+    //   function ( obj ) { // onCompleted callback
+    //     editor.execute( new AddObjectCommand( obj ) );
+    //   },
+    //   function ( xhr ) { // onProgress callback
+    //     // console.log();
+    //   },
+    //   function( err ) { // onError callback
+    //     console.log( 'An error happened' );
+    //   }
+    // );
+  
+  // }
 }

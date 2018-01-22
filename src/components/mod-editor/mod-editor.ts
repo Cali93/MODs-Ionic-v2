@@ -1,7 +1,7 @@
 import { Component, AfterViewInit } from '@angular/core';
 
 @Component({
-  selector: 'mod-editor',
+	selector: 'mod-editor',
 	templateUrl: 'mod-editor.html'
 })
 
@@ -32,30 +32,30 @@ export class ModEditorComponent  implements  AfterViewInit  {
 		// await this.loadScript('../../assets/examples/js/libs/jszip.min.js');
 		// await this.loadScript('../../assets/examples/js/libs/inflate.min.js');
 
-		await this.loadScript('../../assets/examples/js/loaders/AMFLoader.js');
-		await this.loadScript('../../assets/examples/js/loaders/AWDLoader.js');
-		await this.loadScript('../../assets/examples/js/loaders/BabylonLoader.js');
-		await this.loadScript('../../assets/examples/js/loaders/ColladaLoader.js');
-		await this.loadScript('../../assets/examples/js/loaders/FBXLoader.js');
-		await this.loadScript('../../assets/examples/js/loaders/GLTFLoader.js');
-		await this.loadScript('../../assets/examples/js/loaders/KMZLoader.js');
-		await this.loadScript('../../assets/examples/js/loaders/MD2Loader.js');
-		await this.loadScript('../../assets/examples/js/loaders/OBJLoader.js');
-		await this.loadScript('../../assets/examples/js/loaders/MTLLoader.js');
-		await this.loadScript('../../assets/examples/js/loaders/PlayCanvasLoader.js');
-		await this.loadScript('../../assets/examples/js/loaders/PLYLoader.js');
-		await this.loadScript('../../assets/examples/js/loaders/STLLoader.js');
-		await this.loadScript('../../assets/examples/js/loaders/TGALoader.js');
-		await this.loadScript('../../assets/examples/js/loaders/TDSLoader.js');
-		await this.loadScript('../../assets/examples/js/loaders/UTF8Loader.js');
-		await this.loadScript('../../assets/examples/js/loaders/VRMLLoader.js');
-		await this.loadScript('../../assets/examples/js/loaders/VTKLoader.js');
-		await this.loadScript('../../assets/examples/js/loaders/ctm/lzma.js');
-		await this.loadScript('../../assets/examples/js/loaders/ctm/ctm.js');
-		await this.loadScript('../../assets/examples/js/loaders/ctm/CTMLoader.js');
-		await this.loadScript('../../assets/examples/js/exporters/OBJExporter.js');
-		await this.loadScript('../../assets/examples/js/exporters/GLTFExporter.js');
-		await this.loadScript('../../assets/examples/js/exporters/STLExporter.js');
+		// await this.loadScript('../../assets/examples/js/loaders/AMFLoader.js');
+		// await this.loadScript('../../assets/examples/js/loaders/AWDLoader.js');
+		// await this.loadScript('../../assets/examples/js/loaders/BabylonLoader.js');
+		// await this.loadScript('../../assets/examples/js/loaders/ColladaLoader.js');
+		// await this.loadScript('../../assets/examples/js/loaders/FBXLoader.js');
+		// await this.loadScript('../../assets/examples/js/loaders/GLTFLoader.js');
+		// await this.loadScript('../../assets/examples/js/loaders/KMZLoader.js');
+		// await this.loadScript('../../assets/examples/js/loaders/MD2Loader.js');
+		// await this.loadScript('../../assets/examples/js/loaders/OBJLoader.js');
+		// await this.loadScript('../../assets/examples/js/loaders/MTLLoader.js');
+		// await this.loadScript('../../assets/examples/js/loaders/PlayCanvasLoader.js');
+		// await this.loadScript('../../assets/examples/js/loaders/PLYLoader.js');
+		// await this.loadScript('../../assets/examples/js/loaders/STLLoader.js');
+		// await this.loadScript('../../assets/examples/js/loaders/TGALoader.js');
+		// await this.loadScript('../../assets/examples/js/loaders/TDSLoader.js');
+		// await this.loadScript('../../assets/examples/js/loaders/UTF8Loader.js');
+		// await this.loadScript('../../assets/examples/js/loaders/VRMLLoader.js');
+		// await this.loadScript('../../assets/examples/js/loaders/VTKLoader.js');
+		// await this.loadScript('../../assets/examples/js/loaders/ctm/lzma.js');
+		// await this.loadScript('../../assets/examples/js/loaders/ctm/ctm.js');
+		// await this.loadScript('../../assets/examples/js/loaders/ctm/CTMLoader.js');
+		// await this.loadScript('../../assets/examples/js/exporters/OBJExporter.js');
+		// await this.loadScript('../../assets/examples/js/exporters/GLTFExporter.js');
+		// await this.loadScript('../../assets/examples/js/exporters/STLExporter.js');
 
 		await this.loadScript('../../assets/examples/js/renderers/Projector.js');
 		await this.loadScript('../../assets/examples/js/renderers/CanvasRenderer.js');
@@ -94,7 +94,7 @@ export class ModEditorComponent  implements  AfterViewInit  {
 		// await this.loadScript('../../assets/editor/js/Player.js');
 		// await this.loadScript('../../assets/editor/js/Script.js');
 
-		await this.loadScript('../../assets/examples/js/vr/WebVR.js');
+		// await this.loadScript('../../assets/examples/js/vr/WebVR.js');
 
 		await this.loadScript('../../assets/editor/js/Storage.js');
 

@@ -1,7 +1,7 @@
 {
   "name": "MODs-Ionic",
   "version": "0.0.1",
-  "author": "Ionic Framework",
+  "author": "Unnamed CyCorp Group",
   "homepage": "http://ionicframework.com/",
   "private": true,
   "scripts": {
@@ -37,5 +37,5 @@
     "@ionic/app-scripts": "3.1.6",
     "typescript": "2.4.2"
   },
-  "description": "An Ionic project"
+  "description": "An Ionic project made by awesome people"
 }

@@ -1,18 +1,18 @@
-document.getElementById('addMod').addEventListener('click',function(){
-	var loader = new THREE.ObjectLoader();
-	loader.load( // load a resource
-		'../assets/MODs.json', // resource URL
-		function ( obj ) { // onCompleted callback
-			editor.execute( new AddObjectCommand( obj ) );
-		},
-		function ( xhr ) { // onProgress callback
-			// console.log();
-		},
-		function( err ) { // onError callback
-			console.log( 'An error happened' );
-		}
-	);
-})
+// document.getElementById('addMod').addEventListener('click',function(){
+// 	var loader = new THREE.ObjectLoader();
+// 	loader.load( // load a resource
+// 		'../assets/MODs.json', // resource URL
+// 		function ( obj ) { // onCompleted callback
+// 			editor.execute( new AddObjectCommand( obj ) );
+// 		},
+// 		function ( xhr ) { // onProgress callback
+// 			// console.log();
+// 		},
+// 		function( err ) { // onError callback
+// 			console.log( 'An error happened' );
+// 		}
+// 	);
+// })
 
 document.querySelector('#rotate').addEventListener('click',function(e){
 	editor.signals.transformModeChanged.dispatch( 'rotate' );
