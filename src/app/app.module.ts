@@ -5,6 +5,7 @@ import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
+import { TabsEnablor } from '../providers/custom/tabsEnablor';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -14,6 +15,7 @@ import { ShopPage } from '../pages/shop/shop';
 import { LoginPage } from '../pages/login/login';
 import { SigninPage } from '../pages/signin/signin';
 import { TabsPage } from '../pages/tabs/tabs';
+import { DisconnectPage } from '../pages/disconnect/disconnect';
 
 import { ComponentsModule } from '../components/components.module';
 import { AngularFireModule } from 'angularfire2';
@@ -40,7 +42,8 @@ const config = {
     TabsPage,
     ShopPage,
     LoginPage,
-    SigninPage
+    SigninPage,
+    DisconnectPage
   ],
   imports: [
     BrowserModule,
@@ -61,11 +64,13 @@ const config = {
     ShopPage,
     LoginPage,
     SigninPage,
+    DisconnectPage,
     TabsPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
+    TabsEnablor,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

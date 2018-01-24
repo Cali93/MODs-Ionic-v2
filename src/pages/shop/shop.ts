@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { TabsEnablor } from '../../providers/custom/tabsEnablor';
+
 
 /**
  * Generated class for the ShopPage page.
@@ -15,10 +17,16 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class ShopPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  
+
+  constructor(public navCtrl: NavController, 
+  				public navParams: NavParams,
+  					private myTabs: TabsEnablor) {
   }
 
+
   ionViewDidLoad() {
+  	this.myTabs.setEnableState(true);
     console.log('ionViewDidLoad ShopPage');
   }
 

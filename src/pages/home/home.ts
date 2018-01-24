@@ -1,6 +1,8 @@
 import { Component, ViewChild, trigger, transition, style, state, animate, keyframes } from '@angular/core';
 import { IonicPage, NavController, NavParams, Slides } from 'ionic-angular';
 import { ModsPage } from '../mods/mods';
+import { TabsEnablor } from '../../providers/custom/tabsEnablor';
+
 
 /**
  * Generated class for the HomePage page.
@@ -9,60 +11,63 @@ import { ModsPage } from '../mods/mods';
  * Ionic pages and navigation.
  */
 
-@IonicPage()
-@Component({
-  selector: 'page-home',
-  templateUrl: 'home.html',
-  animations: [
-    trigger('bounce', [
-      state('*', style({
-        transform: 'translateX(0)'
-      })),
-      transition('* => rightSwipe', animate('700ms ease-out', keyframes([
-        style({transform: 'translateX(0)', offset:0}),
-        style({transform: 'translateX(-65px)', offset: .3}),
-        style({transform: 'translateX(0)', offset:1})
-      ]))),
-      transition('* => leftSwipe', animate('700ms ease-out', keyframes([
-        style({transform: 'translateX(0)', offset:0}),
-        style({transform: 'translateX(65px)', offset: .3}),
-        style({transform: 'translateX(0)', offset:1})
-      ])))
-    ])
-  ]
-})
-export class HomePage {
+ @IonicPage()
+ @Component({
+   selector: 'page-home',
+   templateUrl: 'home.html',
+   animations: [
+   trigger('bounce', [
+     state('*', style({
+       transform: 'translateX(0)'
+     })),
+     transition('* => rightSwipe', animate('700ms ease-out', keyframes([
+       style({transform: 'translateX(0)', offset:0}),
+       style({transform: 'translateX(-65px)', offset: .3}),
+       style({transform: 'translateX(0)', offset:1})
+       ]))),
+     transition('* => leftSwipe', animate('700ms ease-out', keyframes([
+       style({transform: 'translateX(0)', offset:0}),
+       style({transform: 'translateX(65px)', offset: .3}),
+       style({transform: 'translateX(0)', offset:1})
+       ])))
+     ])
+   ]
+ })
+ export class HomePage {
 
-  @ViewChild(Slides) slides: Slides;
-  skipMsg: string = "GET STARTED";
-  state: string = 'x';
+   @ViewChild(Slides) slides: Slides;
+   skipMsg: string = "GET STARTED";
+   state: string = 'x';
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-  }
+   constructor(public navCtrl: NavController, 
+                 public navParams: NavParams,
+                     private myTabs: TabsEnablor) {
+   }
 
-  skip(){
-    this.navCtrl.push(ModsPage);
-  }
+   skip(){
+     this.navCtrl.parent.select(1);
+   }
 
-  slideChanged() {
-    if(this.slides.isEnd()){
-      this.skipMsg = "I GOT IT ! GET STARTED"
-    }
-  }
+   slideChanged() {
+     if(this.slides.isEnd()){
+       this.skipMsg = "I GOT IT ! GET STARTED"
+     }
+   }
 
-  slideMoved(){
-    if(this.slides.getActiveIndex() >= this.slides.getPreviousIndex())
-      this.state = 'rightSwipe'
-    else
-      this.state = 'leftSwipe'
-  }
+   slideMoved(){
+     if(this.slides.getActiveIndex() >= this.slides.getPreviousIndex())
+       this.state = 'rightSwipe'
+     else
+       this.state = 'leftSwipe'
+   }
 
-  animationDone(){
-    this.state = 'x'
-  }
+   animationDone(){
+     this.state = 'x'
+   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad HomePage');
-  }
+   ionViewDidLoad() {
+     this.myTabs.setEnableState(false);
+     console.log('ionViewDidLoad HomePage');
+   }
 
-}
+ }

@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireDatabase } from 'angularfire2/database';
+
 import { ShopPage } from '../shop/shop';
+import { LoginPage } from '../login/login';
 
 /**
  * Generated class for the SigninPage page.
@@ -11,56 +13,75 @@ import { ShopPage } from '../shop/shop';
  * Ionic pages and navigation.
  */
 
-@IonicPage()
-@Component({
-  selector: 'page-signin',
-  templateUrl: 'signin.html',
-})
-export class SigninPage {
+ @IonicPage()
+ @Component({
+ 	selector: 'page-signin',
+ 	templateUrl: 'signin.html',
+ })
+ export class SigninPage {
 
-  firstname: string;
-  lastname: string;
-  email: string;
-  company: string;
-  phone: string;
-  password1: string;
-  password2: string;
+ 	firstname: string;
+ 	lastname: string;
+ 	email: string;
+ 	company: string;
+ 	phone: string;
+ 	password1: string;
+ 	password2: string;
 
-  userId: string;
+ 	userId: string;
 
 
-  constructor(private db: AngularFireDatabase, private firebase: AngularFireAuth, public navCtrl: NavController, public navParams: NavParams) {
-  }
+ 	constructor(private db: AngularFireDatabase, 
+ 					private firebase: AngularFireAuth, 
+ 						public navCtrl: NavController, 
+ 							public navParams: NavParams, 
+ 								public modalCtrl: ModalController) {
+ 	}
 
-  signUserUp() {
-  	this.firebase.auth.createUserWithEmailAndPassword(this.email, this.password1)
-  	.then(user => {
-	  		console.log(user);
-	  		this.userId = user.uid;
+ 	signUserUp() {
+ 		this.firebase.auth.createUserWithEmailAndPassword(this.email, this.password1)
+ 		.then(user => {
+ 			console.log(user);
+ 			this.userId = user.uid;
+ 			this.db.list('/users').push(
+		 			{	
+		 				userId: this.userId,
+		 				firstname: this.firstname,
+		 				lastname: this.lastname,
+		 				email: this.email,
+		 				company: this.company,
+		 				phone: this.phone,
+		 				password: this.password1
+		 			}
+	 			);
 
-	  		this.db.list('/users').push(
-	  			{	
-	  				userId: this.userId,
-	  				firstname: this.firstname,
-	  				lastname: this.lastname,
-	  				email: this.email,
-	  				company: this.company,
-	  				phone: this.phone,
-	  			}
-	  		);
+ 				this.navCtrl.parent.select(2);
+	 			this.setCurrentUserToken();
+	 		}
+ 		)
+ 		.catch(error => {
+	 			console.log(error.message);
+	 		}
+ 		);	
 
-	  		this.navCtrl.setRoot(ShopPage);
-	  	}
-	)
-	.catch(error => {
-			console.log(error.message);
-		}
-	);	
+ 	}
 
-  }
+ 	logUserIn() {
+ 		let profileModal = this.modalCtrl.create(LoginPage);
+		profileModal.present();
+ 	}
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad SigninPage');
-  }
+ 	setCurrentUserToken(){
+		this.firebase.auth.currentUser.getToken()
+		.then(
+			(token: string) => {
+		    localStorage.setItem('isLoggedIn', token);
+		  }
+		);
+	}
 
-}
+ 	ionViewDidLoad() {
+ 		console.log('ionViewDidLoad SigninPage');
+ 	}
+
+ }

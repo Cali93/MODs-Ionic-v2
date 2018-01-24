@@ -1,29 +1,37 @@
 import { Component, AfterViewInit } from '@angular/core';
 import { NavController, NavParams, ModalController } from 'ionic-angular';
-import { LoginPage } from '../../pages/login/login';
+import { AngularFireAuth } from 'angularfire2/auth';
+
 import { SigninPage } from '../../pages/signin/signin';
 
 @Component({
   selector: 'mod-editor',
-	templateUrl: 'mod-editor.html'
+  templateUrl: 'mod-editor.html',
 })
+
 
 export class ModEditorComponent  implements  AfterViewInit  {
 
-
-	constructor(public navCtrl: NavController, public navPrms: NavParams, public modalCtrl: ModalController) {
+	
+	constructor(private firebase: AngularFireAuth, 
+					public navCtrl: NavController, 
+						public navPrms: NavParams, 
+							public modalCtrl: ModalController) {
 	}
 
 	logOrSignIn() {
-		/*if (somekind of token) {
+		if (this.isAuthenticated()) {
+			this.navCtrl.parent.select(2);
 
-			let profileModal = this.modalCtrl.create(LoginPage);
-			profileModal.present();	
 		}
-		else {*/
+		else {
 			let profileModal = this.modalCtrl.create(SigninPage);
 			profileModal.present();	
-		/*}*/
+		}
+	}
+
+	isAuthenticated(){
+		return (localStorage.getItem('isLoggedIn')) ? true : false;
 	}
 
 	private loadScript(scriptUrl: string) {
