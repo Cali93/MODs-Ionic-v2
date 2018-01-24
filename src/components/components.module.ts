@@ -1,42 +1,29 @@
 import { NgModule } from '@angular/core';
-<<<<<<< HEAD
-import { NavbarComponent } from './navbar/navbar';
-import { SidebarEditComponent } from './sidebar-edit/sidebar-edit';
-import { SidebarCreateComponent } from './sidebar-create/sidebar-create';
-import { ViewToolsComponent } from './view-tools/view-tools';
-import { ModEditorComponent } from './mod-editor/mod-editor';
-import { ProductsComponent } from './products/products';
-import { OrdersComponent } from './orders/orders';
+
 import { ContactFormComponent } from './contact-form/contact-form';
-
-@NgModule({
-	declarations: [NavbarComponent,
-    SidebarEditComponent,
-    SidebarCreateComponent,
-    ViewToolsComponent,
-    ModEditorComponent,
-    ProductsComponent,
-    OrdersComponent,
-    ContactFormComponent],
-	imports: [],
-	exports: [NavbarComponent,
-    SidebarEditComponent,
-    SidebarCreateComponent,
-    ViewToolsComponent,
-    ModEditorComponent,
-    ProductsComponent,
-    OrdersComponent,
-    ContactFormComponent]
-=======
-
+import { FakeWorldComponent } from './fake-world/fake-world';
+import { LeftMenuComponent } from './left-menu/left-menu';
+import { ModEditorComponent } from './mod-editor/mod-editor';
+import { RightMenuComponent } from './right-menu/right-menu';
+import { ToolbarComponent } from './toolbar/toolbar';
 
 @NgModule({
 	declarations: [
-    ],
+    FakeWorldComponent,
+    LeftMenuComponent,
+    ModEditorComponent,
+    RightMenuComponent,
+    ToolbarComponent,
+    ContactFormComponent],
 	imports: [],
 	exports: [
-    ]
->>>>>>> e9318b20c9b8932c3aba7c759aee17d2bac3071c
+    FakeWorldComponent,
+    LeftMenuComponent,
+    ModEditorComponent,
+    RightMenuComponent,
+    ToolbarComponent,
+    ContactFormComponent]
+
 })
 
 export class ComponentsModule {}

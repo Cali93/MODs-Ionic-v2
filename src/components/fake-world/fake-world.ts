@@ -37,22 +37,22 @@ export class FakeWorldComponent implements AfterViewInit {
 
   private raycaster: THREE.Raycaster = new THREE.Raycaster();
   private mouse: THREE.Vector2 = new THREE.Vector2();
-  
+
   private objects: Array<any> = [];
-  
+
   private transformControls: THREE.TransformControls;
 
   @ViewChild('canvas')
   private canvasRef: ElementRef;
-  
+
   constructor() {
     this.render = this.render.bind(this);
   }
-  
+
   private get canvas(): HTMLCanvasElement {
     return this.canvasRef.nativeElement;
   }
-  
+
   private createScene() {
     this.scene = new THREE.Scene();
     this.scene.name = 'Scene';
@@ -200,7 +200,7 @@ export class FakeWorldComponent implements AfterViewInit {
 		var array = this.getMousePosition( this.canvas, event.clientX, event.clientY );
 		this.onDownPosition.fromArray( array );
   }
-  
+
 	public onMouseUp( event ) {
     let component = this;
     var array = component.getMousePosition( this.canvas, event.clientX, event.clientY );
