@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ErrorHandler, NgModule } from '@angular/core';
+import { ErrorHandler, NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
@@ -22,6 +22,13 @@ import { FIREBASE_CONFIG } from './firebase.credentials'
 import { ContactProvider } from '../providers/contact/contact';
 import { ToastProvider } from '../providers/toast/toast';
 
+import { AuthProvider } from '../providers/auth/auth';
+import { ValidateProvider } from '../providers/validate/validate';
+import { RightMenuComponent } from '../components/right-menu/right-menu';
+import { LeftMenuComponent } from '../components/left-menu/left-menu';
+import { ToolbarComponent } from '../components/toolbar/toolbar';
+import { FakeWorldComponent } from '../components/fake-world/fake-world';
+ 
 @NgModule({
   declarations: [
     MyApp,
@@ -29,7 +36,11 @@ import { ToastProvider } from '../providers/toast/toast';
     ContactPage,
     ModsPage,
     TabsPage,
-    ShopPage
+    ShopPage,
+    RightMenuComponent,
+    LeftMenuComponent,
+    ToolbarComponent,
+    FakeWorldComponent
   ],
   imports: [
     BrowserModule,
@@ -39,7 +50,6 @@ import { ToastProvider } from '../providers/toast/toast';
     IonicModule.forRoot(MyApp),
     AngularFireModule.initializeApp(FIREBASE_CONFIG),
     AngularFireDatabaseModule
-
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -55,7 +65,10 @@ import { ToastProvider } from '../providers/toast/toast';
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     ContactProvider,
-    ToastProvider
-  ]
+    ToastProvider,
+    AuthProvider,
+    ValidateProvider
+  ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class AppModule {}

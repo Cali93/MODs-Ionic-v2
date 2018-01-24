@@ -1,0 +1,30 @@
+<div class="left-menu" [class.active]="isActive">
+	<div class="menu-tab">
+		<div class="tab-title">MODs</div>
+		<div class="tab-icon">
+			<button (click)="activeButton()"><i class="material-icons">menu</i></button>
+		</div>
+	</div>
+	<div class="menu-content">
+		<div class="submenu">
+			<p class="menu-title">Surface</p>
+			<a href="#" class="menu-item">Empty</a>
+			<a href="#" class="menu-item">Floor</a>
+			<a href="#" class="menu`-item">Walls</a>
+		</div>
+		<div class="submenu">
+			<p class="menu-title">add</p>
+			<a href="#" class="menu-item" (click)="addMod()">MOD</a>
+			<a href="#" class="menu-item">Preset</a>
+			<a href="#" class="menu-item">My Presets</a>
+		</div>
+		<div class="submenu">
+			<p class="menu-title">Assets</p>
+			<a href="#" class="menu-item">Covering</a>
+			<a href="#" class="menu-item">Props</a>
+			<a href="#" class="menu-item">Images</a>
+			<a href="#" class="menu-item">Lights</a>
+		</div>
+		<a href="#" class="badass-button">Save</a>
+	</div>
+</div>

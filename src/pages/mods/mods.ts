@@ -1,6 +1,6 @@
 import { ViewChild, Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { ModEditorComponent } from '../../components/mod-editor/mod-editor';
+// import { ModEditorComponent } from '../../components/mod-editor/mod-editor';
 
 @IonicPage()
 @Component({
@@ -10,9 +10,12 @@ import { ModEditorComponent } from '../../components/mod-editor/mod-editor';
 export class ModsPage {
 
   @ViewChild('mod-editor')
-  modEditor: ModEditorComponent;
+    // modEditor: ModEditorComponent;
+    // rightMenu: MenuRightComponent;
+    // leftMenu: MenuLeftComponent;
+    // toolBar: ToolBarComponent;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+    constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
