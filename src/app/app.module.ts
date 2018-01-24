@@ -19,6 +19,7 @@ import { ValidateProvider } from '../providers/validate/validate';
 import { RightMenuComponent } from '../components/right-menu/right-menu';
 import { LeftMenuComponent } from '../components/left-menu/left-menu';
 import { ToolbarComponent } from '../components/toolbar/toolbar';
+import { FakeWorldComponent } from '../components/fake-world/fake-world';
  
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { ToolbarComponent } from '../components/toolbar/toolbar';
     ShopPage,
     RightMenuComponent,
     LeftMenuComponent,
-    ToolbarComponent
+    ToolbarComponent,
+    FakeWorldComponent
   ],
   imports: [
     BrowserModule,
