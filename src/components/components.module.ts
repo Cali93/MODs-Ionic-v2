@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+<<<<<<< HEAD
 import { NavbarComponent } from './navbar/navbar';
 import { SidebarEditComponent } from './sidebar-edit/sidebar-edit';
 import { SidebarCreateComponent } from './sidebar-create/sidebar-create';
@@ -26,6 +27,16 @@ import { ContactFormComponent } from './contact-form/contact-form';
     ProductsComponent,
     OrdersComponent,
     ContactFormComponent]
+=======
+
+
+@NgModule({
+	declarations: [
+    ],
+	imports: [],
+	exports: [
+    ]
+>>>>>>> e9318b20c9b8932c3aba7c759aee17d2bac3071c
 })
 
 export class ComponentsModule {}

@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ErrorHandler, NgModule } from '@angular/core';
+import { ErrorHandler, NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
@@ -32,7 +32,11 @@ const config = {
   messagingSenderId: "792470097085"
 };
 
-
+import { RightMenuComponent } from '../components/right-menu/right-menu';
+import { LeftMenuComponent } from '../components/left-menu/left-menu';
+import { ToolbarComponent } from '../components/toolbar/toolbar';
+import { FakeWorldComponent } from '../components/fake-world/fake-world';
+ 
 @NgModule({
   declarations: [
     MyApp,
@@ -41,9 +45,16 @@ const config = {
     ModsPage,
     TabsPage,
     ShopPage,
+
     LoginPage,
     SigninPage,
-    DisconnectPage
+    DisconnectPage,
+
+    RightMenuComponent,
+    LeftMenuComponent,
+    ToolbarComponent,
+    FakeWorldComponent
+
   ],
   imports: [
     BrowserModule,
@@ -70,8 +81,12 @@ const config = {
   providers: [
     StatusBar,
     SplashScreen,
+
     TabsEnablor,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
-  ]
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    ContactProvider,
+    ToastProvider
+  ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class AppModule {}
