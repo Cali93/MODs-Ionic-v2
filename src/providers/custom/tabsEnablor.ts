@@ -8,12 +8,11 @@ export class TabsEnablor {
   isEnabled: boolean;
 
   constructor() {
-    this.isEnabled = true;
   }
 
   setEnableState(bool: boolean) {
   	this.isEnabled = bool;
-    console.log('ALL YOUR BASES ARE BELONG TO US');
+    console.log('ALL YOUR BASES ARE BELONG TO US', bool);
   }
 
   getEnableState() {

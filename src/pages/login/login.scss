@@ -1,8 +1,7 @@
 page-login {
 
-	h2 {
-		margin-top: 20px;
-		color: #78b937;	
+	a {
+		text-decoration: none;
 	}
 
 	q {
@@ -11,16 +10,12 @@ page-login {
 		color: #FB102C;
 	}
 
-	ion-label {
-		color: #6D56C4;
+	ion-label, h1 {
+		color: #4E2DCB;
 	}
 
 	ion-card-title {
 		display: flex !important;
 		justify-content: space-around;
-	}
-
-	ion-card-title a {
-		font-size: 1.25em;
 	}
 }
