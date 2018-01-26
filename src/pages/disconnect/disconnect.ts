@@ -15,6 +15,7 @@ import { TabsEnablor } from '../../providers/custom/tabsEnablor';
   selector: 'page-disconnect',
   templateUrl: 'disconnect.html',
 })
+
 export class DisconnectPage {
 
   constructor(private firebase: AngularFireAuth, 

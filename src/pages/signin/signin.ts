@@ -1,10 +1,9 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireDatabase } from 'angularfire2/database';
 
 import { ShopPage } from '../shop/shop';
-import { LoginPage } from '../login/login';
 
 /**
  * Generated class for the SigninPage page.
@@ -34,8 +33,7 @@ import { LoginPage } from '../login/login';
  	constructor(private db: AngularFireDatabase, 
  					private firebase: AngularFireAuth, 
  						public navCtrl: NavController, 
- 							public navParams: NavParams, 
- 								public modalCtrl: ModalController) {
+ 							public navParams: NavParams) {
  	}
 
  	signUserUp() {
@@ -64,11 +62,6 @@ import { LoginPage } from '../login/login';
 	 		}
  		);	
 
- 	}
-
- 	logUserIn() {
- 		let profileModal = this.modalCtrl.create(LoginPage);
-		profileModal.present();
  	}
 
  	setCurrentUserToken(){

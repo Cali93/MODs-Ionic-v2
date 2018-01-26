@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AngularFireAuth } from 'angularfire2/auth';
 
 import { ShopPage } from '../shop/shop';
+import { SigninPage } from '../signin/signin';
 
 /**
 * Generated class for the LoginPage page.
@@ -57,6 +58,10 @@ export class LoginPage {
 		    localStorage.setItem('isLoggedIn', token);
 		  }
 		);
+	}
+
+	goToSignUp() {
+		this.navCtrl.push(SigninPage);
 	}
 
 	ionViewDidLoad() {
