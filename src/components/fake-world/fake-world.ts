@@ -159,7 +159,7 @@ export class FakeWorldComponent implements AfterViewInit {
   }
 
   public addControls() {
-    this.controls = new THREE.OrbitControls(this.camera);
+    this.controls = new THREE.OrbitControls(this.camera, this.canvas);
     this.controls.rotateSpeed = 1.0;
     this.controls.zoomSpeed = 1.2;
     this.controls.addEventListener('change', this.render);
