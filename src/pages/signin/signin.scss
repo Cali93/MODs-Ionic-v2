@@ -1,9 +1,5 @@
 page-signin {
 
-	h2 {
-		margin-top: 20px;
-		color: #78b937;	
-	}
 
 	q {
 		text-align: center;
@@ -11,8 +7,8 @@ page-signin {
 		color: #FB102C;
 	}
 
-	ion-label {
-		color: #6D56C4;
+	ion-label, h1 {
+		color: #4E2DCB !important;
 	}
 
 }
