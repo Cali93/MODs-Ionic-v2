@@ -24,7 +24,6 @@ export class TabsPage {
   }
 
   IonViewDidLoad() {
-  	console.log('Tabs isEnabled state : ', this.isEnabled)
   }
 
 }

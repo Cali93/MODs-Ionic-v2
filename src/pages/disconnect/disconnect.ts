@@ -3,6 +3,8 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { TabsEnablor } from '../../providers/custom/tabsEnablor';
 
+import { HomePage } from '../home/home';
+
 /**
  * Generated class for the DisconnectPage page.
  *
@@ -24,11 +26,22 @@ export class DisconnectPage {
   						private myTabs: TabsEnablor) {
   }
 
-  ionViewDidLoad() {
+  ionViewDidEnter() {
   	this.firebase.auth.signOut();
   	localStorage.removeItem('isLoggedIn');
   	this.myTabs.setEnableState(false);
-    console.log('ionViewDidLoad DisconnectPage');
+    console.log('ionViewDidEnter DisconnectPage');
+    this.redirectToHome();
+  }
+
+  redirectToHome() {
+
+    const disco = this;
+    setTimeout(
+      function () {
+        disco.navCtrl.parent.select(0);
+      },
+      6000)
   }
 
 }
