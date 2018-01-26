@@ -34,6 +34,7 @@ export class LoginPage {
 			data => {
 				this.setCurrentUserToken();
 				this.navCtrl.parent.select(2);
+				this.navCtrl.pop();
 			}
 		)
 		.catch(

@@ -64,8 +64,7 @@ import { TabsEnablor } from '../../providers/custom/tabsEnablor';
      this.state = 'x'
    }
 
-   ionViewDidLoad() {
-     this.myTabs.setEnableState(false);
+   ionViewDidEnter() {
      console.log('ionViewDidLoad HomePage');
    }
 

@@ -5,9 +5,10 @@ import { Injectable } from '@angular/core';
 export class TabsEnablor {
 
 
-
+  isEnabled: boolean;
 
   constructor() {
+    this.isEnabled = false;
   }
 
   setEnableState(bool: boolean) {

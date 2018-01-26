@@ -20,14 +20,14 @@ export class ShopPage {
   
 
   constructor(public navCtrl: NavController, 
-  				public navParams: NavParams,
-  					private myTabs: TabsEnablor) {
+        				public navParams: NavParams,
+        					private myTabs: TabsEnablor) {
   }
 
 
-  ionViewDidLoad() {
+  ionViewDidEnter() {
   	this.myTabs.setEnableState(true);
-    console.log('ionViewDidLoad ShopPage');
+    console.log('ionViewDidEnter ShopPage');
   }
 
 }

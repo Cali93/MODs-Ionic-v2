@@ -54,6 +54,7 @@ import { ShopPage } from '../shop/shop';
 	 			);
 
  				this.navCtrl.parent.select(2);
+ 				this.navCtrl.pop();
 	 			this.setCurrentUserToken();
 	 		}
  		)
