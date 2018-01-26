@@ -1,6 +1,5 @@
 import { Component, ViewChild, trigger, transition, style, state, animate, keyframes } from '@angular/core';
 import { IonicPage, NavController, NavParams, Slides } from 'ionic-angular';
-import { ModsPage } from '../mods/mods';
 import { TabsEnablor } from '../../providers/custom/tabsEnablor';
 
 

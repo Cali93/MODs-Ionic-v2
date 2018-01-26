@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { TabsEnablor } from '../../providers/custom/tabsEnablor';
 
 import { HomePage } from '../home/home';
 import { ModsPage } from '../mods/mods';
@@ -19,8 +20,11 @@ export class TabsPage {
   tab4Root = ContactPage;
   tab5Root = DisconnectPage;
 
+  constructor(public tabsEnablor: TabsEnablor) {
+  }
 
-  constructor() {
+  IonViewDidLoad() {
+  	console.log('Tabs isEnabled state : ', this.isEnabled)
   }
 
 }
