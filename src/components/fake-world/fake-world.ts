@@ -250,5 +250,8 @@ export class FakeWorldComponent implements AfterViewInit {
     this.startRendering();
     this.addControls();
   }
+  ionViewDidEnter(){
+    console.log("COOOOL");
+  }
 
 }

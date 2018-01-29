@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { FakeWorldComponent } from '../../components/fake-world/fake-world';
 // import { ModEditorComponent } from '../../components/mod-editor/mod-editor';
 
 @IonicPage()
@@ -8,11 +9,15 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'mods.html',
 })
 export class ModsPage {
-    constructor(public navCtrl: NavController, public navParams: NavParams) {
-  }
+  @ViewChild(FakeWorldComponent)
+  private fakeWorld: FakeWorldComponent;
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad ModsPage');
+  constructor(public navCtrl: NavController, public navParams: NavParams) {}
+
+
+  ionViewDidEnter(){
+    console.log("Getting there!");
+    this.fakeWorld.render();
   }
 
 }
