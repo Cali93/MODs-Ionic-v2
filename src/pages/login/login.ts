@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
 import { AngularFireAuth } from 'angularfire2/auth';
 
-import { ShopPage } from '../shop/shop';
 import { SigninPage } from '../signin/signin';
 
 /**
@@ -21,11 +20,12 @@ export class LoginPage {
 
 	email: string;
 	password: string;	
-	loginError: string = 'Welcome back !';
+
 
 	constructor(private firebase: AngularFireAuth, 
 					public navCtrl: NavController, 
-						public navParams: NavParams) {
+						public navParams: NavParams,
+							public toastCtrl: ToastController) {
 	}
 
 	logInUser() {
@@ -41,9 +41,9 @@ export class LoginPage {
 			error => {
 
 				if (error.code === 'auth/wrong-password') {
-					this.loginError ='Wrong password.';
+					this.displayToast('Wrong password !');
 				} else {
-					this.loginError = error.message;
+					this.displayToast(error.message);
 				}
 
 				console.log(error.message);
@@ -62,11 +62,27 @@ export class LoginPage {
 	}
 
 	goToSignUp() {
-		this.navCtrl.push(SigninPage);
+		const login = this;
+		login.navCtrl.pop();
+		login.navCtrl.push(SigninPage);
+		
+	}
+
+	displayToast(message: string) {
+		this.toastCtrl.create(
+			{
+				message: message,
+				duration: 3000
+			}
+		).present();
 	}
 
 	ionViewDidLoad() {
 		console.log('ionViewDidLoad LoginPage');
+	}
+
+	ionViewDidEnter() {
+		this.displayToast('Welcome Back, nice to see you again !')
 	}
 
 }

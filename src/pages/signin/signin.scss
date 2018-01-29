@@ -1,7 +1,10 @@
 page-signin {
 
-
-	q {
+	a {
+		text-decoration: none;
+	}
+	
+	q { 
 		text-align: center;
 		font-style: italic;
 		color: #FB102C;
@@ -9,6 +12,11 @@ page-signin {
 
 	ion-label, h1 {
 		color: #4E2DCB !important;
+	}
+
+	ion-card-title {
+		display: flex !important;
+		justify-content: space-around;
 	}
 
 }

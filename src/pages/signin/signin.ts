@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireDatabase } from 'angularfire2/database';
 
-import { ShopPage } from '../shop/shop';
+import { LoginPage } from '../login/login';
 
 /**
  * Generated class for the SigninPage page.
@@ -33,7 +33,8 @@ import { ShopPage } from '../shop/shop';
  	constructor(private db: AngularFireDatabase, 
  					private firebase: AngularFireAuth, 
  						public navCtrl: NavController, 
- 							public navParams: NavParams) {
+ 							public navParams: NavParams,
+ 								public toastCtrl: ToastController) {
  	}
 
  	signUserUp() {
@@ -43,22 +44,24 @@ import { ShopPage } from '../shop/shop';
  			this.userId = user.uid;
  			this.db.list('/users').push(
 		 			{	
-		 				userId: this.userId,
-		 				firstname: this.firstname,
-		 				lastname: this.lastname,
-		 				email: this.email,
-		 				company: this.company,
-		 				phone: this.phone,
-		 				password: this.password1
+		 				userId: 	this.userId,
+		 				firstname: 	this.firstname,
+		 				lastname: 	this.lastname,
+		 				email: 		this.email,
+		 				company: 	this.company,
+		 				phone: 		this.phone,
+		 				password: 	this.password1
 		 			}
 	 			);
 
- 				this.navCtrl.parent.select(2);
- 				this.navCtrl.pop();
-	 			this.setCurrentUserToken();
+ 				const signup = this;
+ 				signup.navCtrl.parent.select(2);
+ 				signup.navCtrl.pop();
+	 			signup.setCurrentUserToken();
 	 		}
  		)
  		.catch(error => {
+ 				this.displayToast(error.message);
 	 			console.log(error.message);
 	 		}
  		);	
@@ -74,8 +77,25 @@ import { ShopPage } from '../shop/shop';
 		);
 	}
 
+	displayToast(message: string) {
+		this.toastCtrl.create(
+			{
+				message: message,
+				duration: 3000
+			}
+		).present();
+	}
+
+	goToLogin() {
+		this.navCtrl.pop();
+		this.navCtrl.push(LoginPage);
+	}
+
  	ionViewDidLoad() {
  		console.log('ionViewDidLoad SigninPage');
  	}
 
+ 	ionViewDidEnter() {
+		this.displayToast('Nice to meet you, don\'t be a stranger and fill this form !')
+	}
  }
