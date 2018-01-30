@@ -16,10 +16,9 @@ import { TabsEnablor } from '../../providers/custom/tabsEnablor';
   templateUrl: 'shop.html',
 })
 export class ShopPage {
+  date = new Date(Date.now()).toLocaleString();
 
-  
-
-  constructor(public navCtrl: NavController, 
+  constructor(public navCtrl: NavController,
         				public navParams: NavParams,
         					private myTabs: TabsEnablor) {
   }

@@ -23,16 +23,10 @@ import { ComponentsModule } from '../components/components.module';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { CallNumber } from '@ionic-native/call-number';
+import { EmailComposer } from '@ionic-native/email-composer';
+import { FIREBASE_CONFIG } from './firebase.credentials'
 
-
-const config = {
-  apiKey: "AIzaSyDRryIjGFGG0R9NxhjRel4Ysz3UkBq5zKY",
-  authDomain: "modsv2-5ebca.firebaseapp.com",
-  databaseURL: "https://modsv2-5ebca.firebaseio.com",
-  projectId: "modsv2-5ebca",
-  storageBucket: "modsv2-5ebca.appspot.com",
-  messagingSenderId: "792470097085"
-};
 
 @NgModule({
   declarations: [
@@ -42,7 +36,6 @@ const config = {
     ModsPage,
     TabsPage,
     ShopPage,
-
     LoginPage,
     SigninPage,
     DisconnectPage
@@ -54,7 +47,7 @@ const config = {
     BrowserAnimationsModule,
     FormsModule,
     IonicModule.forRoot(MyApp),
-    AngularFireModule.initializeApp(config),
+    AngularFireModule.initializeApp(FIREBASE_CONFIG),
     AngularFireAuthModule,
     AngularFireDatabaseModule
   ],
@@ -76,7 +69,9 @@ const config = {
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     TabsEnablor,
     ContactProvider,
-    ToastProvider
+    ToastProvider,
+    CallNumber,
+    EmailComposer
   ]
   // schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
