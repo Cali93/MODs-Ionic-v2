@@ -15,8 +15,24 @@
 
 <ion-content padding>
 
-    <ion-card>
+    <!-- <ion-card>
         <img src="http://cdn.shopify.com/s/files/1/0268/4369/products/Screen_Shot_2014-03-05_at_11.14.25_PM.png?v=1456546891"/>
-    </ion-card>
+    </ion-card> -->
+    <ng-template #content let-c="close" let-d="dismiss">
+        <div class="modal-header">
+          <h4  style="color:black" class="modal-title">Modal title</h4>
+          <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p style="color:black;">One fine body</p>
+        </div>
+        <div class="modal-footer" style="color:black;">
+          <button type="button" class="btn btn-outline-light" (click)="c('Close click')" style="color:black;">Close</button>
+        </div>
+      </ng-template>
+
+      <button class="btn btn-lg btn-outline-primary centerbtn" (click)="open(content)">ORDER</button>
 
 </ion-content>

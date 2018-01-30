@@ -5,6 +5,7 @@ import { LeftMenuComponent } from './left-menu/left-menu';
 import { ModEditorComponent } from './mod-editor/mod-editor';
 import { RightMenuComponent } from './right-menu/right-menu';
 import { ToolbarComponent } from './toolbar/toolbar';
+import { OrdermodalComponent } from './ordermodal/ordermodal';
 
 @NgModule({
 	declarations: [
@@ -13,7 +14,8 @@ import { ToolbarComponent } from './toolbar/toolbar';
     ModEditorComponent,
     RightMenuComponent,
     ToolbarComponent,
-    ContactFormComponent],
+    ContactFormComponent,
+    OrdermodalComponent],
 	imports: [],
 	exports: [
     FakeWorldComponent,
@@ -21,7 +23,8 @@ import { ToolbarComponent } from './toolbar/toolbar';
     ModEditorComponent,
     RightMenuComponent,
     ToolbarComponent,
-    ContactFormComponent]
+    ContactFormComponent,
+    OrdermodalComponent]
 
 })
 

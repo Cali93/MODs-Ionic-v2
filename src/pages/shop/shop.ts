@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { TabsEnablor } from '../../providers/custom/tabsEnablor';
+import { OrdermodalComponent } from '../../components/ordermodal/ordermodal';
 
 
 /**
