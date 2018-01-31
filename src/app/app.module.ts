@@ -27,6 +27,8 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { CallNumber } from '@ionic-native/call-number';
 import { EmailComposer } from '@ionic-native/email-composer';
 import { FIREBASE_CONFIG } from './firebase.credentials';
+import { PreorderProvider } from '../providers/preorder/preorder';
+import { UserProvider } from '../providers/user/user';
 
 
 @NgModule({
@@ -40,7 +42,6 @@ import { FIREBASE_CONFIG } from './firebase.credentials';
     LoginPage,
     SigninPage,
     DisconnectPage
-
   ],
   imports: [
     BrowserModule,
@@ -73,7 +74,9 @@ import { FIREBASE_CONFIG } from './firebase.credentials';
     ContactProvider,
     ToastProvider,
     CallNumber,
-    EmailComposer
+    EmailComposer,
+    PreorderProvider,
+    UserProvider
   ]
   // schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
