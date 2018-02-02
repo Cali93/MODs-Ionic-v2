@@ -24,6 +24,7 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 
+import { ThreeAngular } from '../threeAngular/threeAngular.module'
 
 const config = {
   apiKey: "AIzaSyDRryIjGFGG0R9NxhjRel4Ysz3UkBq5zKY",
@@ -56,7 +57,8 @@ const config = {
     IonicModule.forRoot(MyApp),
     AngularFireModule.initializeApp(config),
     AngularFireAuthModule,
-    AngularFireDatabaseModule
+    AngularFireDatabaseModule,
+    ThreeAngular
   ],
   bootstrap: [IonicApp],
   entryComponents: [
