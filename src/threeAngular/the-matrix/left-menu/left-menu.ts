@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
+import { NavController, NavParams, ModalController } from 'ionic-angular';
 import { LoginPage } from '../../../pages/login/login'; 
 
 
@@ -11,11 +11,11 @@ export class LeftMenuComponent {
 
   isActive = true;
 
-  constructor(public modalCtrl: ModalController, 
-                public navCtrl: NavController,
-                  public navParams: NavParams) {
-
-  }
+  constructor(
+    public modalCtrl: ModalController, 
+    public navCtrl: NavController,
+    public navParams: NavParams
+  ){}
 
   activeButton() {
     this.isActive = !this.isActive;

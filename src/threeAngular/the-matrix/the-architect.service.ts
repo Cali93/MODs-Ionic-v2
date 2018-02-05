@@ -33,8 +33,18 @@ export class TheArchitect {
   public objects = [];
   private selected = null;
 
-  public editMode = "translate";
-  public nextMode = "3d_rotation";
+  public translateMode  = {
+    'id'    : 'translate',
+    'nextText' : 'Rotate',
+    'nextIcon' : '3d_rotation'
+  }
+  public rotateMode  = {
+    'id'    : 'rotate',
+    'nextText' : 'Translate',
+    'nextIcon' : 'open_with'
+  }
+  public editMode = this.translateMode;
+  
 
   constructor() {
     this.plugMeIn();
@@ -76,6 +86,7 @@ export class TheArchitect {
    * Clones an object
    */
   public cloneObject () {
+    if (this.selected === null) return;
     let clone = this.selected.clone();
     this.addObject(clone);
   }
@@ -189,14 +200,12 @@ export class TheArchitect {
    * Move or Rotate?
    */
   public changeEditMode (){
-    if (this.editMode == "translate") {
-      this.editMode = "rotate"
-      this.nextMode = "open_with";
+    if (this.editMode.id == "translate") {
+      this.editMode = this.rotateMode
     } else {
-      this.editMode = "translate"
-      this.nextMode = "3d_rotation";
+      this.editMode = this.translateMode
     }
-    this.editModeChanged.next(this.editMode);
+    this.editModeChanged.next(this.editMode.id);
   }
   /**
    * Load an object via AJAX from Json file.

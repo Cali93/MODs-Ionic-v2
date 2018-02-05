@@ -1,26 +1,28 @@
+<div class="toolbar-tooltip" [class.active]="isActive">{{ tooltip }}</div>
 <div class="toolbar">
   <div class="toolbar-item">
-    <a href="#" (click)="callChangeEditMode()"><i class="material-icons">{{ this.TheArchitect.nextMode }}</i></a>
+    <a href="#" (click)="callChangeEditMode()" (mouseover)="setTooltip( this.TheArchitect.editMode.nextText )" (mouseout)="isActive = false"><i class="material-icons">{{ this.TheArchitect.editMode.nextIcon }}</i></a>
   </div>
   <div class="toolbar-separator"></div>
   <div class="toolbar-item">
-    <a href="#" (click)="callCloneObject()"><i class="material-icons">control_point_duplicate</i></a>
-  </div>
-  <div class="toolbar-item">
-    <a href="#" (click)="callAddMod()"><i class="material-icons">add_to_photos</i></a>
-  </div>
-  <div class="toolbar-item">
-    <a href="#"><i class="material-icons">layers</i></a>
+    <a href="#" (click)="callAddMod()" (mouseover)="setTooltip('Add New Mod')" (mouseout)="isActive = false"><i class="material-icons">add_box</i></a>
   </div>
   <div class="toolbar-separator"></div>
   <div class="toolbar-item">
-    <a href="#"><i class="material-icons">tonality</i></a>
+    <a href="#" (click)="callCloneObject()" (mouseover)="setTooltip('Clone Selection')" (mouseout)="isActive = false"><i class="material-icons">content_copy</i></a>
   </div>
   <div class="toolbar-item">
-    <a href="#"><i class="material-icons">style</i></a>
+    <a href="#" (mouseover)="setTooltip('Group Selection')" (mouseout)="isActive = false"><i class="material-icons">crop_free</i></a>
   </div>
   <div class="toolbar-separator"></div>
   <div class="toolbar-item">
-      <a href="#" (click)="callDeleteMod()"><i class="material-icons">delete</i></a>
+    <a href="#" (mouseover)="setTooltip('Color')" (mouseout)="isActive = false"><i class="material-icons">tonality</i></a>
+  </div>
+  <div class="toolbar-item">
+    <a href="#" (mouseover)="setTooltip('Decoration')" (mouseout)="isActive = false"><i class="material-icons">style</i></a>
+  </div>
+  <div class="toolbar-separator"></div>
+  <div class="toolbar-item">
+      <a href="#" (click)="callDeleteMod()" (mouseover)="setTooltip('Delete Selection')" (mouseout)="isActive = false"><i class="material-icons">delete</i></a>
   </div>
 </div>
