@@ -24,11 +24,14 @@ import { ComponentsModule } from '../components/components.module';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
+
 import { CallNumber } from '@ionic-native/call-number';
 import { EmailComposer } from '@ionic-native/email-composer';
 import { FIREBASE_CONFIG } from './firebase.credentials';
 import { PreorderProvider } from '../providers/preorder/preorder';
 import { UserProvider } from '../providers/user/user';
+
+import { ThreeAngular } from '../threeAngular/threeAngular.module'
 
 @NgModule({
   declarations: [
@@ -51,7 +54,8 @@ import { UserProvider } from '../providers/user/user';
     AngularFireModule.initializeApp(FIREBASE_CONFIG),
     AngularFireAuthModule,
     AngularFireDatabaseModule,
-    NgbModule.forRoot()
+    NgbModule.forRoot(),
+    ThreeAngular
   ],
   bootstrap: [IonicApp],
   entryComponents: [
