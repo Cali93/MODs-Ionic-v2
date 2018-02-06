@@ -39,9 +39,7 @@ export class ShopPage {
   	this.myTabs.setEnableState(true);
     const uid = this.af.auth.currentUser.uid;
     console.log(uid);
-    const myUser = this.userService.getUserById(uid);
-    console.log(myUser);  
-
+    this.userService.getUserById(uid);
     console.log('ionViewDidEnter ShopPage');
   }
 
