@@ -24,4 +24,31 @@
 
 <button ion-button block (click)="addMessage(message)" color="primary">Post message</button>
 
+<ion-item>
+  <ion-row>
+    <ion-col col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6>
+      <div>
+        <button ion-button block color="dark" class="btn btn-primary" (click)="onPhone()"><ion-icon name="call"> +32 2 217 71 33</ion-icon></button>
+        </div>
+    </ion-col>
+
+    <ion-col col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6>
+      <div>
+          <button ion-button block color="dark" class="btn btn-primary" (click)="onMail()"><ion-icon name="mail"> info@mail-mcb.com</ion-icon></button>
+        </div>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12>
+      <div>
+        <button ion-button block color="dark" class="btn btn-primary"><ion-icon name="pin">Rue Henri-Joseph Genesse, 34/B2 1070 Anderlecht <br>BELGIQUE</ion-icon></button>
+        </div>
+        <img src="assets/imgs/maps2.png" alt="">
+
+    </ion-col>
+  </ion-row>
+
+</ion-item>
+
+
 </ion-content>

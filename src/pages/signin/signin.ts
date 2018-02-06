@@ -5,13 +5,6 @@ import { AngularFireDatabase } from 'angularfire2/database';
 
 import { LoginPage } from '../login/login';
 
-/**
- * Generated class for the SigninPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-
  @IonicPage()
  @Component({
  	selector: 'page-signin',
@@ -30,9 +23,9 @@ import { LoginPage } from '../login/login';
  	userId: string;
 
 
- 	constructor(private db: AngularFireDatabase, 
- 					private firebase: AngularFireAuth, 
- 						public navCtrl: NavController, 
+ 	constructor(private db: AngularFireDatabase,
+ 					private firebase: AngularFireAuth,
+ 						public navCtrl: NavController,
  							public navParams: NavParams,
  								public toastCtrl: ToastController) {
  	}
@@ -43,7 +36,7 @@ import { LoginPage } from '../login/login';
  			console.log(user);
  			this.userId = user.uid;
  			this.db.list('/users').push(
-		 			{	
+		 			{
 		 				userId: 	this.userId,
 		 				firstname: 	this.firstname,
 		 				lastname: 	this.lastname,
@@ -64,7 +57,7 @@ import { LoginPage } from '../login/login';
  				this.displayToast(error.message);
 	 			console.log(error.message);
 	 		}
- 		);	
+ 		);
 
  	}
 

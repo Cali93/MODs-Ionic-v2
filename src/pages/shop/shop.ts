@@ -1,15 +1,19 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ToastController} from 'ionic-angular';
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { TabsEnablor } from '../../providers/custom/tabsEnablor';
-import { ToastProvider} from '../../providers/toast/toast';
+import { OrdermodalComponent } from '../../components/ordermodal/ordermodal';
+import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 
-
-/**
- * Generated class for the ShopPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabase } from 'angularfire2/database';
+import { AngularFireAuth } from 'angularfire2/auth';
+import { Preorder } from '../../models/preorder/preorder';
+// import { PreorderProvider } from '../../providers/preorder/preorder';
+import { ToastProvider } from '../../providers/toast/toast';
+import { User } from '../../models/user/user';
+import { UserProvider } from '../../providers/user/user';
+import { Observable } from 'rxjs/Observable';
 
 @IonicPage()
 @Component({
@@ -18,19 +22,34 @@ import { ToastProvider} from '../../providers/toast/toast';
 })
 export class ShopPage {
 
-  
+  show: boolean = true;
 
-  constructor(public navCtrl: NavController, 
-        				public navParams: NavParams,
-        					private myTabs: TabsEnablor,
-                    private toast: ToastProvider) {
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    private myTabs: TabsEnablor,
+    private modalService: NgbModal,
+    private userService: UserProvider,
+    private toast: ToastProvider,
+    private db: AngularFireDatabase,
+    private af: AngularFireAuth){
   }
-
 
   ionViewDidEnter() {
   	this.myTabs.setEnableState(true);
-    this.toast.show('Welcome ' + localStorage.getItem('user'));
+    const uid = this.af.auth.currentUser.uid;
+    console.log(uid);
+    const myUser = this.userService.getUserById(uid);
+    console.log(myUser);  
+
     console.log('ionViewDidEnter ShopPage');
   }
 
+  onOrderSubmit(){
+    console.log('Order submitted successfully');
+  }
+
+  open(content) {
+    this.modalService.open(content, { windowClass: 'dark-modal' });
+  }
 }

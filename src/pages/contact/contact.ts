@@ -7,13 +7,8 @@ import { Message } from '../../models/messages/messages';
 import { ContactProvider } from '../../providers/contact/contact';
 import { ToastProvider } from '../../providers/toast/toast';
 import { HomePage } from '../../pages/home/home';
-
-/**
- * Generated class for the ContactPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { CallNumber } from '@ionic-native/call-number';
+import { EmailComposer } from '@ionic-native/email-composer';
 
 @IonicPage()
 @Component({
@@ -33,7 +28,9 @@ export class ContactPage {
     public navCtrl: NavController,
     public navParams: NavParams,
     private contact: ContactProvider,
-    private toast: ToastProvider) {}
+    private toast: ToastProvider,
+    private callNumber: CallNumber,
+    private emailComposer: EmailComposer) {}
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ContactPage');
@@ -49,6 +46,40 @@ export class ContactPage {
       })
     }
 
+  }
+
+  onPhone(){
+    this.callNumber.callNumber("003222177133", true)
+    .then(() => console.log('Launched dialer!'))
+    .catch(() => console.log('Error launching dialer'));
+  }
+
+  onMail(){
+    this.emailComposer.isAvailable().then((available: boolean) =>{
+      if(available) {
+        //Now we know we can send
+      }
+     });
+
+     let email = {
+       to: 'info@mail-mcb.be',
+       cc: 'julien@mail-mcb.be',
+      //  bcc: ['john@doe.com', 'jane@doe.com'],
+      //  attachments: [
+      //    'file://img/logo.png',
+      //    'res://icon.png',
+      //    'base64:icon.png//iVBORw0KGgoAAAANSUhEUg...',
+      //    'file://README.pdf'
+      //  ],
+       subject: 'Demande au sujet de',
+       body: 'Votre message ici',
+       isHtml: true
+     };
+
+     // Send a text message using default options
+     this.emailComposer.open(email)
+     .then(() => console.log('Launched mailer !'))
+     .catch(() => console.log('Error launching mailer'));
   }
 
 }

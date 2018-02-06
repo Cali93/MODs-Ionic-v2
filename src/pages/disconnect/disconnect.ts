@@ -1,8 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { TabsEnablor } from '../../providers/custom/tabsEnablor';
-
+import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 import { HomePage } from '../home/home';
 
 /**
@@ -16,14 +16,16 @@ import { HomePage } from '../home/home';
 @Component({
   selector: 'page-disconnect',
   templateUrl: 'disconnect.html',
+  encapsulation: ViewEncapsulation.None
 })
 
 export class DisconnectPage {
-
-  constructor(private firebase: AngularFireAuth, 
-  				public navCtrl: NavController, 
+  closeResult: string;
+  constructor(private firebase: AngularFireAuth,
+  				public navCtrl: NavController,
   					public navParams: NavParams,
-  						private myTabs: TabsEnablor) {
+              private myTabs: TabsEnablor,
+              private modalService: NgbModal) {
   }
 
   ionViewDidEnter() {
@@ -32,6 +34,10 @@ export class DisconnectPage {
   	this.myTabs.setEnableState(false);
     console.log('ionViewDidEnter DisconnectPage');
     this.redirectToHome();
+  }
+
+  open(content) {
+    this.modalService.open(content, { windowClass: 'dark-modal' });
   }
 
   redirectToHome() {
