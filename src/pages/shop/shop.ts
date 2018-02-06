@@ -23,14 +23,14 @@ export class ShopPage {
   show: boolean = true;
   userList$: Observable<User[]>
   preorderList$:Observable <Preorder[]>
-  user: User = {
-    userId: this.user.userId,
-    email: this.user.email,
-    firstname: this.user.firstname,
-    lastname: this.user.lastname,
-    company: this.user.company,
-    phone: this.user.phone
-  }
+  // user: User = {
+  //   userId: this.user.userId,
+  //   email: this.user.email,
+  //   firstname: this.user.firstname,
+  //   lastname: this.user.lastname,
+  //   company: this.user.company,
+  //   phone: this.user.phone
+  // }
   // preorder: Preorder = {
   //   projectId: this.project.projectId,
   //   projectImg:'',
@@ -51,7 +51,6 @@ export class ShopPage {
     private toast: ToastProvider,
     private db: AngularFireDatabase
             ) {
-              // this.preorder = db.list('preorders').valueChanges();
             }
 
   ionViewDidEnter() {
@@ -59,11 +58,15 @@ export class ShopPage {
     console.log('ionViewDidEnter ShopPage');
   }
 
+  // getItemList(){
+
+  // }
+
   onOrderSubmit(){
     console.log('Order submitted successfully');
   }
 
-  addPreorder(preorder: Preorder){
+  createItem(preorder: Preorder){
     if(preorder.quantities == null){
       this.toast.show(`Sorry, you must fill all fields`)
     } else {
