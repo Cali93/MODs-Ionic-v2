@@ -1,10 +1,8 @@
 export interface Preorder {
   key?: string;
-  // username: string;
-  // email: string;
-  // projectSpecs: Object;
-  projectName: string;
+  projectId: string;
+  projectImg: string;
   quantities: number;
-  userComments: string;
+  userComments?: string;
   date: string;
 }

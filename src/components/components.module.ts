@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-import { ContactFormComponent } from './contact-form/contact-form';
 import { FakeWorldComponent } from './fake-world/fake-world';
 import { LeftMenuComponent } from './left-menu/left-menu';
 import { ModEditorComponent } from './mod-editor/mod-editor';
@@ -14,7 +13,6 @@ import { OrdermodalComponent } from './ordermodal/ordermodal';
     ModEditorComponent,
     RightMenuComponent,
     ToolbarComponent,
-    ContactFormComponent,
     OrdermodalComponent],
 	imports: [],
 	exports: [
@@ -23,7 +21,6 @@ import { OrdermodalComponent } from './ordermodal/ordermodal';
     ModEditorComponent,
     RightMenuComponent,
     ToolbarComponent,
-    ContactFormComponent,
     OrdermodalComponent]
 
 })

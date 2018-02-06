@@ -22,20 +22,21 @@ import { Observable } from 'rxjs/Observable';
 export class ShopPage {
   show: boolean = true;
   userList$: Observable<User[]>
-  preorders:Observable <any[]>
-  // user: User = {
-  //   userId: user.userId,
-  //   email: user.email,
-  //   firstname: user.firstname,
-  //   lastname: user.lastname,
-  //   company: user.company,
-  //   phone: user.phone
-  // }
+  preorderList$:Observable <Preorder[]>
+  user: User = {
+    userId: this.user.userId,
+    email: this.user.email,
+    firstname: this.user.firstname,
+    lastname: this.user.lastname,
+    company: this.user.company,
+    phone: this.user.phone
+  }
   preorder: Preorder = {
-    projectName: '',
+    projectId: '',
+    projectImg:'',
     quantities:1,
     userComments: '',
-    date: ''
+    date: new Date(Date.now()).toLocaleString()
   }
 
   date = new Date(Date.now()).toLocaleString();
