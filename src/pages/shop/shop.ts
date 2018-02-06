@@ -31,13 +31,13 @@ export class ShopPage {
     company: this.user.company,
     phone: this.user.phone
   }
-  preorder: Preorder = {
-    projectId: '',
-    projectImg:'',
-    quantities:1,
-    userComments: '',
-    date: new Date(Date.now()).toLocaleString()
-  }
+  // preorder: Preorder = {
+  //   projectId: this.project.projectId,
+  //   projectImg:'',
+  //   quantities:1,
+  //   userComments: '',
+  //   date: new Date(Date.now()).toLocaleString()
+  // }
 
   date = new Date(Date.now()).toLocaleString();
 
@@ -51,7 +51,7 @@ export class ShopPage {
     private toast: ToastProvider,
     private db: AngularFireDatabase
             ) {
-              this.preorders = db.list('preorders').valueChanges();
+              // this.preorder = db.list('preorders').valueChanges();
             }
 
   ionViewDidEnter() {
@@ -64,7 +64,7 @@ export class ShopPage {
   }
 
   addPreorder(preorder: Preorder){
-    if(preorder.projectName == '' || preorder.quantities == null){
+    if(preorder.quantities == null){
       this.toast.show(`Sorry, you must fill all fields`)
     } else {
       this.userService.createItem(preorder)
