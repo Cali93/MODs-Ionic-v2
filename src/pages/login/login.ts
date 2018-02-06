@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
 import { AngularFireAuth } from 'angularfire2/auth';
+import { AngularFireDatabase } from 'angularfire2/database';
 
 import { SigninPage } from '../signin/signin';
 
@@ -53,12 +54,9 @@ export class LoginPage {
 	}
 
 	setCurrentUserToken(){
-		this.firebase.auth.currentUser.getToken()
-		.then(
-			(token: string) => {
-		    localStorage.setItem('isLoggedIn', token);
-		  }
-		);
+		const user = this.firebase.auth.currentUser;
+		console.log(user);
+		localStorage.setItem('user', user.displayName);
 	}
 
 	goToSignUp() {

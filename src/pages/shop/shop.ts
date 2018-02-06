@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ToastController} from 'ionic-angular';
 import { TabsEnablor } from '../../providers/custom/tabsEnablor';
+import { ToastProvider} from '../../providers/toast/toast';
 
 
 /**
@@ -21,12 +22,14 @@ export class ShopPage {
 
   constructor(public navCtrl: NavController, 
         				public navParams: NavParams,
-        					private myTabs: TabsEnablor) {
+        					private myTabs: TabsEnablor,
+                    private toast: ToastProvider) {
   }
 
 
   ionViewDidEnter() {
   	this.myTabs.setEnableState(true);
+    this.toast.show('Welcome ' + localStorage.getItem('user'));
     console.log('ionViewDidEnter ShopPage');
   }
 
