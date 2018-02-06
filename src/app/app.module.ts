@@ -30,7 +30,6 @@ import { FIREBASE_CONFIG } from './firebase.credentials';
 import { PreorderProvider } from '../providers/preorder/preorder';
 import { UserProvider } from '../providers/user/user';
 
-
 @NgModule({
   declarations: [
     MyApp,

@@ -24,6 +24,10 @@
       </ion-col>
     </ion-row>
 
+    <ion-item *ngFor="let user of userList$ | async let i = index">
+      {{user.firstname}}
+    </ion-item>
+
     <ion-row>
       <ion-col col-12 col-sm-9 col-md-6 col-lg-4 col-xl-3>
         <div class="card mb-3">
@@ -48,7 +52,7 @@
               <br>
               <div *ngIf="show; else elseBlock">
                   <li class="list-group-item">
-                      <button ion-button block class="btn btn-warning" (click)="onEdit()">
+                      <button ion-button block class="btn btn-warning" (click)="getUser()">
                         <ion-icon name="hammer"> EDIT</ion-icon>
                       </button>
                     </li>
