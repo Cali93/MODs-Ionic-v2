@@ -17,25 +17,31 @@ export class UserProvider {
     ).valueChanges()
   );
 
-  private queryTheDbByObj = this.db.database.object(`/users/${auth.id}`)
-  .subscribe(user => console.log(user)); //=> {name: 'Jim' ... }
+  public queryTheDbByObj = this.db.list('users').snapshotChanges().map(users => {
+    return users.map(user => ({ key: user.key, ...user.payload.val() }));
+  })
 
   constructor(private db: AngularFireDatabase) {
     this.queryTheDbById.subscribe(
       queriedItem => {
         localStorage.setItem('userObject',queriedItem.toString());
-
       }
     );
+    this.queryTheDbByObj.subscribe(users => {
+    return users.map(user => user.key);
+  });
   }
 
   addUser(user:User){
-
     //return this.userListRef.push(user)
   }
 
   getUser(){
     //return this.userListRef;
+  }
+
+  getUserByKey(key:string){
+    return this.context.users.next(key)
   }
 
 
