@@ -6,7 +6,7 @@ import { OrdermodalComponent } from '../../components/ordermodal/ordermodal';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 
 import { AngularFireModule } from 'angularfire2';
-import { AngularFireDatabase } from 'angularfire2/database';
+import { AngularFireDatabase, AngularFireObject } from 'angularfire2/database';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Preorder } from '../../models/preorder/preorder';
 // import { PreorderProvider } from '../../providers/preorder/preorder';
@@ -23,6 +23,8 @@ import { Observable } from 'rxjs/Observable';
 export class ShopPage {
 
   show: boolean = true;
+  user: AngularFireObject<any>;
+  users: Observable<any>;
 
   constructor(
     public navCtrl: NavController,
@@ -33,17 +35,22 @@ export class ShopPage {
     private toast: ToastProvider,
     private db: AngularFireDatabase,
     private af: AngularFireAuth){
+      this.userService.queryTheDbByObj.subscribe(users => {
+        return users.map(user => console.log(user));
+      });
   }
 
   ionViewDidEnter() {
   	this.myTabs.setEnableState(true);
     const uid = this.af.auth.currentUser.uid;
     console.log(uid);
-    const myUser = this.userService.getUserById(uid);
-    console.log(myUser);  
-
+    this.userService.getUserById(uid);
     console.log('ionViewDidEnter ShopPage');
   }
+
+  // getItemList(){
+
+  // }
 
   onOrderSubmit(){
     console.log('Order submitted successfully');
