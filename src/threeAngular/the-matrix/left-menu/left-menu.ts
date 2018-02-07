@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, ModalController } from 'ionic-angular';
 import { LoginPage } from '../../../pages/login/login'; 
+import { AngularFireAuth } from 'angularfire2/auth';
+
 
 
 @Component({
@@ -14,7 +16,8 @@ export class LeftMenuComponent {
   constructor(
     public modalCtrl: ModalController, 
     public navCtrl: NavController,
-    public navParams: NavParams
+    public navParams: NavParams,
+    public firebase: AngularFireAuth
   ){}
 
   activeButton() {
@@ -22,16 +25,12 @@ export class LeftMenuComponent {
   }
 
   logInOrSignIn() {
-    if (this.isLoggedIn()) {
+    if (this.firebase.auth.currentUser) {
       this.navCtrl.parent.select(2);
     }
     else {
       this.navCtrl.push(LoginPage);
     }
 
-  }
-
-  isLoggedIn() {
-    return localStorage.getItem('isLoggedIn') ? true : false;
   }
 }

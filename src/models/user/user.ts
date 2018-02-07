@@ -5,7 +5,7 @@ export interface User {
   email: string;
   company: string;
   phone: string;
-  projects?: object;
-  preorders?: object;
-  orders?: object;
+  projects?: string[];
+  preorders?: string[];
+  orders?: string[];
 }

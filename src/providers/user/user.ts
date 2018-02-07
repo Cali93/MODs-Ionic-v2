@@ -1,59 +1,27 @@
+// import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { User } from './../../models/user/user';
-import { Preorder } from './../../models/preorder/preorder';
-// import { AngularFireDatabase } from 'angularfire2/database';
-// import { AngularFireDatabaseModule, FirebaseListObservable } from "angularfire2/database-deprecated";
-import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
-import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/operator/map';
-import { AngularFireAuth } from 'angularfire2/auth';
-// import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-
-// export class Item {
-//   body: string;
-// }
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabase, AngularFireList, AngularFireObject } from 'angularfire2/database';
+import {Observable, Subject} from "rxjs/Rx";
 
 @Injectable()
 export class UserProvider {
+  private userListRef$ = this.db.list<User>('users')
 
-  preorders: Observable<any>
-  userId: string;
-  // private userListRef = this.db.list<User>
-  // ('users')
+  constructor(private db: AngularFireDatabase) {}
 
-  // private userSource = new BehaviorSubject<Object>("default user");
-  // currentUser = this.userSource.asObservable();
-  preordersRef: AngularFireList<any>;
-  constructor(private db: AngularFireDatabase, private afAuth: AngularFireAuth) {
-    this.afAuth.authState.subscribe(user => {
-      if(user) this.userId = user.uid
-    })
-    this.preordersRef = db.list('preorders')
-    this.preorders = this.preordersRef.snapshotChanges().map(changes => {
-      return changes.map( c => ({
-        key: c.payload.key, ...c.payload.val()
-      }))
-    })
+  addUser(user:User){
+    return this.userListRef$.push(user)
+  }
+
+  getUser(){
+    return this.userListRef$;
   }
 
 
-  // Return an observable list with optional query
-  // You will usually call this from OnInit in a component
-  getItemsList(): Observable<Preorder[]> {
-    if (!this.userId) return;
-    this.preordersRef = this.db.list(`preorders/${this.userId}`);
-    return this.preorders
+  getUserById(uid: string) {
+    return this.db.list('users', ref => ref.orderByChild('userId').equalTo(uid));
   }
-  createItem(preorder: Preorder)  {
-    this.preordersRef.push(preorder)
-  }
-
-  // getUser(){
-  //   return this.userListRef
-  // }
-
-  // changeUser(user:object){
-  //   this.userSource.next(user)
-  // }
 
 }
