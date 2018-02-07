@@ -43,7 +43,6 @@ import { LoginPage } from '../login/login';
 		 				email: 		this.email,
 		 				company: 	this.company,
 		 				phone: 		this.phone,
-		 				password: 	this.password1
 		 			}
 	 			);
 
