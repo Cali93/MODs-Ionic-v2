@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
 import { AngularFireAuth } from 'angularfire2/auth';
-import { AngularFireDatabase } from 'angularfire2/database';
+// import { AngularFireDatabase } from 'angularfire2/database';
+import { AngularFirestoreModule, AngularFirestoreCollection, AngularFirestoreDocument, AngularFirestore } from 'angularfire2/firestore';
+import { AuthProvider } from '../../providers/auth/auth';
 
 import { LoginPage } from '../login/login';
 
@@ -23,11 +25,12 @@ import { LoginPage } from '../login/login';
  	userId: string;
 
 
- 	constructor(private db: AngularFireDatabase,
+ 	constructor(
  					private firebase: AngularFireAuth,
  						public navCtrl: NavController,
  							public navParams: NavParams,
- 								public toastCtrl: ToastController) {
+                 public toastCtrl: ToastController,
+                  public afs: AngularFirestore) {
  	}
 
  	signUserUp() {
@@ -35,7 +38,7 @@ import { LoginPage } from '../login/login';
  		.then(user => {
  			console.log(user);
  			this.userId = user.uid;
- 			this.db.list('/users').push(
+ 			this.afs.collection('/users').add(
 		 			{
 		 				userId: 	this.userId,
 		 				firstname: 	this.firstname,

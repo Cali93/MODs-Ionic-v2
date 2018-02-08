@@ -47,7 +47,7 @@ export class DisconnectPage {
       function () {
         disco.navCtrl.parent.select(0);
       },
-      6000
+      2000
     )
   }
 
