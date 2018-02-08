@@ -10,9 +10,14 @@ export class TheToolbar {
   public isActive: boolean = false;
   public tooltip: string = "";
 
-
-  constructor( public TheArchitect: TheArchitect ) {}
   
+  constructor(
+    public TheArchitect: TheArchitect
+  ) {}
+  
+  
+  
+
   callDeleteMod(){
     this.TheArchitect.removeSelected();
   }
@@ -31,6 +36,9 @@ export class TheToolbar {
     this.isActive = true;
   }
 
+  callChangeSelectMode(){
+    this.TheArchitect.changeSelectMode();
+  }
 
 
 }
