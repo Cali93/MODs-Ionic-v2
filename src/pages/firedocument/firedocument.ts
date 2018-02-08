@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 import { AngularFirestoreModule, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
 import { AuthProvider } from '../../providers/auth/auth';
+import { SigninPage } from '../signin/signin';
 
 @IonicPage()
 @Component({
@@ -46,10 +47,8 @@ export class FiredocumentPage {
   logout() {
     this.auth.signOut();
   }
-
   private afterSignIn() {
     // Do after login stuff here, such router redirects, toast messages, etc.
-    // this.setCurrentUserToken();
     this.navCtrl.parent.select(2);
     this.navCtrl.pop();
   }
