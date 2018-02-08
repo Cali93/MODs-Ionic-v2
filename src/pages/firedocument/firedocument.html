@@ -1,0 +1,41 @@
+<!--
+  Generated template for the FiredocumentPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>firedocument</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    <div class="box" >
+        <div *ngIf="auth.user | async; then authenticated else guest">
+                <!-- template will replace this div -->
+        </div>
+      </div>
+
+      <!-- User NOT logged in -->
+      <ng-template #guest class="box">
+        <h3>Howdy, GUEST</h3>
+        <p class="card-text">Login to get started...</p>
+        <button class="button" routerLink="/login" (click)="signInWithGoogle()">Login</button>
+      </ng-template>
+
+      <!-- User logged in -->
+      <ng-template #authenticated>
+        <div *ngIf="auth.user | async as user">
+          <h3>Howdy, {{ user.displayName }}</h3>
+          <h4>You have this projects : {{ user.projects }}</h4>
+          <img class="card-img-top" [src]="user.photoURL || 'https://api.adorable.io/avatars/109/fire.png'" width=50px>
+          <p class="text-truncate">UID: {{ user.uid }}</p>
+          <button class="button" (click)="logout()">Logout</button>
+        </div>
+      </ng-template>
+
+</ion-content>

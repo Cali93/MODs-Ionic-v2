@@ -6,6 +6,7 @@ import { ModsPage } from '../mods/mods';
 import { ShopPage } from '../shop/shop';
 import { ContactPage } from '../contact/contact';
 import { DisconnectPage } from '../disconnect/disconnect';
+import { FiredocumentPage } from '../firedocument/firedocument';
 
 
 @Component({
@@ -18,7 +19,7 @@ export class TabsPage {
   tab2Root = ModsPage;
   tab3Root = ShopPage;
   tab4Root = ContactPage;
-  tab5Root = DisconnectPage;
+  tab5Root = FiredocumentPage;
 
   constructor(public tabsEnablor: TabsEnablor) {
   }

@@ -34,6 +34,7 @@ import { UserProvider } from '../providers/user/user';
 
 import { ThreeAngular } from '../threeAngular/threeAngular.module';
 import { AuthProvider } from '../providers/auth/auth';
+import { FiredocumentPage } from '../pages/firedocument/firedocument';
 
 
 
@@ -47,6 +48,7 @@ import { AuthProvider } from '../providers/auth/auth';
     ShopPage,
     LoginPage,
     SigninPage,
+    FiredocumentPage,
     DisconnectPage
   ],
   imports: [
@@ -59,6 +61,7 @@ import { AuthProvider } from '../providers/auth/auth';
     AngularFireAuthModule,
     AngularFireDatabaseModule,
     AngularFirestoreModule,
+    AngularFirestoreModule.enablePersistence(),
     NgbModule.forRoot(),
     ThreeAngular
   ],
@@ -72,6 +75,7 @@ import { AuthProvider } from '../providers/auth/auth';
     LoginPage,
     SigninPage,
     DisconnectPage,
+    FiredocumentPage,
     TabsPage
   ],
   providers: [
