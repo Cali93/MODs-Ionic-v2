@@ -1,0 +1,24 @@
+<!--
+  Generated template for the FiretestPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>firetest</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <!-- We'll display the data using ngFore and the | async pipe -->
+  <div *ngFor="let note of notes | async">
+
+   <h3> {{ note.content }} </h3>
+
+  </div>
+</ion-content>

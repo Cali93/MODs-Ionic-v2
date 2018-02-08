@@ -23,6 +23,7 @@ import { DisconnectPage } from '../pages/disconnect/disconnect';
 import { ComponentsModule } from '../components/components.module';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
+import { AngularFirestoreModule} from 'angularfire2/firestore';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 
 import { CallNumber } from '@ionic-native/call-number';
@@ -32,6 +33,7 @@ import { PreorderProvider } from '../providers/preorder/preorder';
 import { UserProvider } from '../providers/user/user';
 
 import { ThreeAngular } from '../threeAngular/threeAngular.module';
+import { AuthProvider } from '../providers/auth/auth';
 
 
 
@@ -56,6 +58,7 @@ import { ThreeAngular } from '../threeAngular/threeAngular.module';
     AngularFireModule.initializeApp(FIREBASE_CONFIG),
     AngularFireAuthModule,
     AngularFireDatabaseModule,
+    AngularFirestoreModule,
     NgbModule.forRoot(),
     ThreeAngular
   ],
@@ -81,7 +84,8 @@ import { ThreeAngular } from '../threeAngular/threeAngular.module';
     CallNumber,
     EmailComposer,
     PreorderProvider,
-    UserProvider
+    UserProvider,
+    AuthProvider
   ]
   // schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
