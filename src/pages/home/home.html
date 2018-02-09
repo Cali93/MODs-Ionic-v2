@@ -1,47 +1,57 @@
 <ion-content class="homecontent">
   <ion-slides pager (ionSlideDidChange)="slideChanged()" (ionSlideDrage)="slideMoved()">
-    
-    <ion-slide>
-      <div class="diag" style="background: url('assets/imgs/modmok.png') no-repeat center">
-        <ion-icon class="lightidea" name="bulb" color="primary" [@bounce]='state' (@bounce.done)="animationDone()">          <span class="dialog">Consectetur adipisicing elit. i dolores volukjkjdsfk</span>
 
-        </ion-icon>
-      </div>
-      <div [@bounce]='state'>
-          <h3>STEP 1</h3>
-          <p>A rock solid Node.js/Express server using Mongoose to organize models and query the database</p>
+    <ion-slide>
+      <div class="diag" style="background: url('assets/imgs/slide1.jpg') no-repeat center">
       </div>
     </ion-slide>
 
     <ion-slide>
-        <div class="diag" style="background: url('assets/imgs/modmok.png') no-repeat center">
-          <ion-icon name="bulb" color="primary" [@bounce]='state'></ion-icon>
-        </div>
-        <div [@bounce]='state'>
-            <h3>STEP 2</h3>
-            <p>A rock solid Node.js/Express server using Mongoose to organize models and query the database</p>
-        </div>
+      <div class="diag" style="background: url('assets/imgs/slide2.jpg') no-repeat center">
+      </div>
     </ion-slide>
 
-    <ion-slide>
-        <div class="diag" style="background: url('assets/imgs/modmok.png') no-repeat center">
-          <ion-icon name="bulb" color="primary" [@bounce]='state'></ion-icon>
-        </div>
-        <div [@bounce]='state'>
-            <h3>STEP 3</h3>
-            <p>A rock solid Node.js/Express server using Mongoose to organize models and query the database</p>
-        </div>
-    </ion-slide>
-
-    <ion-slide>
-        <div class="diag" style="background: url('assets/imgs/modmok.png') no-repeat center">
-          <ion-icon name="bulb" color="primary" [@bounce]='state'></ion-icon>
-        </div>
-        <div [@bounce]='state'>
-            <h3>STEP 4</h3>
-            <p>A rock solid Node.js/Express server using Mongoose to organize models and query the database</p>
-        </div>
-    </ion-slide>
   </ion-slides>
-  <button ion-button color="primary" (click)="skip()" id="skip">{{ skipMsg }}</button>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col col-3 col-sm-6 col-md-3 col-lg-3 col-xl-3>
+        <div class="blob">
+          <ion-icon name="color-wand"></ion-icon>
+          <p class="blob-text">
+            Définissez vos besoins et concrétisez vos projets
+          </p>
+        </div>
+      </ion-col>
+
+      <ion-col col-3 col-sm-6 col-md-3 col-lg-3 col-xl-3>
+        <div class="blob">
+          <ion-icon name="finger-print"></ion-icon>
+          <p class="blob-text">
+            Personnalisez vos accessoires &amp; finitions
+          </p>
+        </div>
+      </ion-col>
+
+      <ion-col col-3 col-sm-6 col-md-3 col-lg-3 col-xl-3>
+        <div class="blob">
+          <ion-icon name="bulb"></ion-icon>
+          <p class="blob-text">
+            Imaginez: cloisons, podiums, gradins, mobilier, stands,...
+          </p>
+        </div>
+
+      </ion-col>
+
+      <ion-col col-3 col-sm-6 col-md-3 col-lg-3 col-xl-3>
+        <div class="blob">
+          <ion-icon name="star"></ion-icon>
+          <p class="blob-text" style="padding-right:25px;">
+            Vente neuf / occasion<br>
+            location courte / longue durée
+          </p>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

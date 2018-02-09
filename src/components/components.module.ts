@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
-import { ContactFormComponent } from './contact-form/contact-form';
+import { ToolbarComponent } from './toolbar/toolbar';
 
 @NgModule({
-	declarations: [ ContactFormComponent ],
+	declarations: [ ToolbarComponent ],
 	imports: [],
-	exports: [ ContactFormComponent ]
+	exports: [ ToolbarComponent ]
 })
 
 export class ComponentsModule {}

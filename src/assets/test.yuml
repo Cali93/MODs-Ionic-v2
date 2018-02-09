@@ -1,0 +1,12 @@
+// {type:class}
+// {direction:topDown}
+[note: Were will we store the presets{bg:cornsilk}]
+[Customer]<>1-onAddToCart()>[Preorders]
+[Customer]<>1-onConfirmOrder>[Orders]
+[Preorders]++*-*>[SHOP ITEM | Project Image | Date | Quantity | Comments]
+[SHOP ITEM | Date | Quantity | Comments]-[OBJECT SPECS | Product id | Number of MODs | Textures | Accessoires]
+[Orders]->[Preorder details]
+// [Order]*-*>[Product|EAN_Code|promo_price()]
+// [Category]<->[Product]
+// [DeliveryMethod]^[National]
+// [DeliveryMethod]^[International]

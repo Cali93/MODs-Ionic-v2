@@ -1,3 +1,7 @@
+a:hover {
+    text-decoration: none;
+}
+
 .left-menu {
     position: absolute;
     width: 250px;
@@ -25,7 +29,11 @@
         left: 0;
         width: 200px;
         height: 50px;
-        padding: 20px;
+        padding-left: 55px;
+        padding-top: 5px;
+        font-size: 29px;
+        color: white;
+        font-weight: bold;
     }
     .tab-icon {
         position: absolute;
@@ -84,9 +92,9 @@
     .menu-title, .badass-button {
         color: #fff;
         text-transform: uppercase;
-        background-color: #78B937;
+        background-color:#7EBA43;
         padding: 7px 10px;
-        font-size: 24px;
+        font-size: 20px;
         margin: 0;
         display: block;
         text-decoration: none;
@@ -116,26 +124,26 @@
 }    
 
 .menu-title-mini {
-    color: #78B937;
+    color:#7EBA43;
     text-transform: uppercase;
     background-color: #fff;
     padding: 7px 10px;
-    font-size: 14px;
+    font-size: 13px;
     margin: 0;
     display: block;
     text-decoration: none;
     width: 60px;
-    border: 1px solid #78B937!important;
+    border: 1px solid#7EBA43!important;
 }
 
 .badass-button-blanc{ 
-    color:#78B937;
+    color:#7EBA43;
     text-transform: uppercase;
     background-color: #fff;
     padding: 7px 10px;
-    font-size: 24px;
+    font-size: 20px;
     margin: 0;
     display: block;
     text-decoration: none;  
-    border: 1px solid #78B937!important;
+    border: 1px solid#7EBA43!important;
 }

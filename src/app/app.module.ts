@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ErrorHandler, NgModule} from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -24,16 +25,15 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 
-import { ThreeAngular } from '../threeAngular/threeAngular.module'
+import { CallNumber } from '@ionic-native/call-number';
+import { EmailComposer } from '@ionic-native/email-composer';
+import { FIREBASE_CONFIG } from './firebase.credentials';
+import { PreorderProvider } from '../providers/preorder/preorder';
+import { UserProvider } from '../providers/user/user';
 
-const config = {
-  apiKey: "AIzaSyDRryIjGFGG0R9NxhjRel4Ysz3UkBq5zKY",
-  authDomain: "modsv2-5ebca.firebaseapp.com",
-  databaseURL: "https://modsv2-5ebca.firebaseio.com",
-  projectId: "modsv2-5ebca",
-  storageBucket: "modsv2-5ebca.appspot.com",
-  messagingSenderId: "792470097085"
-};
+import { ThreeAngular } from '../threeAngular/threeAngular.module';
+
+
 
 @NgModule({
   declarations: [
@@ -43,11 +43,9 @@ const config = {
     ModsPage,
     TabsPage,
     ShopPage,
-
     LoginPage,
     SigninPage,
     DisconnectPage
-
   ],
   imports: [
     BrowserModule,
@@ -55,9 +53,10 @@ const config = {
     BrowserAnimationsModule,
     FormsModule,
     IonicModule.forRoot(MyApp),
-    AngularFireModule.initializeApp(config),
+    AngularFireModule.initializeApp(FIREBASE_CONFIG),
     AngularFireAuthModule,
     AngularFireDatabaseModule,
+    NgbModule.forRoot(),
     ThreeAngular
   ],
   bootstrap: [IonicApp],
@@ -78,7 +77,11 @@ const config = {
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     TabsEnablor,
     ContactProvider,
-    ToastProvider
+    ToastProvider,
+    CallNumber,
+    EmailComposer,
+    PreorderProvider,
+    UserProvider
   ]
   // schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

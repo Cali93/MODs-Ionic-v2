@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs/Subject';
+import { ToastProvider } from '../../providers/toast/toast';
 
 import * as THREE from 'three';
 import "../EnableThree.js";
@@ -10,6 +11,7 @@ import { Defaults } from "./defaults";
 @Injectable()
 
 export class TheArchitect {
+  
   public defaults = new Defaults;
 
   private theMatrixReloaded = new Subject<any>();
@@ -60,11 +62,12 @@ export class TheArchitect {
     'nextIcon' : 'open_with'
   }
   public editMode = this.translateMode;
-  
 
-  constructor() {
+  constructor(public toast:ToastProvider) {
+    
     this.addObject = this.addObject.bind(this); //Add right 'this' to method
     this.plugMeIn();
+    
   }
 
   /**
@@ -176,10 +179,16 @@ export class TheArchitect {
    * Removes an object from the scene but also from the objects array
    */
   public removeObject (object) {
-    if ( object.parent === null ) return; // avoid deleting the camera or scene
-    object.parent.remove( object );
-    this.objects.splice( this.objects.indexOf( object ), 1 );
-    this.theMatrixReloaded.next();
+    if ( !this.selected.length ) {
+      // avoid deleting the camera or scene
+      this.toast.show(`Sorry, you must select something to delete`);
+    } else {
+      object.parent.remove( object );
+      this.objects.splice( this.objects.indexOf( object ), 1 );
+
+      this.theMatrixReloaded.next();
+    }
+
   }
 
   /**
@@ -228,7 +237,7 @@ export class TheArchitect {
     this.theMatrixReloaded.next();
 
   }
-  
+
   /**
    * Deselect everything
    */

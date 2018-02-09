@@ -71,7 +71,7 @@ export class TheMatrix implements AfterViewInit {
 
   /**
    * Calculate Aspect Ratio of The Matrix. Avoids compression and streching of the scene.
-   */  
+   */
   public calculateAspectRatio(){
     this.canvas.style.width = "100%";
     this.canvas.style.height = "100%";
@@ -141,7 +141,7 @@ export class TheMatrix implements AfterViewInit {
    * Enable Moving inside The Matrix
    */
   public addOrbitControls() {
-    this.controls = new THREE.OrbitControls(this.theArchitect.camera);
+    this.controls = new THREE.OrbitControls(this.theArchitect.camera, this.canvas);
     this.controls.rotateSpeed = 1.0;
     this.controls.zoomSpeed = 1.2;
 
@@ -152,7 +152,7 @@ export class TheMatrix implements AfterViewInit {
   }
 
   /**
-   * Give us power to control objects in The Matrix 
+   * Give us power to control objects in The Matrix
    */
   public addTransformControls() {
     this.transformControls = new THREE.TransformControls(this.theArchitect.camera, this.canvas);
@@ -199,4 +199,3 @@ export class TheMatrix implements AfterViewInit {
   }
 
 }
-  
