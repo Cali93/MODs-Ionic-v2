@@ -28,7 +28,7 @@ export class TheToolbar {
     this.TheArchitect.changeEditMode();
   }
   callCloneObject(){
-    this.TheArchitect.cloneObject();
+    this.TheArchitect.cloneSelection();
   }
 
   setTooltip(tip){
@@ -40,5 +40,8 @@ export class TheToolbar {
     this.TheArchitect.changeSelectMode();
   }
 
+  callSelectAll(){
+    this.TheArchitect.selectAll();
+  }
 
 }

@@ -41,19 +41,12 @@ export class TheMatrix implements AfterViewInit {
 
 
   /**
-   * adaptTransformControls
+   * adaptTransformControls, triggered by changes in Selection
    */
   public adaptTransformControls() {
     this.transformControls.detach();
     if (this.theArchitect.selected.length){
-      if (this.theArchitect.selectMode.id == "one") {
-        // Single element
-        this.transformControls.attach( this.theArchitect.selected[0] );
-      } else {
-        // Multiple elements
-
-        this.transformControls.attach( this.theArchitect.nebuchadnezzar );
-      }
+      this.transformControls.attach( this.theArchitect.nebuchadnezzar );
     }
   }
 
@@ -151,10 +144,10 @@ export class TheMatrix implements AfterViewInit {
     this.controls = new THREE.OrbitControls(this.theArchitect.camera);
     this.controls.rotateSpeed = 1.0;
     this.controls.zoomSpeed = 1.2;
-    let TheMatrix: TheMatrix = this; // Hacking the system...
-    this.controls.addEventListener('change', function(){
-      // TheMatrix.transformControls.update();
-      TheMatrix.render()
+
+    this.controls.addEventListener('change', ()=>{
+      this.transformControls.update();
+      this.render()
     });
   }
 
@@ -168,11 +161,10 @@ export class TheMatrix implements AfterViewInit {
     this.transformControls.setSpace( 'world' );
     this.transformControls.name = "controls";
 
-    let TheMatrix: TheMatrix = this; // Hacking the system...
-    this.transformControls.addEventListener('change', function (evt) {
-      TheMatrix.transformControls.update();
-      TheMatrix.render();
-    } );
+    this.transformControls.addEventListener('change', () => {
+      this.transformControls.update();
+      this.render();
+    });
 
     this.theArchitect.scene.add( this.theArchitect.nebuchadnezzar );
     this.theArchitect.sceneHelpers.add( this.transformControls );

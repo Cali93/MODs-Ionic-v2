@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, ModalController } from 'ionic-angular';
-import { LoginPage } from '../../../pages/login/login'; 
+// import { LoginPage } from '../../../pages/login/login'; 
 
 
 @Component({
@@ -21,15 +21,15 @@ export class LeftMenuComponent {
     this.isActive = !this.isActive;
   }
 
-  logInOrSignIn() {
-    if (this.isLoggedIn()) {
-      this.navCtrl.parent.select(2);
-    }
-    else {
-      this.navCtrl.push(LoginPage);
-    }
+  // logInOrSignIn() {
+  //   if (this.isLoggedIn()) {
+  //     this.navCtrl.parent.select(2);
+  //   }
+  //   else {
+  //     this.navCtrl.push(LoginPage);
+  //   }
 
-  }
+  // }
 
   isLoggedIn() {
     return localStorage.getItem('isLoggedIn') ? true : false;

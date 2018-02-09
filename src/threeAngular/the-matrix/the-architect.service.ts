@@ -15,9 +15,6 @@ export class TheArchitect {
   private theMatrixReloaded = new Subject<any>();
   public theMatrixReloaded$ = this.theMatrixReloaded.asObservable();
 
-  private objectRemoved = new Subject<any>();
-  public objectRemoved$ = this.objectRemoved.asObservable();
-
   private selectionChanged = new Subject<any>();
   public selectionChanged$ = this.selectionChanged.asObservable();
 
@@ -30,7 +27,10 @@ export class TheArchitect {
   public camera: THREE.PerspectiveCamera;
   public scene: THREE.Scene;
   public sceneHelpers: THREE.Scene;
-  public nebuchadnezzar = new THREE.Mesh( new THREE.BoxGeometry( 1, 1, 1 ), new THREE.MeshBasicMaterial({ color: 0xa1ff11, wireframe: true }) ); // temporary multi-selection group
+  public nebuchadnezzar = new THREE.Mesh( new THREE.BoxGeometry( 4, 4, 4 ), new THREE.MeshBasicMaterial({ color: 0xa1ff11, wireframe: false,visible:false }) ); // temporary multi-selection group
+  public nebuchasBoundingBox = new THREE.Box3;
+  public redBox = new THREE.Box3Helper(null, 0xff0000);
+
   public loader: THREE.ObjectLoader;
 
   public objects = [];
@@ -46,7 +46,7 @@ export class TheArchitect {
     'nextText' : 'Select One Element',
     'nextIcon' : 'radio_button_unchecked'
   }
-  public selectMode = this.singleMode;
+  public selectMode = this.manyMode;
 
 
   public translateMode  = {
@@ -63,8 +63,8 @@ export class TheArchitect {
   
 
   constructor() {
+    this.addObject = this.addObject.bind(this); //Add right 'this' to method
     this.plugMeIn();
-    this.addObject = this.addObject.bind(this);
   }
 
   /**
@@ -74,6 +74,33 @@ export class TheArchitect {
     this.camera = this.defaults.camera;
     this.scene = this.defaults.scene;
     this.sceneHelpers = this.defaults.sceneHelpers;
+    this.loader = new THREE.ObjectLoader();
+    this.loader.load(
+      '../assets/MODs.json',
+      (object)=>{
+        object.position.x = 20;object.position.z = -20;
+        this.objects.push(object);
+        this.scene.add(object); 
+        this.theMatrixReloaded.next();
+      }
+    );
+    this.loader.load(
+      '../assets/MODs.json',
+      (object)=>{
+        object.position.x = -30;object.position.z = 30;
+        this.objects.push(object);
+        this.scene.add(object); 
+        this.theMatrixReloaded.next();
+      }
+    );
+    this.loader.load(
+      '../assets/MODs.json',
+      (object)=>{
+        this.objects.push(object);
+        this.scene.add(object); 
+        this.theMatrixReloaded.next();
+      }
+    );
   }
 
   /**
@@ -92,10 +119,8 @@ export class TheArchitect {
    * Adds an object to the scene but also to the objects array
    */
   public addObject (object) {
-    // object.add( this.defaults. )
     this.objects.push(object);
-    this.scene.add(object);
-
+    this.scene.add(object); 
     this.theMatrixReloaded.next();
   }
 
@@ -113,14 +138,40 @@ export class TheArchitect {
   /**
    * Clones an object
    */
-  public cloneObject () {
-    if (!this.selected.length) return;
-    this.selected.forEach(object => {
-      let clone = object.clone();
+  public cloneObject (object) {
+      var clone = object.clone();
       this.addObject(clone);
-    });
   }
 
+  /**
+   * cloneSelection
+   */
+  public cloneSelection() {
+    if (!this.selected.length) return;
+    this.selected.forEach(object => {
+
+      this.stripSelection(object,(object)=>{
+        this.cloneObject(object);
+      })
+
+    });
+    this.theMatrixReloaded.next();
+  }
+
+  private getBoxHelperIn(object) {
+    return object.getObjectByName('yellowBox');
+  }
+
+  private stripSelection (selection, callback){
+    let helper = this.getBoxHelperIn(selection);
+    this.removeFromNebuchadnezzar(selection);
+    selection.remove( helper );
+
+    callback(selection);
+    
+    selection.add( helper );
+    this.addToNebuchadnezzar(selection);
+  }
   /**
    * Removes an object from the scene but also from the objects array
    */
@@ -128,7 +179,7 @@ export class TheArchitect {
     if ( object.parent === null ) return; // avoid deleting the camera or scene
     object.parent.remove( object );
     this.objects.splice( this.objects.indexOf( object ), 1 );
-    this.objectRemoved.next();
+    this.theMatrixReloaded.next();
   }
 
   /**
@@ -138,6 +189,7 @@ export class TheArchitect {
     this.selected.forEach(object => {
       this.removeObject( object );
     });
+    this.deselect();
   }
 
   /**
@@ -165,19 +217,26 @@ export class TheArchitect {
    * Select everything
    */
   public selectAll () {
-    // In Here we will select everything
+    console.log(this.objects);
+    this.deselect();
+
+    this.selected = this.objects;
+
+    this.updateNebuchadnezzar();
+    this.updateBoxes();
+    this.selectionChanged.next();
+    this.theMatrixReloaded.next();
+
   }
   
   /**
    * Deselect everything
    */
   public deselect () {
-    if (this.selectMode.id == 'one'){
-      this.selected = [];
-    } else {
-      this.clearNebuchadnezzar();
-    }
-    this.updateYellowBoxes();
+    this.selected = [];
+
+    if (this.selectMode.id == 'many') this.clearNebuchadnezzar();
+    this.updateBoxes();
     this.selectionChanged.next();
     this.theMatrixReloaded.next();
   }
@@ -256,19 +315,22 @@ export class TheArchitect {
    * What to do if user clicks an object
    */
   public handleClick ( target ) {
-    if ( this.selectMode.id == "many" && this.isSelected( target ) ){
-      this.removeFromSelection( target );
-      this.removeFromNebuchadnezzar(target);
-    } else if ( this.selectMode.id == "many" && !this.isSelected( target ) ) {
-      this.addToSelection( target );
-      this.addToNebuchadnezzar(target);
-    } else if ( this.selectMode.id == "one" && !this.isSelected( target ) ) {
-      this.selectOne( target );
+    if (this.selectMode.id == "many") {
+      
+      if (this.isSelected( target )){
+        this.removeFromSelection( target );  
+      } else {
+        this.addToSelection( target );
+      }
+      
+    } else {
+      if (!this.isSelected( target )) {
+        this.selectOne( target );
+      }
     }
-
-    this.centerNebuchadnezzar();
-
-    this.updateYellowBoxes();
+    
+    this.updateNebuchadnezzar();
+    this.updateBoxes();
     this.selectionChanged.next();
     this.theMatrixReloaded.next();
   }
@@ -277,31 +339,62 @@ export class TheArchitect {
 
 
   /**
-   * Ok, so. This should happen before binding the controllers:
-   * When we put things in a group we should use the center of the group
-   * as anchor point for the controllers, right?
+   * Keep's Nebucha synced and centered!!!
+   *              This one is tricky! 
+   * Ok, so. Before binding the controllers to nabuchos we want to
+   * use the center of the group as anchor point for the controllers,
+   * right? Ok let's do it.
    */
-  public centerNebuchadnezzar() {
-    // this.sceneHelpers.add(redBox);
-    // THREE.SceneUtils.attach(redBox,this.scene,this.nebuchadnezzar);
-    // let redBox = new THREE.BoxHelper( this.nebuchadnezzar, 0xff0000 );
+  public updateNebuchadnezzar () {    
+    // First we create a temporary group
+    let geo = new THREE.BoxGeometry( 2, 2, 2);
+    geo.applyMatrix( new THREE.Matrix4().makeTranslation(1,1,1) );
+    let tempGroup = new THREE.Mesh( geo, new THREE.MeshBasicMaterial({ color: 0x0000ff, wireframe: true }) ); // temporary multi-selection group
+    this.scene.add(tempGroup);
 
-    // var box = new THREE.Box3().setFromObject( this.nebuchadnezzar );
-    // if (this.selected.length == 1){
-    //   // this.selected[0].applyMatrix(  );
-    //   let object = this.selected[0];
-    //   console.log(object.matrix);
-    //   this.nebuchadnezzar.position.set( box.applyMatrix4(object.matrix)) ;
-    // }
-    // box.center( this.nebuchadnezzar.position );
-    // this.nebuchadnezzar.position.multiplyScalar( - 1 );
+    // And we remove everything from Nebuchadnezzar!
+    this.clearNebuchadnezzar();
+
+    // Then we set the temporary group's position to first selected object's position
+    tempGroup.position.x = this.selected[0].position.x;
+    tempGroup.position.y = this.selected[0].position.y;
+    tempGroup.position.z = this.selected[0].position.z;
+    tempGroup.updateMatrixWorld();
+
+    // Then we add every selected element to our temporary group
+    this.selected.forEach(obj => {
+      THREE.SceneUtils.attach(obj,this.scene,tempGroup);
+    })
+
+    // Then we set a Minimum Bounding Box for this group (awesome!)
+    this.nebuchasBoundingBox.setFromObject( tempGroup );
+    
+    // So we can center Nebuchadnezzar in this Box's center and refresh it's vectors
+    this.nebuchasBoundingBox.center( this.nebuchadnezzar.position );
+    this.nebuchadnezzar.updateMatrixWorld();
+
+    // Then we remove every selected element of the temporary group
+    // and add'em to Nebucha
+    this.selected.forEach(object => {
+      THREE.SceneUtils.detach(object,tempGroup,this.scene);
+      this.addToNebuchadnezzar(object);
+    })
+    
+    // Finaly we erase temporary group from scene
+    this.scene.remove(tempGroup);
+
+    // But WAIT!!!! We could also just add a surrounding red box to Nebucha
+    // this.redBox.box = this.nebuchasBoundingBox;
+    // this.sceneHelpers.add(this.redBox);
+    
+    // Piece of cake
   }
 
 
   /**
-   * ajoute les petites boites jaunes à tous les elements selectionnés!
+   * Adds pretty little yellow boxes!
    */
-  public updateYellowBoxes() {
+  public updateBoxes() {
     if (!this.objects.length) return;
     this.objects.forEach(object => {
       if (object.getObjectByName('yellowBox')){
@@ -319,9 +412,9 @@ export class TheArchitect {
    * Remove all elements from MulitSelection Group
    */
   public clearNebuchadnezzar() {
-    this.nebuchadnezzar.children.forEach(object => {
-      THREE.SceneUtils.detach(object,this.nebuchadnezzar,this.scene);
-    });
+    while (this.nebuchadnezzar.children.length) {
+      THREE.SceneUtils.detach(this.nebuchadnezzar.children[0],this.nebuchadnezzar,this.scene);
+    }
   }
 
   /**
