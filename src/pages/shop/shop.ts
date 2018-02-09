@@ -25,6 +25,7 @@ export class ShopPage {
   show: boolean = true;
   user: AngularFireObject<any>;
   users: Observable<any>;
+  projectname: string;
 
   constructor(
     public navCtrl: NavController,
@@ -48,6 +49,9 @@ export class ShopPage {
     console.log('ionViewDidEnter ShopPage');
   }
 
+  detailsForm(){
+
+  }
   // getItemList(){
 
   // }
