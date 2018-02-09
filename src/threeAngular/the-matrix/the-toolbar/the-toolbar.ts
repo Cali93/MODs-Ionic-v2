@@ -10,9 +10,14 @@ export class TheToolbar {
   public isActive: boolean = false;
   public tooltip: string = "";
 
-
-  constructor( public TheArchitect: TheArchitect ) {}
   
+  constructor(
+    public TheArchitect: TheArchitect
+  ) {}
+  
+  
+  
+
   callDeleteMod(){
     this.TheArchitect.removeSelected();
   }
@@ -23,7 +28,7 @@ export class TheToolbar {
     this.TheArchitect.changeEditMode();
   }
   callCloneObject(){
-    this.TheArchitect.cloneObject();
+    this.TheArchitect.cloneSelection();
   }
 
   setTooltip(tip){
@@ -31,6 +36,12 @@ export class TheToolbar {
     this.isActive = true;
   }
 
+  callChangeSelectMode(){
+    this.TheArchitect.changeSelectMode();
+  }
 
+  callSelectAll(){
+    this.TheArchitect.selectAll();
+  }
 
 }

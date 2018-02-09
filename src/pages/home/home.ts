@@ -1,36 +1,11 @@
-import { Component, ViewChild, trigger, transition, style, state, animate, keyframes } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams, Slides } from 'ionic-angular';
 import { TabsEnablor } from '../../providers/custom/tabsEnablor';
-
-
-/**
- * Generated class for the HomePage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
  @IonicPage()
  @Component({
    selector: 'page-home',
-   templateUrl: 'home.html',
-   animations: [
-   trigger('bounce', [
-     state('*', style({
-       transform: 'translateX(0)'
-     })),
-     transition('* => rightSwipe', animate('700ms ease-out', keyframes([
-       style({transform: 'translateX(0)', offset:0}),
-       style({transform: 'translateX(-65px)', offset: .3}),
-       style({transform: 'translateX(0)', offset:1})
-       ]))),
-     transition('* => leftSwipe', animate('700ms ease-out', keyframes([
-       style({transform: 'translateX(0)', offset:0}),
-       style({transform: 'translateX(65px)', offset: .3}),
-       style({transform: 'translateX(0)', offset:1})
-       ])))
-     ])
-   ]
+   templateUrl: 'home.html'
  })
  export class HomePage {
 
@@ -38,7 +13,7 @@ import { TabsEnablor } from '../../providers/custom/tabsEnablor';
    skipMsg: string = "GET STARTED";
    state: string = 'x';
 
-   constructor(public navCtrl: NavController, 
+   constructor(public navCtrl: NavController,
                  public navParams: NavParams,
                      private myTabs: TabsEnablor) {
    }
@@ -65,7 +40,7 @@ import { TabsEnablor } from '../../providers/custom/tabsEnablor';
    }
 
    ionViewDidEnter() {
-     console.log('ionViewDidLoad HomePage');
+    //  console.log('ionViewDidLoad HomePage');
    }
 
  }
