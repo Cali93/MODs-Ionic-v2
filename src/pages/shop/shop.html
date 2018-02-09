@@ -54,20 +54,51 @@
               </ion-col>
             </ion-row>
 
-            <button ion-button text-uppercase icon-left block class="btn btn-wht" (click)="onOrderDetails()">
+            <button *ngIf="show" ion-button text-uppercase icon-left block class="btn btn-wht">
               <ion-icon name="eye" item-start></ion-icon>
               fill in project details
             </button>
+            <form action="">
+              <ion-list>
+                <ion-item>
+                  <ion-label color="primary" stacked>Project name</ion-label>
+                  <ion-input placeholder="Type here your project name"></ion-input>
+                </ion-item>
+
+                <ion-item>
+                  <ion-label color="primary" stacked>Quantity</ion-label>
+                  <ion-input type="number" ></ion-input>
+                </ion-item>
+
+                <ion-item>
+                  <ion-label color="primary" stacked>message to MCB</ion-label>
+                  <ion-textarea placeholder="Enter a description"></ion-textarea>
+                </ion-item>
+
+              </ion-list>
+              <ion-row>
+                  <ion-col>
+                    <button ion-button text-uppercase block class="btn btn-wht">
+                      cancel
+                    </button>
+                  </ion-col>
+                  <ion-col>
+                    <button ion-button text-uppercase block class=" btn btn-grn">
+                      save
+                    </button>
+                  </ion-col>
+                </ion-row>
+            </form>
 
 
-          <button ion-button text-uppercase icon-left block class="btn btn-grn hide" (click)="show = !show; onOrder()">
-            <ion-icon name="arrow-round-forward" item-start></ion-icon>
-            Ask price offer
-          </button>
+            <button ion-button text-uppercase icon-left block class="btn btn-grn hide" (click)="show = !show; onOrder()">
+              <ion-icon name="arrow-round-forward" item-start></ion-icon>
+              Ask price offer
+            </button>
 
-          <ion-note>
-            Please fill in your creation details
-          </ion-note>
+            <ion-note>
+              Please fill in your project details
+            </ion-note>
 
 
           </ion-card-content>
