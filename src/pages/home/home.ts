@@ -40,7 +40,7 @@ import { TabsEnablor } from '../../providers/custom/tabsEnablor';
    }
 
    ionViewDidEnter() {
-     console.log('ionViewDidLoad HomePage');
+    //  console.log('ionViewDidLoad HomePage');
    }
 
  }
