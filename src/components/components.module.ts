@@ -1,10 +1,12 @@
 import { NgModule } from '@angular/core';
 import { ToolbarComponent } from './toolbar/toolbar';
 
+
 @NgModule({
-	declarations: [ ToolbarComponent ],
+	declarations: [ ToolbarComponent],
 	imports: [],
-	exports: [ ToolbarComponent ]
+	exports: [ ToolbarComponent],
+  entryComponents:[],
 })
 
 export class ComponentsModule {}

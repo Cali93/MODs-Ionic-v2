@@ -4,7 +4,6 @@ import { LoginPage } from '../../../pages/login/login';
 import { AngularFireAuth } from 'angularfire2/auth';
 
 
-
 @Component({
   selector: 'left-menu',
   templateUrl: 'left-menu.html'
@@ -24,6 +23,11 @@ export class LeftMenuComponent {
     this.isActive = !this.isActive;
   }
 
+
+  isLoggedIn() {
+    return localStorage.getItem('isLoggedIn') ? true : false;
+  }
+  
   logInOrSignIn() {
     if (this.firebase.auth.currentUser) {
       this.navCtrl.parent.select(2);
@@ -31,6 +35,6 @@ export class LeftMenuComponent {
     else {
       this.navCtrl.push(LoginPage);
     }
-
   }
+  
 }

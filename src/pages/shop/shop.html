@@ -11,356 +11,213 @@
   </ion-navbar>
 
 </ion-header> -->
+<!-- <ion-card>
+  <div class="modal-body">
+    <form>
+      <label for="projectName">Project name :</label>
+      <input [(ngModel)]="projectName" required type="text" name="projectName">
+      <br>
+      <label floating for="quantities">Quantities :</label>
+      <input [(ngModel)]="quantities"type="number" name="quantities">
+      <br>
+      <label floating for="userComments">Comments :</label>
+      <textarea floating name="userComments" [(ngModel)]="userComments" id="userComments" cols="30" rows="5"></textarea>
+    </form>
+  </div>
+  <div class="modal-footer" style="color:black;">
+    <button type="button" class="btn btn-outline-light" (click)="createPreorder()" style="color:black;">Confirm order</button>
+    <button type="button" class="btn btn-outline-light" (click)="show = !show" style="color:black;">Close</button>
+  </div>
+</ion-card> -->
 
-
-<ion-content padding>
-
-  <ion-card>
-        <div class="modal-body">
-          <form>
-            <label for="projectName">Project name :</label>
-            <input [(ngModel)]="projectName" required type="text" name="projectName">
-            <br>
-            <label floating for="quantities">Quantities :</label>
-            <input [(ngModel)]="quantities"type="number" name="quantities">
-            <br>
-            <label floating for="userComments">Comments :</label>
-            <textarea floating name="userComments" [(ngModel)]="userComments" id="userComments" cols="30" rows="5"></textarea>
-          </form>
-        </div>
-        <div class="modal-footer" style="color:black;">
-          <button type="button" class="btn btn-outline-light" (click)="createPreorder()" style="color:black;">Confirm order</button>
-          <button type="button" class="btn btn-outline-light" (click)="show = !show" style="color:black;">Close</button>
-        </div>
-  </ion-card>
+<ion-content id="container">
   <ion-grid>
 
     <ion-row>
       <ion-col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12>
-        <div>
-          <h2 ion-button block color="primary">WELCOME TO YOUR SHOPPING CART !</h2>
+
+        <div class="page-header">
+          <img padding src="../../assets/imgs/logo_blc.png" alt="">
+          <h1 padding text-uppercase>shop</h1>
         </div>
+
       </ion-col>
     </ion-row>
-
     <ion-row>
-      <ion-col col-12 col-sm-9 col-md-6 col-lg-4 col-xl-3>
-        <div class="card mb-3">
-          <!-- <h3 class="card-header productname">Card header</h3> -->
-          <!-- <div class="card-body">
-            <h5 class="card-title">My project name</h5>
-            <h6 class="card-subtitle text-muted">A beautiful bar</h6>
-          </div> -->
-          <img style="height: 200px; width: 100%; display: block;" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22318%22%20height%3D%22180%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20318%20180%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_158bd1d28ef%20text%20%7B%20fill%3Argba(255%2C255%2C255%2C.75)%3Bfont-weight%3Anormal%3Bfont-family%3AHelvetica%2C%20monospace%3Bfont-size%3A16pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_158bd1d28ef%22%3E%3Crect%20width%3D%22318%22%20height%3D%22180%22%20fill%3D%22%23777%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%22129.359375%22%20y%3D%2297.35%22%3EImage%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E"
-            alt="Card image">
-          <!-- <div class="card-body">
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              </div> -->
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item">
-              <button ion-button block class="btn btn-success" (click)="show = !show; onOrder()">
-                <ion-icon name="star"> ORDER</ion-icon>
-              </button>
-
-              <!-- <button (click)="show = !show">{{show ? 'hide' : 'show'}}</button> -->
-              <!-- show = {{show}} -->
-              <br>
-              <div *ngIf="show; else elseBlock">
-                  <li class="list-group-item">
-                      <button ion-button block class="btn btn-warning" (click)="getUser()">
-                        <ion-icon name="hammer"> EDIT</ion-icon>
-                      </button>
-                    </li>
-                    <li class="list-group-item">
-                      <button ion-button block class="btn btn-danger" (click)="onDelete()">
-                        <ion-icon name="trash"> DELETE</ion-icon>
-                      </button>
-                    </li>
-              </div>
-            </li>
-
-            <ng-template #elseBlock let-c="close" let-d="dismiss">
-                <div class="modal-header">
-                  <h4  style="color:black" class="modal-title">Place order</h4>
-                  <button type="button" class="close" aria-label="Close" (click)="show = !show">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body">
-                  <form>
-                    <label for="projectName">Project name :</label>
-                    <input [(ngModel)]="preorder.projectName" required type="text" name="projectName">
-                    <br>
-                    <label floating for="quantities">Quantities :</label>
-                    <input [(ngModel)]="preorder.quantities"type="number" name="quantities">
-                    <br>
-                    <label floating for="userComments">Comments :</label>
-                    <textarea floating name="userComments" [(ngModel)]="preorder.userComments" id="userComments" cols="30" rows="5"></textarea>
-                  </form>
-                </div>
-                <div class="modal-footer" style="color:black;">
-                  <button type="button" class="btn btn-outline-light" (click)="createItem(preorder)" style="color:black;">Confirm order</button>
-                  <button type="button" class="btn btn-outline-light" (click)="show = !show" style="color:black;">Close</button>
-                </div>
-              </ng-template>
-
-              <!-- <button class="btn btn-lg btn-outline-primary centerbtn" (click)="open(content)">ORDER</button> -->
-              <!-- <button ion-button block class="btn btn-outline-primary" (click)="open(content); onOrder()">
-                  ORDER
-                </button> -->
-
-              <!-- <ordermodal></ordermodal> -->
-          </ul>
-          <!-- <div class="card-body">
-                <a href="#" class="card-link">Card link</a>
-                <a href="#" class="card-link">Another link</a>
-              </div> -->
-          <div class="card-footer text-muted">
-            {{ date }}
-          </div>
-        </div>
-        <!-- <h2 class="productname">OH...YOU TOUCH</h2>
-        <div class="projectimg"></div>
-        <li>
-          <button class="orderbtn" ion-button type="submit">ORDER</button>
-        </li>
-        <li>
-          <button ion-button type="submit" class="qt" color="bluti">QUANTITIES:</button>
-          <ion-input class="quantities" type="number" placeholder="1"></ion-input>
-        </li>
-        <li>
-          <button class="editbtn" ion-button color="wood" type="submit">EDIT IN MODs</button>
-        </li>
-
-        <li>
-          <p>
-            <ion-label ion-button class="comments">COMMENTS :</ion-label>
-            <ion-textarea class="pcoms" placeholder="Your comment here"></ion-textarea>
-          </p>
-        </li>
-
-        <li>
-          <button ion-button class="trasher" type="submit" color="danger">
-            <ion-icon class="trash" name="trash"></ion-icon>
-          </button>
-        </li> -->
-      </ion-col>
+      <!-- TUILE 1 -->
 
       <ion-col col-12 col-sm-9 col-md-6 col-lg-4 col-xl-3>
-        <div class="card mb-3">
-          <!-- <h3 class="card-header productname">Card header</h3> -->
-          <!-- <div class="card-body">
-            <h5 class="card-title">My project name</h5>
-            <h6 class="card-subtitle text-muted">A beautiful bar</h6>
-          </div> -->
-          <img style="height: 200px; width: 100%; display: block;" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22318%22%20height%3D%22180%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20318%20180%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_158bd1d28ef%20text%20%7B%20fill%3Argba(255%2C255%2C255%2C.75)%3Bfont-weight%3Anormal%3Bfont-family%3AHelvetica%2C%20monospace%3Bfont-size%3A16pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_158bd1d28ef%22%3E%3Crect%20width%3D%22318%22%20height%3D%22180%22%20fill%3D%22%23777%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%22129.359375%22%20y%3D%2297.35%22%3EImage%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E"
-            alt="Card image">
-          <!-- <div class="card-body">
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              </div> -->
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item">
-              <button ion-button block class="btn btn-success" (click)="onOrder()">
-                <ion-icon name="star"> ORDER</ion-icon>
-              </button>
-            </li>
-            <li class="list-group-item">
-              <button ion-button block class="btn btn-warning" (click)="onEdit()">
-                <ion-icon name="hammer"> EDIT</ion-icon>
-              </button>
-            </li>
-            <li class="list-group-item">
-              <button ion-button block class="btn btn-danger" (click)="onDelete()">
-                <ion-icon name="trash"> DELETE</ion-icon>
-              </button>
-            </li>
-          </ul>
-          <!-- <div class="card-body">
-                <a href="#" class="card-link">Card link</a>
-                <a href="#" class="card-link">Another link</a>
-              </div> -->
-          <div class="card-footer text-muted">
-            {{ date }}
-          </div>
-        </div>
+
+        <ion-card class="card">
+          <ion-card-header text-uppercase class="card-title">
+            project name
+          </ion-card-header>
+          <ion-note padding-left class="card-meta">02 feb 2018 - last updated 06 feb 2018</ion-note>
+
+
+
+          <img padding style="height: 200px; width: 100%; display: block;" src="../../assets/imgs/mock-scene.png" alt="Card image">
+          <ion-card-content>
+            <ion-row class="hide">
+              <ion-col>
+                <button ion-button text-uppercase block class="btn btn-wht" (click)="getUser()">
+                  Edit scene
+                </button>
+              </ion-col>
+              <ion-col>
+                <button ion-button text-uppercase block class=" btn btn-wht" (click)="onDelete()">
+                  delete
+                </button>
+              </ion-col>
+            </ion-row>
+
+            <button *ngIf="show" ion-button text-uppercase icon-left block class="btn btn-wht">
+              <ion-icon name="eye" item-start></ion-icon>
+              fill in project details
+            </button>
+            <form action="">
+              <ion-list>
+                <ion-item>
+                  <ion-label color="primary" stacked>Project name</ion-label>
+                  <ion-input placeholder="Type here your project name"></ion-input>
+                </ion-item>
+
+                <ion-item>
+                  <ion-label color="primary" stacked>Quantity</ion-label>
+                  <ion-input type="number" placeholder="..."></ion-input>
+                </ion-item>
+
+                <ion-item>
+                  <ion-label color="primary" stacked>Message to MCB</ion-label>
+                  <ion-textarea placeholder="Comment your construction"></ion-textarea>
+                </ion-item>
+
+              </ion-list>
+              <ion-row>
+                  <ion-col>
+                    <button ion-button text-uppercase block class="btn btn-wht">
+                      cancel
+                    </button>
+                  </ion-col>
+                  <ion-col>
+                    <button ion-button text-uppercase block class=" btn btn-grn">
+                      save
+                    </button>
+                  </ion-col>
+                </ion-row>
+            </form>
+
+
+            <button ion-button text-uppercase icon-left block class="btn btn-grn hide" (click)="show = !show; onOrder()">
+              <ion-icon name="arrow-round-forward" item-start></ion-icon>
+              Ask price offer
+            </button>
+
+            <ion-note>
+              Please fill in your project details
+            </ion-note>
+
+
+          </ion-card-content>
+
+        </ion-card>
+
       </ion-col>
 
+      <!-- TUILE 2-->
       <ion-col col-12 col-sm-9 col-md-6 col-lg-4 col-xl-3>
-        <div class="card mb-3">
-          <!-- <h3 class="card-header productname">Card header</h3> -->
-          <!-- <div class="card-body">
-            <h5 class="card-title">My project name</h5>
-            <h6 class="card-subtitle text-muted">A beautiful bar</h6>
-          </div> -->
-          <img style="height: 200px; width: 100%; display: block;" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22318%22%20height%3D%22180%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20318%20180%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_158bd1d28ef%20text%20%7B%20fill%3Argba(255%2C255%2C255%2C.75)%3Bfont-weight%3Anormal%3Bfont-family%3AHelvetica%2C%20monospace%3Bfont-size%3A16pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_158bd1d28ef%22%3E%3Crect%20width%3D%22318%22%20height%3D%22180%22%20fill%3D%22%23777%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%22129.359375%22%20y%3D%2297.35%22%3EImage%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E"
-            alt="Card image">
-          <!-- <div class="card-body">
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                </div> -->
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item">
-              <button ion-button block class="btn btn-success" (click)="onOrder()">
-                <ion-icon name="star"> ORDER</ion-icon>
-              </button>
-            </li>
-            <li class="list-group-item">
-              <button ion-button block class="btn btn-warning" (click)="onEdit()">
-                <ion-icon name="hammer"> EDIT</ion-icon>
-              </button>
-            </li>
-            <li class="list-group-item">
-              <button ion-button block class="btn btn-danger" (click)="onDelete()">
-                <ion-icon name="trash"> DELETE</ion-icon>
-              </button>
-            </li>
-          </ul>
-          <!-- <div class="card-body">
-                  <a href="#" class="card-link">Card link</a>
-                  <a href="#" class="card-link">Another link</a>
-                </div> -->
-          <div class="card-footer text-muted">
-            {{ date }}
-          </div>
-        </div>
+
+        <ion-card class="card">
+          <ion-card-header text-uppercase class="card-title">
+            project name
+          </ion-card-header>
+          <ion-note padding-left class="card-meta">02 feb 2018 - last updated 06 feb 2018</ion-note>
+
+
+
+          <img padding style="height: 200px; width: 100%; display: block;" src="../../assets/imgs/mock-scene.png" alt="Card image">
+          <ion-card-content>
+            <ion-row>
+              <ion-col>
+                <button ion-button text-uppercase block class="btn btn-wht" (click)="getUser()">
+                  Edit scene
+                </button>
+              </ion-col>
+              <ion-col>
+                <button ion-button text-uppercase block class=" btn btn-wht" (click)="onDelete()">
+                  delete
+                </button>
+              </ion-col>
+            </ion-row>
+
+            <button ion-button text-uppercase icon-left block class="btn btn-wht" (click)="onOrderDetails()">
+              <ion-icon name="eye" item-start></ion-icon>
+              project details
+            </button>
+
+            <button ion-button text-uppercase icon-left block class="btn btn-grn" (click)="show = !show; onOrder()">
+              <ion-icon name="arrow-round-forward" item-start></ion-icon>
+              Ask price offer
+            </button>
+
+            <ion-note>
+              MCB Atelier ©
+            </ion-note>
+
+
+          </ion-card-content>
+
+        </ion-card>
+
       </ion-col>
 
-    </ion-row>
-  </ion-grid>
+      <!-- TUILE 3 -->
+      <ion-col col-12 col-sm-9 col-md-6 col-lg-4 col-xl-3>
 
-  <ion-grid>
-    <ion-row>
-      <ion-col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12>
-        <div>
-          <h2 ion-button block color="bluti">YOUR HAVE 4 ORDERS PENDING :</h2>
-        </div>
+        <ion-card class="card">
+          <ion-card-header text-uppercase class="card-title">
+            cocoon stand
+          </ion-card-header>
+          <ion-note padding-left class="card-meta">02 feb 2018 - last updated 06 feb 2018</ion-note>
+
+          <img padding style="height: 200px; width: 100%; display: block;" src="../../assets/imgs/mock-scene.png" alt="Card image">
+          <ion-card-content>
+            <ion-row>
+              <ion-col class="hide">
+                <button ion-button text-uppercase block class="btn btn-wht" (click)="getUser()">
+                  Edit scene
+                </button>
+              </ion-col>
+              <ion-col class="hide">
+                <button ion-button text-uppercase block class=" btn btn-wht" (click)="onDelete()">
+                  delete
+                </button>
+              </ion-col>
+
+              <button ion-button text-uppercase icon-left block class="btn btn-inactive">
+                <!-- <ion-icon name="eye" item-start></ion-icon> -->
+                Awaiting answer
+              </button>
+            </ion-row>
+
+            <button ion-button text-uppercase icon-left block class="btn btn-wht" (click)="onOrderDetails()">
+              <ion-icon name="eye" item-start></ion-icon>
+              project details
+            </button>
+
+            <button ion-button text-uppercase icon-left block class="btn btn-grn">
+              <ion-icon name="close" item-start></ion-icon>
+              cancel demand
+            </button>
+
+            <ion-note>
+              MCB Atelier © request sent 08 feb 2018
+            </ion-note>
+
+
+          </ion-card-content>
+
+        </ion-card>
+
       </ion-col>
     </ion-row>
-
-    <ion-row>
-      <ion-col col-12 col-sm-9 col-md-6 col-lg-4 col-xl-3>
-        <div class="card mb-3">
-          <!-- <h3 class="card-header productname">Card header</h3> -->
-          <div class="card-body" *ngFor="let user of users | async let i = index">
-            <h5 class="card-title">My project {{user.firstname}}</h5>
-            <h6 class="card-subtitle text-muted">A beautiful bar</h6>
-          </div>
-          <img style="height: 200px; width: 100%; display: block;" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22318%22%20height%3D%22180%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20318%20180%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_158bd1d28ef%20text%20%7B%20fill%3Argba(255%2C255%2C255%2C.75)%3Bfont-weight%3Anormal%3Bfont-family%3AHelvetica%2C%20monospace%3Bfont-size%3A16pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_158bd1d28ef%22%3E%3Crect%20width%3D%22318%22%20height%3D%22180%22%20fill%3D%22%23777%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%22129.359375%22%20y%3D%2297.35%22%3EImage%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E"
-            alt="Card image">
-          <!-- <div class="card-body">
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                </div> -->
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item">
-              <button ion-button block class="btn btn-success" (click)="onOrderDetails()">
-                <ion-icon name="eye"> ORDER DETAILS</ion-icon>
-              </button>
-            </li>
-            <li class="list-group-item">
-              <button ion-button block class="btn btn-warning" (click)="onCancel()">
-                <ion-icon name="undo"> CANCEL</ion-icon>
-              </button>
-            </li>
-          </ul>
-          <div class="card-footer text-muted">
-            Ordered on: {{ date }}
-          </div>
-        </div>
-
-      </ion-col>
-
-      <ion-col col-12 col-sm-9 col-md-6 col-lg-4 col-xl-3>
-        <div class="card mb-3">
-          <!-- <h3 class="card-header productname">Card header</h3> -->
-          <div class="card-body">
-            <h5 class="card-title">My project name</h5>
-            <h6 class="card-subtitle text-muted">A beautiful bar</h6>
-          </div>
-          <img style="height: 200px; width: 100%; display: block;" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22318%22%20height%3D%22180%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20318%20180%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_158bd1d28ef%20text%20%7B%20fill%3Argba(255%2C255%2C255%2C.75)%3Bfont-weight%3Anormal%3Bfont-family%3AHelvetica%2C%20monospace%3Bfont-size%3A16pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_158bd1d28ef%22%3E%3Crect%20width%3D%22318%22%20height%3D%22180%22%20fill%3D%22%23777%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%22129.359375%22%20y%3D%2297.35%22%3EImage%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E"
-            alt="Card image">
-          <!-- <div class="card-body">
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                </div> -->
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item">
-              <button ion-button block class="btn btn-success" (click)="onOrderDetails()">
-                <ion-icon name="eye"> ORDER DETAILS</ion-icon>
-              </button>
-            </li>
-            <li class="list-group-item">
-              <button ion-button block class="btn btn-warning" (click)="onCancel()">
-                <ion-icon name="undo"> CANCEL</ion-icon>
-              </button>
-            </li>
-          </ul>
-          <div class="card-footer text-muted">
-            Ordered on: {{ date }}
-          </div>
-        </div>
-
-      </ion-col>
-
-      <ion-col col-12 col-sm-9 col-md-6 col-lg-4 col-xl-3>
-        <div class="card mb-3">
-          <!-- <h3 class="card-header productname">Card header</h3> -->
-          <div class="card-body">
-            <h5 class="card-title">My project name</h5>
-            <h6 class="card-subtitle text-muted">A beautiful bar</h6>
-          </div>
-          <img style="height: 200px; width: 100%; display: block;" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22318%22%20height%3D%22180%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20318%20180%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_158bd1d28ef%20text%20%7B%20fill%3Argba(255%2C255%2C255%2C.75)%3Bfont-weight%3Anormal%3Bfont-family%3AHelvetica%2C%20monospace%3Bfont-size%3A16pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_158bd1d28ef%22%3E%3Crect%20width%3D%22318%22%20height%3D%22180%22%20fill%3D%22%23777%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%22129.359375%22%20y%3D%2297.35%22%3EImage%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E"
-            alt="Card image">
-          <!-- <div class="card-body">
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                </div> -->
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item">
-              <button ion-button block class="btn btn-success" (click)="onOrderDetails()">
-                <ion-icon name="eye"> ORDER DETAILS</ion-icon>
-              </button>
-            </li>
-            <li class="list-group-item">
-              <button ion-button block class="btn btn-warning" (click)="onCancel()">
-                <ion-icon name="undo"> CANCEL</ion-icon>
-              </button>
-            </li>
-          </ul>
-          <div class="card-footer text-muted">
-            Ordered on: {{ date }}
-          </div>
-        </div>
-
-      </ion-col>
-
-      <ion-col col-12 col-sm-9 col-md-6 col-lg-4 col-xl-3>
-        <div class="card mb-3">
-          <!-- <h3 class="card-header productname">Card header</h3> -->
-          <div class="card-body">
-            <h5 class="card-title">My project name</h5>
-            <h6 class="card-subtitle text-muted">A beautiful bar</h6>
-          </div>
-          <img style="height: 200px; width: 100%; display: block;" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22318%22%20height%3D%22180%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20318%20180%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_158bd1d28ef%20text%20%7B%20fill%3Argba(255%2C255%2C255%2C.75)%3Bfont-weight%3Anormal%3Bfont-family%3AHelvetica%2C%20monospace%3Bfont-size%3A16pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_158bd1d28ef%22%3E%3Crect%20width%3D%22318%22%20height%3D%22180%22%20fill%3D%22%23777%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%22129.359375%22%20y%3D%2297.35%22%3EImage%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E"
-            alt="Card image">
-          <!-- <div class="card-body">
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                  </div> -->
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item">
-              <button ion-button block class="btn btn-success" (click)="onOrderDetails()">
-                <ion-icon name="eye"> ORDER DETAILS</ion-icon>
-              </button>
-            </li>
-            <li class="list-group-item">
-              <button ion-button block class="btn btn-warning" (click)="onCancel()">
-                <ion-icon name="undo"> CANCEL</ion-icon>
-              </button>
-            </li>
-          </ul>
-          <div class="card-footer text-muted">
-            Ordered on: {{ date }}
-          </div>
-        </div>
-
-      </ion-col>
-
-    </ion-row>
-  </ion-grid>
-</ion-content>
