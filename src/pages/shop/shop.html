@@ -14,6 +14,25 @@
 
 
 <ion-content padding>
+
+  <ion-card>
+        <div class="modal-body">
+          <form>
+            <label for="projectName">Project name :</label>
+            <input [(ngModel)]="projectName" required type="text" name="projectName">
+            <br>
+            <label floating for="quantities">Quantities :</label>
+            <input [(ngModel)]="quantities"type="number" name="quantities">
+            <br>
+            <label floating for="userComments">Comments :</label>
+            <textarea floating name="userComments" [(ngModel)]="userComments" id="userComments" cols="30" rows="5"></textarea>
+          </form>
+        </div>
+        <div class="modal-footer" style="color:black;">
+          <button type="button" class="btn btn-outline-light" (click)="createPreorder()" style="color:black;">Confirm order</button>
+          <button type="button" class="btn btn-outline-light" (click)="show = !show" style="color:black;">Close</button>
+        </div>
+  </ion-card>
   <ion-grid>
 
     <ion-row>

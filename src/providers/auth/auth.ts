@@ -2,10 +2,10 @@ import { Injectable } from '@angular/core';
 
 import * as firebase from 'firebase/app';
 import { AngularFireAuth } from 'angularfire2/auth';
-import { AngularFirestore, AngularFirestoreDocument } from 'angularfire2/firestore';
+import { AngularFirestore, AngularFirestoreDocument, AngularFirestoreCollection } from 'angularfire2/firestore';
 
 import { Observable } from 'rxjs/Observable';
-import { switchMap } from 'rxjs/operators';
+import 'rxjs/operators/switchMap';
 
 import { User } from '../../models/user/user';
 import { ToastProvider } from '../../providers/toast/toast';
@@ -19,6 +19,7 @@ export class AuthProvider {
               private afs: AngularFirestore,
               private toast: ToastProvider) {
 
+    // This is going to keep track of the user at a global level of the app
     this.user = this.afAuth.authState
       .switchMap((user) => {
         if (user) {
@@ -108,6 +109,10 @@ export class AuthProvider {
     this.afAuth.auth.signOut().then(() => {
         // this.router.navigate(['/']);
     });
+  }
+
+  updateUser(user: User, data:any){
+    return this.afs.doc(`users/${user.uid}`).update(data)
   }
 
   // If error, console log and notify user

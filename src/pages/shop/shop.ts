@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { TabsEnablor } from '../../providers/custom/tabsEnablor';
@@ -6,25 +6,43 @@ import { OrdermodalComponent } from '../../components/ordermodal/ordermodal';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 
 import { AngularFireModule } from 'angularfire2';
-import { AngularFireDatabase, AngularFireObject } from 'angularfire2/database';
+
 import { AngularFireAuth } from 'angularfire2/auth';
+
+import {
+  AngularFirestoreModule,
+  AngularFirestoreCollection,
+  AngularFirestoreDocument,
+  AngularFirestore
+} from 'angularfire2/firestore';
+import {
+  AuthProvider
+} from '../../providers/auth/auth';
+
 import { Preorder } from '../../models/preorder/preorder';
-// import { PreorderProvider } from '../../providers/preorder/preorder';
+import { PreorderProvider } from '../../providers/preorder/preorder';
+
 import { ToastProvider } from '../../providers/toast/toast';
 import { User } from '../../models/user/user';
 import { UserProvider } from '../../providers/user/user';
 import { Observable } from 'rxjs/Observable';
+import 'rxjs/Operator/map';
 
 @IonicPage()
 @Component({
   selector: 'page-shop',
   templateUrl: 'shop.html',
 })
-export class ShopPage {
+export class ShopPage implements OnInit {
 
   show: boolean = true;
-  user: AngularFireObject<any>;
-  users: Observable<any>;
+  user: AngularFirestoreDocument<any>;
+  users: Observable<User[]>;
+  preorders: Observable<Preorder[]>
+  projectName:string;
+  userComments: string;
+  quantities:number;
+  date:number;
 
   constructor(
     public navCtrl: NavController,
@@ -32,12 +50,17 @@ export class ShopPage {
     private myTabs: TabsEnablor,
     private modalService: NgbModal,
     private userService: UserProvider,
+    private preorderService: PreorderProvider,
     private toast: ToastProvider,
-    private db: AngularFireDatabase,
+    private afs: AngularFirestore,
     private af: AngularFireAuth){
-      this.userService.queryTheDbByObj.subscribe(users => {
-        return users.map(user => console.log(user));
-      });
+      // this.userService.queryTheDbByObj.subscribe(users => {
+      //   return users.map(user => console.log(user));
+      // });
+  }
+
+  ngOnInit(){
+    this.preorders = this.preorderService.getSnapshot()
   }
 
   ionViewDidEnter() {
@@ -46,6 +69,12 @@ export class ShopPage {
     console.log(uid);
     this.userService.getUserById(uid);
     console.log('ionViewDidEnter ShopPage');
+  }
+
+  createPreorder() {
+    this.preorderService.create(this.projectName, this.userComments);
+    this.userComments = '';
+    this.projectName = '';
   }
 
   // getItemList(){

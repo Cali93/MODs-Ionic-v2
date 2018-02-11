@@ -46,7 +46,7 @@
               <div *ngIf="auth.user | async as user">
                 <ion-card-content>
                 <h3>Howdy, {{ user.displayName }}</h3>
-                <h4>You have this projects : {{ user.projects.name }}</h4>
+                <h4>You have this projects : {{ user.projects }}</h4>
                 <img class="card-img-top" [src]="user.photoURL || 'https://api.adorable.io/avatars/109/fire.png'" width=50px>
                 <p class="text-truncate">UID: {{ user.uid }}</p>
                 <button class="button" (click)="logout()">Logout</button>
