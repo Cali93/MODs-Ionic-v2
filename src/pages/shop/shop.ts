@@ -54,9 +54,7 @@ export class ShopPage implements OnInit {
     private toast: ToastProvider,
     private afs: AngularFirestore,
     private af: AngularFireAuth){
-      // this.userService.queryTheDbByObj.subscribe(users => {
-      //   return users.map(user => console.log(user));
-      // });
+
   }
 
   ngOnInit(){
@@ -76,10 +74,6 @@ export class ShopPage implements OnInit {
     this.userComments = '';
     this.projectName = '';
   }
-
-  // getItemList(){
-
-  // }
 
   onOrderSubmit(){
     console.log('Order submitted successfully');

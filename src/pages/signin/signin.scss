@@ -1,5 +1,7 @@
 page-signin {
-
+  *{
+    font-family: 'Raleway', sans-serif;
+  }
 	a {
 		text-decoration: none;
 	}
@@ -9,10 +11,9 @@ page-signin {
 		font-style: italic;
 		color: #FB102C;
 	}
-
-	ion-label, h1 {
-		color: #7EBA43!important;
-	}
+h1{
+  color: #8FBF60;
+}
 
 	ion-card-title {
 		display: flex !important;

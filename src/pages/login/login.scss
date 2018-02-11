@@ -1,17 +1,16 @@
 page-login {
+*{
+  font-family: 'Raleway', sans-serif;
 
+}
 	a {
 		text-decoration: none;
-	}
+  }
 
 	q {
 		text-align: center;
 		font-style: italic;
 		color: #FB102C;
-	}
-
-	ion-label, h1 {
-		color: #4E2DCB !important;
 	}
 
 	ion-card-title {

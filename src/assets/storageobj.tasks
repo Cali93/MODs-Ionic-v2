@@ -1,6 +1,6 @@
 ☐ Lier les objets créés aux users
 ☐ Générer un objet complet au moment du save
-    ☐ 1. Login
+    ✔ 1. Login @done (2018-2-11 15:40:40)
     ☐ 2. AddToCart()
         ☐ Image (voir ThreeJS screenshot/ionic native)
 
