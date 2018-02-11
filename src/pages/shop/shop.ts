@@ -70,9 +70,10 @@ export class ShopPage implements OnInit {
   }
 
   createPreorder() {
-    this.preorderService.create(this.projectName, this.userComments);
-    this.userComments = '';
+    this.preorderService.create(this.projectName, this.userComments, this.quantities);
     this.projectName = '';
+    this.quantities = 1;
+    this.userComments = '';
   }
 
   onOrderSubmit(){

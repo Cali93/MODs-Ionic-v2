@@ -79,17 +79,17 @@
               <ion-list>
                 <ion-item>
                   <ion-label color="primary" stacked>Project name</ion-label>
-                  <ion-input placeholder="Type here your project name"></ion-input>
+                  <ion-input placeholder="Type here your project name" [(ngModel)]="projectName" required type="text" name="projectName"></ion-input>
                 </ion-item>
 
                 <ion-item>
                   <ion-label color="primary" stacked>Quantity</ion-label>
-                  <ion-input type="number" placeholder="..."></ion-input>
+                  <ion-input type="number" placeholder="1" [(ngModel)]="quantities"type="number" name="quantities"></ion-input>
                 </ion-item>
 
                 <ion-item>
                   <ion-label color="primary" stacked>Message to MCB</ion-label>
-                  <ion-textarea placeholder="Comment your construction"></ion-textarea>
+                  <ion-textarea placeholder="Comment your construction" name="userComments" [(ngModel)]="userComments" id="userComments"></ion-textarea>
                 </ion-item>
 
               </ion-list>
@@ -100,13 +100,12 @@
                     </button>
                   </ion-col>
                   <ion-col>
-                    <button ion-button text-uppercase block class=" btn btn-grn">
+                    <button ion-button text-uppercase block class="btn btn-grn" (click)="createPreorder()">
                       save
                     </button>
                   </ion-col>
                 </ion-row>
             </form>
-
 
             <button ion-button text-uppercase icon-left block class="btn btn-grn hide" (click)="show = !show; onOrder()">
               <ion-icon name="arrow-round-forward" item-start></ion-icon>

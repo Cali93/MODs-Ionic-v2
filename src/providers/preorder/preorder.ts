@@ -14,7 +14,7 @@ export class PreorderProvider {
   preorderDocument:   AngularFirestoreDocument<Preorder>;
 
   constructor(private afs: AngularFirestore) {
-    this.preordersCollection = this.afs.collection('preorders', (ref) => ref.orderBy('time', 'desc').limit(5));
+    this.preordersCollection = this.afs.collection('preorders', (ref) => ref.orderBy('time', 'desc'));
   }
 
   getData(): Observable<Preorder[]> {
@@ -26,7 +26,7 @@ export class PreorderProvider {
     return this.preordersCollection.snapshotChanges().map((actions) => {
       return actions.map((a) => {
         const data = a.payload.doc.data() as Preorder;
-        return { id: a.payload.doc.id, projectName:data.projectName, projectId: data.projectId, quantities : data.quantities, projectImg: data.projectImg, date: data.date };
+        return { id: a.payload.doc.id, projectName:data.projectName, projectId: data.projectId, quantities : data.quantities, projectImg: data.projectImg, userComments:data.userComments, date: data.date };
       });
     });
   }
@@ -35,11 +35,11 @@ export class PreorderProvider {
     return this.afs.doc<Preorder>(`preorders/${id}`);
   }
 
-  create(userComments: string, projectName) {
+  create(projectName: string, userComments: string, quantities:number) {
     const preorder = {
       projectName,
       userComments,
-      quantities: 1,
+      quantities,
       date: new Date().getTime(),
     };
     return this.preordersCollection.add(preorder);
