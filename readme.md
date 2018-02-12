@@ -77,7 +77,7 @@ Autonomie dans l'exploitation et pouvoir faire évoluer le produit en fonction d
 Modules de bureaux évolutifs, bibliothèques,  kots étudiants (200 Mod's/chambres), accessoires (étagères, finitions avec écrans intégrés, impression de logos...) 
 
 
-## Le 12 février 2018 (10h): réunion avec le client
+## Le 12 février 2018 (10h): Réunion avec le client
 
 ### Lieu: 
 BeCentral
@@ -91,7 +91,7 @@ Julien De Visscher (Mod's co-founder), Juan Cely Ramos, Elisa della Faille, Aman
 
 - La fonction "Ajouter Mods" doit être beaucoup plus intuitive ou ajouter un explicatif du fonctionnement de l'éditeur; 
 - Enlever le snap et ajouter une indication sur l’ajustement correct (aimantage?);
-- Respecter l'intégrité physique des Mods (ne pas descendre en dessous du sol, ne pas faire flotter des objets dans le néan, éviter les fusions...);
+- Respecter l'intégrité physique des Mods (ne pas descendre en dessous du sol, ne pas faire flotter des objets dans le néant, éviter les fusions...);
 - Message « loading » qui indique que l’éditeur charge;
 - Rotation plus facile et plus précise : indiquer manuellement l’ouverture de l’angle souhaitée en degré;
 - Traitement des commandes (réception d’un pdf par mail);
