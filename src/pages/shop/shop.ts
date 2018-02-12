@@ -39,6 +39,7 @@ export class ShopPage implements OnInit {
   user: AngularFirestoreDocument<any>;
   users: Observable<User[]>;
   preorders: Observable<Preorder[]>
+  userId: string;
   projectName:string;
   userComments: string;
   quantities:number;
@@ -70,7 +71,7 @@ export class ShopPage implements OnInit {
   }
 
   createPreorder() {
-    this.preorderService.create(this.projectName, this.userComments, this.quantities);
+    this.preorderService.create(this.userId, this.projectName, this.userComments, this.quantities);
     this.projectName = '';
     this.quantities = 1;
     this.userComments = '';
