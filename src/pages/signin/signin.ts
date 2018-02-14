@@ -78,7 +78,6 @@ export class SigninPage {
   }
 
   /// Social Login
-
   signInWithGithub() {
     this.auth.githubLogin()
       .then(() => this.afterSignIn());
@@ -100,7 +99,6 @@ export class SigninPage {
   }
 
   /// Anonymous Sign In
-
   signInAnonymously() {
     this.auth.anonymousLogin()
       .then(() => this.afterSignIn());

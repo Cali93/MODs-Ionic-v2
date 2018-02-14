@@ -1,6 +1,6 @@
 export interface Preorder {
   key?: string;
-  userId?:string;
+  uid?: string;
   projectName?:string;
   projectId?: string;
   projectImg?: string;

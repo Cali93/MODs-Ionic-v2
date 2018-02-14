@@ -2,8 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { TabsEnablor } from '../../providers/custom/tabsEnablor';
-import { OrdermodalComponent } from '../../components/ordermodal/ordermodal';
-import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+
+import { trigger, keyframes, animate, transition } from '@angular/animations';
+
+import * as kf from '../../app/keyframes';
 
 import { AngularFireModule } from 'angularfire2';
 
@@ -32,14 +34,22 @@ import 'rxjs/Operator/map';
 @Component({
   selector: 'page-shop',
   templateUrl: 'shop.html',
+  animations: [
+    trigger('cardAnimator', [
+      transition('* => zoomOutRight', animate(1000, keyframes(kf.zoomOutRight)))
+    ]),
+    trigger('meusAnimator',[
+      transition('*=> slideInLeft', animate(1000, keyframes(kf.slideInLeft)))
+    ])
+  ]
 })
 export class ShopPage implements OnInit {
-
+  animationState: string;
   show: boolean = true;
   user: AngularFirestoreDocument<any>;
   users: Observable<User[]>;
   preorders: Observable<Preorder[]>
-  userId: string;
+  uid: string;
   projectName:string;
   userComments: string;
   quantities:number;
@@ -49,7 +59,6 @@ export class ShopPage implements OnInit {
     public navCtrl: NavController,
     public navParams: NavParams,
     private myTabs: TabsEnablor,
-    private modalService: NgbModal,
     private userService: UserProvider,
     private preorderService: PreorderProvider,
     private toast: ToastProvider,
@@ -71,7 +80,7 @@ export class ShopPage implements OnInit {
   }
 
   createPreorder() {
-    this.preorderService.create(this.userId, this.projectName, this.userComments, this.quantities);
+    this.preorderService.create(this.projectName, this.userComments, this.quantities);
     this.projectName = '';
     this.quantities = 1;
     this.userComments = '';
@@ -81,7 +90,14 @@ export class ShopPage implements OnInit {
     console.log('Order submitted successfully');
   }
 
-  open(content) {
-    this.modalService.open(content, { windowClass: 'dark-modal' });
+  startAnimation(state: any) {
+    console.log(state);
+    if (!this.animationState) {
+      this.animationState = state;
+    }
+  }
+
+  resetAnimationState() {
+    this.animationState = '';
   }
 }

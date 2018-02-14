@@ -48,8 +48,9 @@
 
       <ion-col col-12 col-sm-9 col-md-6 col-lg-4 col-xl-3>
 
-        <ion-card class="card">
-          <ion-card-header text-uppercase class="card-title">
+        <ion-card class="card" [@cardAnimator]="animationState"
+        (@cardAnimator.done)="resetAnimationState()">
+          <ion-card-header text-uppercase class="card-title" [@meusAnimator]="animationState" (@meusAnimator.done)="resetAnimationState()">
             project name
           </ion-card-header>
           <ion-note padding-left class="card-meta">02 feb 2018 - last updated 06 feb 2018</ion-note>
@@ -60,7 +61,7 @@
           <ion-card-content>
             <ion-row class="hide">
               <ion-col>
-                <button ion-button text-uppercase block class="btn btn-wht" (click)="getUser()">
+                <button ion-button text-uppercase block class="btn btn-wht" (click)="startAnimation('slideInLeft')">
                   Edit scene
                 </button>
               </ion-col>
@@ -100,7 +101,7 @@
                     </button>
                   </ion-col>
                   <ion-col>
-                    <button ion-button text-uppercase block class="btn btn-grn" (click)="createPreorder()">
+                    <button ion-button text-uppercase block class="btn btn-grn" (click)="createPreorder(); startAnimation('zoomOutRight')">
                       save
                     </button>
                   </ion-col>
