@@ -111,6 +111,24 @@ export class TheMatrix implements AfterViewInit {
   }
 
   /**
+   * Stocks mouse position as vector on incoming click
+   */
+  public onTouchStart( event ) {
+    let touch = event.changedTouches[ 0 ];
+    let array = this.getMousePosition( this.canvas, touch.clientX, touch.clientY );
+    this.onDownPosition.fromArray( array );
+  }
+
+  /**
+   * Stocks mouse position as vector on outgoing click then...
+   */
+  public onTouchEnd( event ) {
+    let touch = event.changedTouches[ 0 ];
+    let array = this.getMousePosition( this.canvas, touch.clientX, touch.clientY );
+    this.onUpPosition.fromArray( array );
+    this.handleClick();
+  }
+  /**
    * What to do on Click
    */
   private handleClick() {
