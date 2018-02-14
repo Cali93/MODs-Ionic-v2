@@ -17,6 +17,7 @@ import {
   AngularFirestoreDocument,
   AngularFirestore
 } from 'angularfire2/firestore';
+
 import {
   AuthProvider
 } from '../../providers/auth/auth';
@@ -26,7 +27,6 @@ import { PreorderProvider } from '../../providers/preorder/preorder';
 
 import { ToastProvider } from '../../providers/toast/toast';
 import { User } from '../../models/user/user';
-import { UserProvider } from '../../providers/user/user';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/Operator/map';
 
@@ -59,7 +59,6 @@ export class ShopPage implements OnInit {
     public navCtrl: NavController,
     public navParams: NavParams,
     private myTabs: TabsEnablor,
-    private userService: UserProvider,
     private preorderService: PreorderProvider,
     private toast: ToastProvider,
     private afs: AngularFirestore,
@@ -75,8 +74,6 @@ export class ShopPage implements OnInit {
   	this.myTabs.setEnableState(true);
     const uid = this.af.auth.currentUser.uid;
     console.log(uid);
-    this.userService.getUserById(uid);
-    console.log('ionViewDidEnter ShopPage');
   }
 
   createPreorder() {

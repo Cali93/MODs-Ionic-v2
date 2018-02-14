@@ -1,29 +1,21 @@
-import {
-  Component
-} from '@angular/core';
+import { Component } from '@angular/core';
 import {
   IonicPage,
   NavController,
   NavParams,
   ToastController
 } from 'ionic-angular';
-import {
-  AngularFireAuth
-} from 'angularfire2/auth';
-// import { AngularFireDatabase } from 'angularfire2/database';
+import {AngularFireAuth} from 'angularfire2/auth';
+
 import {
   AngularFirestoreModule,
   AngularFirestoreCollection,
   AngularFirestoreDocument,
   AngularFirestore
 } from 'angularfire2/firestore';
-import {
-  AuthProvider
-} from '../../providers/auth/auth';
-
-import {
-  LoginPage
-} from '../login/login';
+import { AuthProvider } from '../../providers/auth/auth';
+import { ToastProvider } from '../../providers/toast/toast';
+import { LoginPage } from '../login/login';
 
 @IonicPage()
 @Component({
@@ -47,28 +39,33 @@ export class SigninPage {
     private firebase: AngularFireAuth,
     public navCtrl: NavController,
     public navParams: NavParams,
+    public toast: ToastProvider,
     public toastCtrl: ToastController,
-    public afs: AngularFirestore,
-    public auth: AuthProvider) {}
+    private afs: AngularFirestore,
+    private auth: AuthProvider) {}
 
   signUserUp() {
     this.firebase.auth.createUserWithEmailAndPassword(this.email, this.password1)
       .then(user => {
         console.log(user);
         this.userId = user.uid;
-        this.afs.collection('/users').add({
-          userId: this.userId,
-          firstname: this.firstname,
-          lastname: this.lastname,
-          email: this.email,
-          company: this.company,
-          phone: this.phone,
-        });
+        if (this.password1 == this.password2){
+          this.afs.collection('/users').add({
+            userId: this.userId,
+            firstname: this.firstname,
+            lastname: this.lastname,
+            email: this.email,
+            company: this.company,
+            phone: this.phone,
+          });
 
-        const signup = this;
-        signup.navCtrl.parent.select(2);
-        signup.navCtrl.pop();
-        signup.setCurrentUserToken();
+          const signup = this;
+          signup.navCtrl.parent.select(2);
+          signup.navCtrl.pop();
+          signup.setCurrentUserToken();
+        } else {
+          this.toast.show('Passwords are not matching.')
+        }
       })
       .catch(error => {
         this.displayToast(error.message);
