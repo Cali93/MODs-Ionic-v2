@@ -105,6 +105,22 @@ Julien De Visscher (Mod's co-founder), Juan Cely Ramos, Elisa della Faille, Aman
 
 IMPORTANT => Mode tablette : rendre opérationnel l’éditeur et afficher toutes les options au click droit
 
-#### *Début du deuxième sprint:* 
+## Le 14 février 2018 (11h30): Départ du deuxième sprint
 
-Nouveau test dans 3 semaines.
+### Dates:
+
+Du 14/02 au 12/03
+
+### Feedback de Juan: rendre les actions de l'application plus "user friendly"
+
+- Fonctionnalités pour tablettes: pivoter avec deux doigts, changer l'angle avec un doigt, appuyer sur un MODS avec deux doigts pour afficher un menu numérique avec des inputs...;
+- Supprimer le snap et proposer une barre d'échelle de 1 mm à 10 cm;
+- Marqueur de contact entre MODS;
+- Menu de droite avec les propriétés du MODS (position x/y, rotation, groupe de modules, calques comme dans Photoshop...);
+- Créer des habillages par défaut dans la data base;
+- Possibilité de modifier l'application depuis la data base;
+- Table avec les présets par défaut;
+- Côté admin;
+- Shop plus clair (projets en cours - sauvés - commandés);
+- Proposer un "tetris" de MODS par menu numérique (nombre de MODS à ajouter);
+- Page loader qui empêche l'utilisateur d'appuyer pendant le chargement.
