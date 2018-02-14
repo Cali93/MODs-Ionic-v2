@@ -1,18 +1,3 @@
-<!--
-  Generated template for the ShopPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
-<!-- <ion-header>
-
-  <ion-navbar>
-    <ion-title>Shop</ion-title>
-  </ion-navbar>
-
-</ion-header> -->
-
-
 <ion-content id="container">
   <ion-grid>
 
@@ -31,8 +16,9 @@
 
       <ion-col col-12 col-sm-9 col-md-6 col-lg-4 col-xl-3>
 
-        <ion-card class="card">
-          <ion-card-header text-uppercase class="card-title">
+        <ion-card class="card" [@cardAnimator]="animationState"
+        (@cardAnimator.done)="resetAnimationState()">
+          <ion-card-header text-uppercase class="card-title" [@meusAnimator]="animationState" (@meusAnimator.done)="resetAnimationState()">
             project name
           </ion-card-header>
           <ion-note padding-left class="card-meta">02 feb 2018 - last updated 06 feb 2018</ion-note>
@@ -43,7 +29,7 @@
           <ion-card-content>
             <ion-row class="hide">
               <ion-col>
-                <button ion-button text-uppercase block class="btn btn-wht" (click)="getUser()">
+                <button ion-button text-uppercase block class="btn btn-wht" (click)="startAnimation('slideInLeft')">
                   Edit scene
                 </button>
               </ion-col>
@@ -62,17 +48,17 @@
               <ion-list>
                 <ion-item>
                   <ion-label color="primary" stacked>Project name</ion-label>
-                  <ion-input placeholder="Type here your project name"></ion-input>
+                  <ion-input placeholder="Type here your project name" [(ngModel)]="projectName" required type="text" name="projectName"></ion-input>
                 </ion-item>
 
                 <ion-item>
                   <ion-label color="primary" stacked>Quantity</ion-label>
-                  <ion-input type="number" placeholder="..."></ion-input>
+                  <ion-input type="number" placeholder="1" [(ngModel)]="quantities"type="number" name="quantities"></ion-input>
                 </ion-item>
 
                 <ion-item>
                   <ion-label color="primary" stacked>Message to MCB</ion-label>
-                  <ion-textarea placeholder="Comment your construction"></ion-textarea>
+                  <ion-textarea placeholder="Comment your construction" name="userComments" [(ngModel)]="userComments" id="userComments"></ion-textarea>
                 </ion-item>
 
               </ion-list>
@@ -83,13 +69,12 @@
                     </button>
                   </ion-col>
                   <ion-col>
-                    <button ion-button text-uppercase block class=" btn btn-grn">
+                    <button ion-button text-uppercase block class="btn btn-grn" (click)="createPreorder(); startAnimation('zoomOutRight')">
                       save
                     </button>
                   </ion-col>
                 </ion-row>
             </form>
-
 
             <button ion-button text-uppercase icon-left block class="btn btn-grn hide" (click)="show = !show; onOrder()">
               <ion-icon name="arrow-round-forward" item-start></ion-icon>

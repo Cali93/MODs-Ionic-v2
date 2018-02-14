@@ -13,7 +13,7 @@ export class UserProvider {
 
   private queryTheDbById = this.users.switchMap(
     value => this.db.list('users',
-      ref => ref.orderByChild('userId').equalTo(value)
+      ref => ref.orderByChild('uid').equalTo(value)
     ).valueChanges()
   );
 

@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ErrorHandler, NgModule, CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
@@ -23,6 +24,7 @@ import { DisconnectPage } from '../pages/disconnect/disconnect';
 import { ComponentsModule } from '../components/components.module';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
+import { AngularFirestoreModule} from 'angularfire2/firestore';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 
 import { CallNumber } from '@ionic-native/call-number';
@@ -32,6 +34,8 @@ import { PreorderProvider } from '../providers/preorder/preorder';
 import { UserProvider } from '../providers/user/user';
 
 import { ThreeAngular } from '../threeAngular/threeAngular.module';
+import { AuthProvider } from '../providers/auth/auth';
+import { FiredocumentPage } from '../pages/firedocument/firedocument';
 
 
 
@@ -45,6 +49,7 @@ import { ThreeAngular } from '../threeAngular/threeAngular.module';
     ShopPage,
     LoginPage,
     SigninPage,
+    FiredocumentPage,
     DisconnectPage
   ],
   imports: [
@@ -52,10 +57,13 @@ import { ThreeAngular } from '../threeAngular/threeAngular.module';
     ComponentsModule,
     BrowserAnimationsModule,
     FormsModule,
+    ReactiveFormsModule,
     IonicModule.forRoot(MyApp),
     AngularFireModule.initializeApp(FIREBASE_CONFIG),
     AngularFireAuthModule,
     AngularFireDatabaseModule,
+    AngularFirestoreModule,
+    AngularFirestoreModule.enablePersistence(),
     NgbModule.forRoot(),
     ThreeAngular
   ],
@@ -69,6 +77,7 @@ import { ThreeAngular } from '../threeAngular/threeAngular.module';
     LoginPage,
     SigninPage,
     DisconnectPage,
+    FiredocumentPage,
     TabsPage
   ],
   providers: [
@@ -81,7 +90,8 @@ import { ThreeAngular } from '../threeAngular/threeAngular.module';
     CallNumber,
     EmailComposer,
     PreorderProvider,
-    UserProvider
+    UserProvider,
+    AuthProvider
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
