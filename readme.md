@@ -1,6 +1,6 @@
-# MOD-S
+# MODS
 
-## BECODE: CONCEPTION D'UNE APPLICATION
+## BECODE - CYCORP: CONCEPTION D'UNE APPLICATION
 
 Elisa della Faille, Amandine Meeus, Cali Armut, Serge Maïkere, Jimmy Goossens, Aldebaran Desombergh 
 ***********************************************************
