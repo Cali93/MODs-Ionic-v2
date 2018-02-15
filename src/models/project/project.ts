@@ -1,6 +1,6 @@
 export interface Project {
   key?: string;
-  userId: string;
+  uid: string;
   modsNumber: number;
   textures?: string[];
   items?: string[];

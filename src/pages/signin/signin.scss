@@ -1,23 +1,20 @@
 page-signin {
-  *{
+  * {
     font-family: 'Raleway', sans-serif;
   }
-	a {
-		text-decoration: none;
-	}
-
-	q {
-		text-align: center;
-		font-style: italic;
-		color: #FB102C;
-	}
-h1{
-  color: #8FBF60;
-}
-
-	ion-card-title {
-		display: flex !important;
-		justify-content: space-around;
-	}
-
+  a {
+    text-decoration: none;
+  }
+  q {
+    text-align: center;
+    font-style: italic;
+    color: #FB102C;
+  }
+  h1 {
+    color: #8FBF60;
+  }
+  ion-card-title {
+    display: flex !important;
+    justify-content: space-around;
+  }
 }

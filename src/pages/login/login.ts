@@ -5,13 +5,6 @@ import { AngularFireDatabase } from 'angularfire2/database';
 
 import { SigninPage } from '../signin/signin';
 
-/**
-* Generated class for the LoginPage page.
-*
-* See https://ionicframework.com/docs/components/#navigation for more info on
-* Ionic pages and navigation.
-*/
-
 @IonicPage()
 @Component({
 	selector: 'page-login',
@@ -20,11 +13,11 @@ import { SigninPage } from '../signin/signin';
 export class LoginPage {
 
 	email: string;
-	password: string;	
+	password: string;
 
 
-	constructor(private firebase: AngularFireAuth, 
-					public navCtrl: NavController, 
+	constructor(private firebase: AngularFireAuth,
+					public navCtrl: NavController,
 						public navParams: NavParams,
 							public toastCtrl: ToastController) {
 	}
@@ -50,7 +43,7 @@ export class LoginPage {
 				console.log(error.message);
 			}
 		);
-		
+
 	}
 
 	setCurrentUserToken(){
@@ -63,7 +56,7 @@ export class LoginPage {
 		const login = this;
 		login.navCtrl.pop();
 		login.navCtrl.push(SigninPage);
-		
+
 	}
 
 	displayToast(message: string) {
