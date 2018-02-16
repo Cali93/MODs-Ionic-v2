@@ -1,60 +1,51 @@
 <ion-content padding>
 
+  <div class="form">
+
   <h1>Contact us :</h1>
+      
+        <ion-item>
+          <ion-label floating>Full Name :</ion-label>
+          <ion-input [(ngModel)]="message.username" required></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label floating>Email :</ion-label>
+          <ion-input [(ngModel)]="message.email" required></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label floating>Subject :</ion-label>
+          <ion-input [(ngModel)]="message.title" required></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label floating>Message :</ion-label>
+          <ion-textarea [(ngModel)]="message.message" required></ion-textarea>
+        </ion-item>
+
+        <br><br>
+
+        <button ion-button block (click)="addMessage(message)" color="primary" class="post">Post message</button>
+  
+  </div>
+
+  <br><br>
 
   <ion-item>
-    <ion-label floating>Username:</ion-label>
-    <ion-input [(ngModel)]="message.username" required></ion-input>
-  </ion-item>
-
-  <ion-item>
-    <ion-label floating>Email :</ion-label>
-    <ion-input [(ngModel)]="message.email" required></ion-input>
-  </ion-item>
-
-  <ion-item>
-    <ion-label floating>Subject :</ion-label>
-    <ion-input [(ngModel)]="message.title" required></ion-input>
-  </ion-item>
-
-  <ion-item>
-    <ion-label floating>Message :</ion-label>
-    <ion-textarea [(ngModel)]="message.message" required></ion-textarea>
-  </ion-item>
-
-  <button ion-button block (click)="addMessage(message)" color="primary">Post message</button>
-
-  <ion-item>
-    <ion-row>
-      <ion-col col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6>
-        <div>
-          <button ion-button block color="dark" class="btn btn-primary" (click)="onPhone()">
-            <ion-icon name="call"> +32 2 217 71 33</ion-icon>
-          </button>
-        </div>
-      </ion-col>
-
-      <ion-col col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6>
-        <div>
-          <button ion-button block color="dark" class="btn btn-primary" (click)="onMail()">
-            <ion-icon name="mail"> info@mail-mcb.com</ion-icon>
-          </button>
-        </div>
-      </ion-col>
-    </ion-row>
     <ion-row>
       <ion-col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12>
-        <div>
-          <button ion-button block color="dark" class="btn btn-primary">
-            <ion-icon name="pin">Rue Henri-Joseph Genesse, 34/B2 1070 Anderlecht
-              <br>BELGIQUE</ion-icon>
-          </button>
-        </div>
-        <img src="assets/imgs/maps2.png" alt="">
-
+        <iframe width=100% height="450" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=Rue%20Henri-Joseph%20Genesse%2034%2C%201070%20Anderlecht&key=AIzaSyDV_CKQVzn_UF7DwTbtihbsXwTpFwj8FdU" allowfullscreen>
+        </iframe>
+        <br><br>
+          <div class="icon">
+            <ion-icon name="call" class="contact_icon"> +32 2 217 71 33  </ion-icon>
+            <ion-icon name="mail" class="contact_icon"> info@mail-mcb.com  </ion-icon>
+            <br>
+            <ion-icon name="pin" class="contact_icon"> Rue Henri-Joseph Genesse, 34/B2 - 1070 Anderlecht - BELGIQUE</ion-icon>
+          </div>
       </ion-col>
     </ion-row>
-
   </ion-item>
 
 

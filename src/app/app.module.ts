@@ -37,6 +37,7 @@ import { ThreeAngular } from '../threeAngular/threeAngular.module';
 import { AuthProvider } from '../providers/auth/auth';
 import { FiredocumentPage } from '../pages/firedocument/firedocument';
 
+/* import { AgmCoreModule } from '@agm/core'; */
 
 
 @NgModule({
@@ -65,9 +66,14 @@ import { FiredocumentPage } from '../pages/firedocument/firedocument';
     AngularFirestoreModule,
     AngularFirestoreModule.enablePersistence(),
     NgbModule.forRoot(),
-    ThreeAngular
+    ThreeAngular,
+    /* AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyDV_CKQVzn_UF7DwTbtihbsXwTpFwj8FdU'
+    }) */
   ],
-  bootstrap: [IonicApp],
+  bootstrap: [
+    IonicApp
+  ],
   entryComponents: [
     MyApp,
     HomePage,
