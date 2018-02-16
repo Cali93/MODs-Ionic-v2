@@ -76,7 +76,7 @@ export class Nebuchadnezzar extends THREE.Mesh {
     // So we can center Nebuchadnezzar in this Box's center and refresh it's vectors
     this.nebuchasBoundingBox.center( this.position );
     this.updateMatrixWorld();
-    
+
     // Then we remove every selected element of the temporary group
     // and add'em to Nebucha
 
