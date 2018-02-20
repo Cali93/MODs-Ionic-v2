@@ -76,6 +76,7 @@ export class ShopPage implements OnInit {
     console.log(uid);
   }
 
+  /* CREATE PREORDER*/
   createPreorder() {
     this.preorderService.create(this.projectName, this.userComments, this.quantities);
     this.projectName = '';

@@ -36,6 +36,7 @@ import { UserProvider } from '../providers/user/user';
 import { ThreeAngular } from '../threeAngular/threeAngular.module';
 import { AuthProvider } from '../providers/auth/auth';
 import { FiredocumentPage } from '../pages/firedocument/firedocument';
+import { ProjectProvider } from '../providers/project/project';
 
 
 
@@ -91,7 +92,8 @@ import { FiredocumentPage } from '../pages/firedocument/firedocument';
     EmailComposer,
     PreorderProvider,
     UserProvider,
-    AuthProvider
+    AuthProvider,
+    ProjectProvider
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

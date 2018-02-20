@@ -36,7 +36,7 @@ export class PreorderProvider {
   preorders: AngularFirestoreDocument < Preorder[] > ;
 
   constructor(private afs: AngularFirestore, private authService: AuthProvider, private auth: AngularFireAuth) {
-    this.preordersCollection = this.afs.collection('preorders', (ref) => ref.orderBy('time', 'desc').limit(5));
+    this.preordersCollection = this.afs.collection('preorders', (ref) => ref.orderBy('date', 'desc').limit(5));
 
     // uid will be null if the user is not logged in
 

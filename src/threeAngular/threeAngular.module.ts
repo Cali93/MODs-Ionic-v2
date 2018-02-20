@@ -11,7 +11,8 @@ import { TheArchitect } from './the-matrix/the-architect.service';
 		TheMatrix,TheToolbar,LeftMenuComponent,RightMenuComponent
 	],
 	providers: [
-		TheArchitect,
+    TheArchitect
+
 	],
 	imports: [],
 	exports: [

@@ -1,6 +1,18 @@
-☐ Lier les objets créés aux users
+✔ Lier les objets créés aux users @done (2018-2-14 23:50:22)
 ☐ Générer un objet complet au moment du save
     ✔ 1. Login @done (2018-2-11 15:40:40)
-    ☐ 2. AddToCart()
+    ☐ 2. SaveInEditor()
+        ☐ Save the array of mesh in the DB + the user's id.
+    ☐ 3. AddToCart()
         ☐ Image (voir ThreeJS screenshot/ionic native)
+        ☐ Need to resave mesh's Array into Firestore
+            ☐ A. First, select all objects on the screen
+            ☐ B. Then, take a snapshot of them
+            ☐ C. Then, add :
+                    - The array of objects into Firestore
+                    - The image + the user id
+            ☐ D. Finally, redirect the guy to the shopping cart
+
+
+
 
