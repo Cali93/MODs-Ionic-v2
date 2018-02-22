@@ -8,7 +8,7 @@ import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument 
 import { Note } from '../../models/note/note';
 
 import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/operatior/map';
+import 'rxjs/add/operator/map';
 
 @IonicPage()
 @Component({

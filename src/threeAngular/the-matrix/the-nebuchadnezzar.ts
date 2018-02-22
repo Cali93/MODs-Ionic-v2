@@ -1,8 +1,8 @@
 import * as THREE from 'three';
 import "../EnableThree.js";
 
-
 export class Nebuchadnezzar extends THREE.Mesh {
+
   public nebuchasBoundingBox = new THREE.Box3;
   public redBox = new THREE.Box3Helper(null, 0xff0000);
 
@@ -18,10 +18,10 @@ export class Nebuchadnezzar extends THREE.Mesh {
     this.sceneHelpers = sceneHelpers;
   }
 
-
   /**
    * Remove all elements from MulitSelection Group
    */
+
   public clear() {
     while (this.children.length) {
       THREE.SceneUtils.detach(this.children[0],this,this.scene);
@@ -44,12 +44,12 @@ export class Nebuchadnezzar extends THREE.Mesh {
 
   /**
    * Keep's Nebucha synced and centered!!!
-   *              This one is tricky! 
+   *              This one is tricky!
    * Ok, so. Before binding the controllers to nabuchos we want to
    * use the center of the group as anchor point for the controllers,
    * right? Ok let's do it.
    */
-  public update (selected) {    
+  public update (selected) {
     // First we create a temporary group
     let geo = new THREE.BoxGeometry( 2, 2, 2);
     geo.applyMatrix( new THREE.Matrix4().makeTranslation(1,1,1) );
@@ -69,12 +69,12 @@ export class Nebuchadnezzar extends THREE.Mesh {
     selected.forEach(obj => {
       THREE.SceneUtils.attach(obj,this.scene,tempGroup);
     })
-    
+
     // Then we set a Minimum Bounding Box for this group (awesome!)
     this.nebuchasBoundingBox.setFromObject( tempGroup );
-    
+
     // So we can center Nebuchadnezzar in this Box's center and refresh it's vectors
-    this.nebuchasBoundingBox.center( this.position );
+    this.nebuchasBoundingBox.getCenter( this.position );
     this.updateMatrixWorld();
 
     // Then we remove every selected element of the temporary group
@@ -95,7 +95,7 @@ export class Nebuchadnezzar extends THREE.Mesh {
 
     // Piece of cake
   }
-  
+
 
   /**
    * updateRedBox
