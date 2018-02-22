@@ -41,10 +41,7 @@ export class ProjectProvider {
   projects: AngularFirestoreDocument < Project[] > ;
 
   constructor(private afs: AngularFirestore, private authService: AuthProvider, private auth: AngularFireAuth, private theArchitecht: TheArchitect) {
-    this.projectsCollection = this.afs.collection('projects', (ref) => ref.orderBy('date', 'desc').limit(5));
-
-    // uid will be null if the user is not logged in
-
+    this.projectsCollection = this.afs.collection('projects');
   }
 
   getData(): Observable < Project[] > {
@@ -73,7 +70,6 @@ export class ProjectProvider {
     // const mesh = {...this.theArchitecht.objects}
     // const mesh = this.theArchitecht.objects.map((obj)=> {return Object.assign({}, obj)});
 
-
     let mesh = this.theArchitecht.objects.map((obj)=> {
       var threeObj = {};
       for (let key in obj) {
@@ -85,11 +81,9 @@ export class ProjectProvider {
       }
       return threeObj })
 
-      mesh = JSON.parse(JSON.stringify(mesh))
-    // const mesh = JSON.stringify(this.theArchitecht.objects.map((obj) => {
-    //   return Object.assign({}, obj)
-    // }))
+    mesh = JSON.parse(JSON.stringify(mesh))
 
+    // uid will be null if the user is not logged in
     const uid = this.auth.authState
       .take(1)
       .subscribe(authSate => {

@@ -28,7 +28,7 @@ import { PreorderProvider } from '../../providers/preorder/preorder';
 import { ToastProvider } from '../../providers/toast/toast';
 import { User } from '../../models/user/user';
 import { Observable } from 'rxjs/Observable';
-import 'rxjs/Operator/map';
+import 'rxjs/add/operator/map';
 
 @IonicPage()
 @Component({
@@ -43,6 +43,7 @@ import 'rxjs/Operator/map';
     ])
   ]
 })
+
 export class ShopPage implements OnInit {
   animationState: string;
   show: boolean = true;
