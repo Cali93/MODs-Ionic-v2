@@ -40,6 +40,14 @@ import { ProjectProvider } from '../providers/project/project';
 
 /* import { AgmCoreModule } from '@agm/core'; */
 
+import { HammerGestureConfig, HAMMER_GESTURE_CONFIG } from '@angular/platform-browser';
+
+export class CustomHammerConfig extends HammerGestureConfig {
+    overrides = {
+        'press': { time: 1000 }  //set press delay for 1 second
+    }
+}
+
 
 @NgModule({
   declarations: [
@@ -99,7 +107,8 @@ import { ProjectProvider } from '../providers/project/project';
     PreorderProvider,
     UserProvider,
     AuthProvider,
-    ProjectProvider
+    ProjectProvider,
+    { provide: HAMMER_GESTURE_CONFIG, useClass: CustomHammerConfig }
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

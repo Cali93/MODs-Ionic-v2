@@ -12,7 +12,6 @@ import { TheArchitect } from './the-matrix/the-architect.service';
 	],
 	providers: [
     TheArchitect
-
 	],
 	imports: [],
 	exports: [

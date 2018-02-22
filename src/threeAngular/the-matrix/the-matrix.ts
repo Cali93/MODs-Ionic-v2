@@ -38,8 +38,6 @@ export class TheMatrix implements AfterViewInit {
   }
 
 
-
-
   /**
    * adaptTransformControls, triggered by changes in Selection
    */
@@ -104,7 +102,7 @@ export class TheMatrix implements AfterViewInit {
   /**
    * Stocks mouse position as vector on outgoing click then...
    */
-  public onMouseUp( event ) {
+  public onMouseUp( event: MouseEvent ) {
     var array = this.getMousePosition( this.canvas, event.clientX, event.clientY );
     this.onUpPosition.fromArray( array );
     this.handleClick();
@@ -113,7 +111,8 @@ export class TheMatrix implements AfterViewInit {
   /**
    * Stocks mouse position as vector on incoming click
    */
-  public onTouchStart( event ) {
+  public onTouchStart( event: TouchEvent ) {
+    event.preventDefault();
     let touch = event.changedTouches[ 0 ];
     let array = this.getMousePosition( this.canvas, touch.clientX, touch.clientY );
     this.onDownPosition.fromArray( array );
@@ -122,7 +121,8 @@ export class TheMatrix implements AfterViewInit {
   /**
    * Stocks mouse position as vector on outgoing click then...
    */
-  public onTouchEnd( event ) {
+  public onTouchEnd( event: TouchEvent ) {
+    event.preventDefault();
     let touch = event.changedTouches[ 0 ];
     let array = this.getMousePosition( this.canvas, touch.clientX, touch.clientY );
     this.onUpPosition.fromArray( array );
@@ -143,6 +143,19 @@ export class TheMatrix implements AfterViewInit {
     }
   }
 
+  /**
+   * onTap single tap event
+   */
+  public onTap(event){
+    console.log('tap');
+  }
+
+  /**
+   * onPress 1s event
+   */
+  public onPress(event){
+    console.log('dont squeeze me too long');
+  }
 
   /**
    * Send a virtual LASER BEAM to determine which objects are in the mouse path. Remember it's a 3D World!
@@ -152,7 +165,6 @@ export class TheMatrix implements AfterViewInit {
     this.raycaster.setFromCamera( this.mouse, this.theArchitect.camera );
     return this.raycaster.intersectObjects( objects );
   }
-
 
   /**
    * Enable Moving inside The Matrix
@@ -170,11 +182,12 @@ export class TheMatrix implements AfterViewInit {
 
   /**
    * Give us power to control objects in The Matrix
+   *
    */
   public addTransformControls() {
     this.transformControls = new THREE.TransformControls(this.theArchitect.camera, this.canvas);
-    this.transformControls.setTranslationSnap( 2 );
-    this.transformControls.setRotationSnap( THREE.Math.degToRad( 45 ) );
+    this.transformControls.setTranslationSnap( 1 );
+    this.transformControls.setRotationSnap( THREE.Math.degToRad( 1 ) );
     this.transformControls.setSpace( 'world' );
     this.transformControls.name = "controls";
 

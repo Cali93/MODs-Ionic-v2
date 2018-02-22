@@ -2,10 +2,12 @@
 <right-menu></right-menu>
 <canvas
 #theCanvas
-(mousedown)="onMouseDown($event)"
-(mouseup)="onMouseUp($event)"
-(touchstart)="onTouchStart($event)"
-(touchend)="onTouchEnd($event)"
+(touchstart)="onTouchStart($event); false"
+(touchmove)="onTouchEnd($event); false"
+(mousedown)="onMouseDown($event); false"
+(mouseup)="onMouseUp($event); false"
+(tap)="onTap($event)"
+(press)="onPress($event)"
 >
 </canvas>
 <the-toolbar

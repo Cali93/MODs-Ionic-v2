@@ -15,6 +15,7 @@ import {
 import {
   AuthProvider
 } from '../auth/auth';
+
 import {
   User
 } from '../../models/user/user';
@@ -68,8 +69,9 @@ export class ProjectProvider {
 
   create() {
     // const mesh = {...this.theArchitecht.objects}
-    // const mesh = this.theArchitecht.objects.map((obj)=> {return Object.assign({}, obj)});
+    // const mesh = JSON.stringify(this.theArchitecht.objects.map((obj)=> {return Object.assign({}, obj)}));
 
+    // Removing the parent property of the object
     let mesh = this.theArchitecht.objects.map((obj)=> {
       var threeObj = {};
       for (let key in obj) {
