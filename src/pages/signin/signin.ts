@@ -58,6 +58,7 @@ export class SigninPage {
             company: this.company,
             phone: this.phone,
           });
+          
 
           const signup = this;
           signup.navCtrl.parent.select(2);

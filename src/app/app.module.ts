@@ -38,6 +38,7 @@ import { AuthProvider } from '../providers/auth/auth';
 import { FiredocumentPage } from '../pages/firedocument/firedocument';
 import { ProjectProvider } from '../providers/project/project';
 
+/* import { AgmCoreModule } from '@agm/core'; */
 
 
 @NgModule({
@@ -66,9 +67,14 @@ import { ProjectProvider } from '../providers/project/project';
     AngularFirestoreModule,
     AngularFirestoreModule.enablePersistence(),
     NgbModule.forRoot(),
-    ThreeAngular
+    ThreeAngular,
+    /* AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyDV_CKQVzn_UF7DwTbtihbsXwTpFwj8FdU'
+    }) */
   ],
-  bootstrap: [IonicApp],
+  bootstrap: [
+    IonicApp
+  ],
   entryComponents: [
     MyApp,
     HomePage,
