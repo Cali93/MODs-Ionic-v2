@@ -48,7 +48,7 @@ a:hover {
         width: 100%;
         height: 100%;
         margin: 0;
-        background-color: green;
+        background-color:#7EBA43;
         border: none;
         padding: 0;
         font-size: 20px;
@@ -58,15 +58,9 @@ a:hover {
         background-color: rgba(255,255,255,.7);
         color: rgba(0,0,0,.7);
     }
-    
-    
-    .tab-title {
-        border-left: 1px solid rgba(0,0,0,.3);
-        border-top: 1px solid rgba(0,0,0,.3);
-    }
+
     .tab-icon {
-        border: 1px solid rgba(0,0,0,.3);
-        border-left: none;
+        border: none;
     }
     
 
@@ -77,12 +71,20 @@ a:hover {
         display: block;
         width: 250px;
         background-color: rgba(255,255,255,.4);
-        border: 1px solid rgba(0,0,0,.3);
+        border: none;
         border-top: none;
         padding: 20px;
 
         .fleft {
             float: left;
+            margin: 0 auto;
+
+            button {
+                margin-right: 25px !important;
+                &:last-child {
+                    margin-right: 0;
+                }
+            }
         }
     }
 
@@ -111,9 +113,16 @@ a:hover {
         padding-left: 20px;
     }
     .overflower {
-        height: 100px;
+        min-height: 100px;
         overflow-y: auto;
         overflow-x: hidden;
+    }
+    .overflower.movible {
+        resize: vertical;
+        max-height: 50vh;
+    }
+    .overflower.minh {
+        min-height: 210px; 
     }
     .hide {
         display: none;

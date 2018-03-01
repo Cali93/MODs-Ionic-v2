@@ -30,6 +30,7 @@ export class LeftMenuComponent {
     return localStorage.getItem('isLoggedIn') ? true : false;
   }
   
+  
   logInOrSignIn() {
     if (this.firebase.auth.currentUser) {
       this.navCtrl.parent.select(2);
