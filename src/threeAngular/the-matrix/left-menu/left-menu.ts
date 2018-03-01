@@ -19,7 +19,7 @@ export class LeftMenuComponent {
     public navCtrl: NavController,
     public navParams: NavParams,
     public firebase: AngularFireAuth
-  ){}
+  ){} 
 
   activeButton() {
     this.isActive = !this.isActive;

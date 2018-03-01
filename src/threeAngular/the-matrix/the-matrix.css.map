@@ -1,7 +1,0 @@
-{
-"version": 3,
-"mappings": "AAAA,UAAW;EACP,KAAK,EAAE,IAAI;EACX,MAAM,EAAE,IAAI;EACZ,QAAQ,EAAE,QAAQ",
-"sources": ["the-matrix.scss"],
-"names": [],
-"file": "the-matrix.css"
-}
