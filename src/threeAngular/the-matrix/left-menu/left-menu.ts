@@ -52,7 +52,7 @@ export class LeftMenuComponent {
     this.TheArchitect.cloneSelection();
   }
   setTooltip(tip){
-    this.tooltip = tip;
+    // this.tooltip = tip;
     this.isActive = true;
   }
   callSelectAll(){
