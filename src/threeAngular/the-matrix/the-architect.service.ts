@@ -7,7 +7,7 @@ import "three/src/loaders/ObjectLoader";
 
 import { Defaults } from "./defaults";
 import { Nebuchadnezzar } from "./the-nebuchadnezzar";
-import { ToastProvider } from '../../providers/toast/toast';
+// import { ToastProvider } from '../../providers/toast/toast';
 
 @Injectable()
 
@@ -49,7 +49,7 @@ export class TheArchitect {
   public editMode = this.translateMode;
 
 
-  constructor(public toast:ToastProvider) {
+  constructor() {
     this.addObject = this.addObject.bind(this); //Add the right 'this' context to method
     this.plugMeIn();
   }
@@ -265,8 +265,9 @@ export class TheArchitect {
       if (this.objects.length) {
         this.selected.push(object);
         this.handleSelectionHelpers();
+        // this.toast.show("fdp");
       } else {
-        this.toast.show("There's no mods");
+        // this.toast.show("There's no mods");
       }
     });
   }
