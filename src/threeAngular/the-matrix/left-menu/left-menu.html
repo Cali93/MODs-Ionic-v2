@@ -3,22 +3,36 @@
 		<div class="tab-title">MODs</div>
 		<div class="tab-icon">
 			<button (click)="activeButton()"><i class="material-icons">menu</i></button>
+			<button (click)="callSelectAll()"><i class="material-icons">all_out</i></button>
+			<button (click)="alert('color')"><i class="material-icons">invert_colors</i></button>
+			<button (click)="callCloneObject()"><i class="material-icons">content_copy</i></button>
+			<button (click)="callChangeEditMode()"><i class="material-icons"><i class="material-icons">{{ this.TheArchitect.editMode.nextIcon }}</i></i></button>
+			<button (click)="callAddMod()"><i class="material-icons">library_add</i></button>
+			<button (click)="callDeleteMod()"><i class="material-icons">delete</i></button>
 		</div>
 	</div>
 	<div class="menu-content">
+		<div class="submenu">
+			<p class="menu-title">Éléments</p>
+			<div class="overflower">
+				<ul id="objects"></ul>
+			</div>
+			</div>
 		<div>
-			<a href="#" id="float-problem" class="menu-title-mini">New</a>
+		<div class="submenu">
+			<p class="menu-title">Propriétés</p>
+			<div class="overflower">
+				<ul id="objects"></ul>
+			</div>
+			</div>
+		<div class="fleft">
+			<button class="badass-button"><i class="material-icons">insert_drive_file</i></button>
 		</div>
-		<div>
-			<a href="#" id="float-problem-right" class="menu-title-mini">Open</a>
+		<div class="fleft">
+			<button class="badass-button-blanc"><i class="material-icons">save</i></button>
 		</div>
-		<br><br><br>
-		<a href="#" class="badass-button">Surface</a>
-		<br>
-		<a href="#" class="badass-button">Presets</a>
-		<br><br><br><br>
-		<a href="#" class="badass-button-blanc">Save</a>
-		<br>
-		<a href="#" class="badass-button" (click)="logInOrSignIn()">Add to cart</a>
+		<div class="fleft">
+			<button class="badass-button" (click)="logInOrSignIn()"><i class="material-icons">shopping_cart</i></button>
+		</div>
 	</div>
 </div>

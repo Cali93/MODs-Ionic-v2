@@ -1,0 +1,13 @@
+page-login * {
+  font-family: 'Raleway', sans-serif; }
+page-login a {
+  text-decoration: none; }
+page-login q {
+  text-align: center;
+  font-style: italic;
+  color: #FB102C; }
+page-login ion-card-title {
+  display: flex !important;
+  justify-content: space-around; }
+
+/*# sourceMappingURL=login.css.map */

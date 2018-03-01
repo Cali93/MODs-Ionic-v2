@@ -1,0 +1,105 @@
+.right-menu {
+  position: absolute;
+  width: 250px;
+  z-index: 9999;
+  display: block;
+  top: 5px;
+  right: 5px;
+  width: 300px;
+  transition: right 0.8s cubic-bezier(0.42, 0, 0.15, 1.4); }
+  .right-menu.active {
+    right: -250px; }
+  .right-menu .menu-tab {
+    background-color: rgba(200, 200, 200, 0.4);
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 50px;
+    width: 300px; }
+  .right-menu .tab-title {
+    position: absolute;
+    top: 0;
+    width: 250px;
+    height: 50px;
+    font-size: 29px;
+    color: white;
+    font-weight: bold;
+    padding-left: 77px;
+    padding-top: 3px;
+    border-right: 1px solid rgba(0, 0, 0, 0.3);
+    border-top: 1px solid rgba(0, 0, 0, 0.3);
+    left: auto;
+    right: 0; }
+  .right-menu .tab-icon {
+    position: absolute;
+    top: 0;
+    width: 50px;
+    height: 50px;
+    float: right;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    border-right: none;
+    left: 0;
+    right: auto; }
+  .right-menu .tab-icon button {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    font-size: 20px;
+    color: #fff; }
+  .right-menu .tab-icon button:hover {
+    background-color: rgba(255, 255, 255, 0.7);
+    color: rgba(0, 0, 0, 0.7); }
+  .right-menu .menu-content {
+    position: absolute;
+    top: 50px;
+    display: block;
+    width: 200px;
+    background-color: rgba(200, 200, 200, 0.4);
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    border-top: none;
+    padding: 20px;
+    right: 0;
+    width: 250px; }
+  .right-menu .submenu {
+    background-color: rgba(0, 0, 0, 0.1);
+    padding-bottom: 5px;
+    margin-bottom: 20px;
+    border-radius: 5px; }
+  .right-menu .menu-title, .right-menu .badass-button {
+    color: #fff;
+    text-transform: uppercase;
+    background-color: #78B937;
+    padding: 7px 10px;
+    font-size: 20px;
+    margin: 0;
+    display: block;
+    text-decoration: none;
+    font-weight: normal; }
+  .right-menu .menu-item {
+    display: block;
+    text-decoration: none;
+    color: #333;
+    margin: 10px 0;
+    padding-left: 20px;
+    font-size: 13px; }
+  .right-menu .overflower {
+    height: 100px;
+    overflow: scroll; }
+  .right-menu .hide {
+    display: none; }
+  .right-menu #history {
+    width: 100%;
+    height: 100%;
+    background-color: none; }
+  .right-menu ul, .right-menu li {
+    margin: 0;
+    padding: 0; }
+  .right-menu p {
+    width: 100%; }
+
+/*# sourceMappingURL=right-menu.css.map */

@@ -7,7 +7,7 @@ export class Nebuchadnezzar extends THREE.Mesh {
   public redBox = new THREE.Box3Helper(null, 0xff0000);
 
   private scene: THREE.Scene;
-  private sceneHelpers: THREE.Scene;
+  private sceneHelpers: THREE.Scene; 
 
   constructor(scene,sceneHelpers) {
     super(
@@ -16,8 +16,7 @@ export class Nebuchadnezzar extends THREE.Mesh {
     )
     this.scene = scene;
     this.sceneHelpers = sceneHelpers;
-  }
-
+  } 
 
   /**
    * Remove all elements from MulitSelection Group
