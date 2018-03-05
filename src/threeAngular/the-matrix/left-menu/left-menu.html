@@ -19,6 +19,7 @@
 		<br><br><br><br>
 		<a href="#" class="badass-button-blanc" (click)="createProject()">Save</a>
 		<br>
-		<a href="#" class="badass-button" (click)="logInOrSignIn()">Add to cart</a>
+    <a href="#" class="badass-button" (click)="logInOrSignIn()">Add to cart</a>
+    <input #box (keyup.enter)="handleAngleInput(box.value)" value="45">
 	</div>
 </div>

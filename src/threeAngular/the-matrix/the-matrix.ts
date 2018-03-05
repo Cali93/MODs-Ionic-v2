@@ -15,11 +15,11 @@ import { TheArchitect } from './the-architect.service';
 export class TheMatrix implements AfterViewInit {
   private renderer: THREE.WebGLRenderer;
 
-  public controls: THREE.OrbitControls;
-  private transformControls: THREE.TransformControls;
-
   private onDownPosition: THREE.Vector2 = new THREE.Vector2();
   private onUpPosition: THREE.Vector2 = new THREE.Vector2();
+
+  public controls: THREE.OrbitControls;
+  private transformControls: THREE.TransformControls;
   // private onDoubleClickPosition: THREE.Vector2 = new THREE.Vector2();
 
   private raycaster: THREE.Raycaster = new THREE.Raycaster();
@@ -90,11 +90,26 @@ export class TheMatrix implements AfterViewInit {
     var rect = dom.getBoundingClientRect();
     return [ ( x - rect.left ) / rect.width, ( y - rect.top ) / rect.height ];
   }
+    /**
+   * What to do on Click
+   */
+  private handleClick() {
+    // If mouseDown and mouseUp were in the same place (means it's a short click)
+    if ( this.onDownPosition.distanceTo( this.onUpPosition ) === 0 ) {
+      var intersects = this.getIntersects( this.onUpPosition, this.theArchitect.objects );
+      if(intersects.length==0){
+        this.theArchitect.deselect();
+      } else {
+        this.theArchitect.handleClick(intersects[0].object);
+      }
+    }
+  }
 
   /**
    * Stocks mouse position as vector on incoming click
    */
   public onMouseDown(event: MouseEvent) {
+    event.preventDefault();
     var array = this.getMousePosition( this.canvas, event.clientX, event.clientY );
     this.onDownPosition.fromArray( array );
   }
@@ -112,35 +127,25 @@ export class TheMatrix implements AfterViewInit {
    * Stocks mouse position as vector on incoming click
    */
   public onTouchStart( event: TouchEvent ) {
-    event.preventDefault();
-    let touch = event.changedTouches[ 0 ];
-    let array = this.getMousePosition( this.canvas, touch.clientX, touch.clientY );
+    // event.preventDefault();
+    var touch = event.changedTouches[ 0 ];
+    var array = this.getMousePosition( this.canvas, touch.clientX, touch.clientY );
     this.onDownPosition.fromArray( array );
+    this.canvas.addEventListener( 'touchend', this.onTouchEnd, false );
   }
 
   /**
    * Stocks mouse position as vector on outgoing click then...
    */
   public onTouchEnd( event: TouchEvent ) {
-    event.preventDefault();
-    let touch = event.changedTouches[ 0 ];
-    let array = this.getMousePosition( this.canvas, touch.clientX, touch.clientY );
+    // event.preventDefault();
+    var touch = event.changedTouches[ 0 ];
+    var array = this.getMousePosition( this.canvas, touch.clientX, touch.clientY );
     this.onUpPosition.fromArray( array );
     this.handleClick();
-  }
-  /**
-   * What to do on Click
-   */
-  private handleClick() {
-    // If mouseDown and mouseUp were in the same place (means it's a short click)
-    if ( this.onDownPosition.distanceTo( this.onUpPosition ) === 0 ) {
-      var intersects = this.getIntersects( this.onUpPosition, this.theArchitect.objects );
-      if(intersects.length==0){
-        this.theArchitect.deselect();
-      } else {
-        this.theArchitect.handleClick(intersects[0].object);
-      }
-    }
+
+    this.canvas.removeEventListener( 'touchend', this.onTouchEnd, false );
+
   }
 
   /**

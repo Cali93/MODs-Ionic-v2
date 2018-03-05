@@ -54,4 +54,8 @@ export class LeftMenuComponent {
     }
   }
 
+  public handleAngleInput(value:number){
+    this.theArchitect.getAngleInput(value)
+  }
+
 }

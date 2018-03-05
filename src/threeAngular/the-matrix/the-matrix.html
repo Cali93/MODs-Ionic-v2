@@ -2,12 +2,12 @@
 <right-menu></right-menu>
 <canvas
 #theCanvas
-(touchstart)="onTouchStart($event); false"
-(touchmove)="onTouchEnd($event); false"
-(mousedown)="onMouseDown($event); false"
 (mouseup)="onMouseUp($event); false"
-(tap)="onTap($event)"
-(press)="onPress($event)"
+(touchend)="onTouchEnd($event); false "
+(tap)="onTap($event); false "
+(press)="onPress($event); false"
+ (mousedown)="onMouseDown($event); false"
+ (touchstart)="onTouchStart($event); false "
 >
 </canvas>
 <the-toolbar
@@ -15,4 +15,5 @@
     (changeEditMode)="changeEditMode($event)"
     (deleteMod)="deleteMod()"
 >
+
 </the-toolbar>

@@ -3,6 +3,7 @@ import { ToolbarComponent } from './toolbar/toolbar';
 import { KevinComponent } from './kevin/kevin';
 
 
+
 @NgModule({
 	declarations: [ ToolbarComponent,
     KevinComponent],

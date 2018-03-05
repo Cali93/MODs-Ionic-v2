@@ -34,6 +34,7 @@ export class TheArchitect {
 
   public objects = [];
   public selected = [];
+  public value = 45;
 
   public translateMode = {
     'id': 'translate',
@@ -262,9 +263,13 @@ export class TheArchitect {
   public selectAll() {
     this.deselect();
     this.objects.forEach(object => {
-      this.selected.push(object);
+      if (this.selected.length > 1){
+        this.selected.push(object);
+      } else console.log('error select')
     });
+
     this.handleSelectionHelpers();
+
   }
 
   /**
@@ -336,5 +341,16 @@ export class TheArchitect {
       this.addToSelection(target);
     }
     this.handleSelectionHelpers();
+  }
+
+    /**
+   * Handles Angle's input
+   */
+
+  public getAngleInput(value:number){
+    var angleValue = this.value
+    angleValue = value;
+    console.log(angleValue)
+    return angleValue
   }
 }

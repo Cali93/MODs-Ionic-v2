@@ -1,6 +1,7 @@
 import * as THREE from 'three';
 import "../EnableThree.js";
 
+
 export class Nebuchadnezzar extends THREE.Mesh {
 
   public nebuchasBoundingBox = new THREE.Box3;
@@ -8,6 +9,10 @@ export class Nebuchadnezzar extends THREE.Mesh {
 
   private scene: THREE.Scene;
   private sceneHelpers: THREE.Scene;
+
+  public children: THREE.Mesh.children;
+  public position: THREE.Mesh.position;
+  public updateMatrixWorld: THREE.Mesh.updateMatrixWorld;
 
   constructor(scene,sceneHelpers) {
     super(

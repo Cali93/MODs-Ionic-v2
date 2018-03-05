@@ -44,6 +44,7 @@ export class ContactPage {
         this.toast.show(`Thanks ${message.username}, your message about ${message.title} has been sent !`)
         this.navCtrl.push(HomePage)
       })
+
     }
 
   }
