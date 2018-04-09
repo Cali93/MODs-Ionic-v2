@@ -124,3 +124,10 @@ Du 14/02 au 12/03
 - Shop plus clair (projets en cours - sauvés - commandés);
 - Proposer un "tetris" de MODS par menu numérique (nombre de MODS à ajouter);
 - Page loader qui empêche l'utilisateur d'appuyer pendant le chargement.
+
+### Mars : Migration du projet
+
+- Transfert de propriété sur un repo privé de BeCode
+- Transformation de l'app hybride en web app
+- Retour à l'éditeur ThreeJS customisé
+- Implémentation du back-end avec NodeJS, Express & MongoDB
